@@ -1,0 +1,20 @@
+{
+  "name": "tailieutoan",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack --experimental-https",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "antd": "^5.23.1",
+    "axios": "^1.7.9",
+    "bootstrap": "^5.3.3",
+    "next": "15.1.5",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sweetalert2": "^11.15.10"
+  }
+}
