@@ -38,11 +38,8 @@ export default function Category({ props }) {
     );
 
     return (
-        <div className="row">
-            <div className="col-md-12">
-                <div style={{ display: 'flex' }}>
-                    <Menu mode="inline" style={{ width: 256 }}>
-                        <Menu.Item key="danh-muc" style={{ fontWeight: 'bold', fontSize: 16, backgroundColor: '#fdcd02' }}>
+       <Menu mode="inline" >
+        <Menu.Item key="danh-muc" style={{height:"42px", fontWeight: 'bold', fontSize: 16, backgroundColor: '#fdcd02', borderRadius:"0px", margin:"0px" }}>
                             <Dropdown
                                 overlay={gridContent}
                                 trigger={['click']}
@@ -50,14 +47,11 @@ export default function Category({ props }) {
                                 open={visible}
                                 onOpenChange={(flag) => setVisible(flag)}
                             >
-                                <Space style={{ color: '#1677ff' }}>
+                                <Space style={{ color: '#000000' }}>
                                     <MenuOutlined /> DANH MỤC TÀI LIỆU
                                 </Space>
                             </Dropdown>
                         </Menu.Item>
                     </Menu>
-                </div>
-            </div>
-        </div>
     );
 }

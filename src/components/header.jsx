@@ -6,6 +6,8 @@ import { getConfig } from "@/constants/server";
 import Login from '@/components/login';
 import { useAppContext } from "@/appcontext";
 import { useRouter } from 'next/navigation'
+import { Input, Space } from 'antd';
+const { Search } = Input;
 
 const Header = ({ props }) => {
     const { configs, userInfo } = props
@@ -31,24 +33,8 @@ const Header = ({ props }) => {
                     preview={false}
                 />
             </div>
-            <div className="searchHome w-100">
-                <form className="navbarForm">
-                    <input className="form-control" type="search" placeholder="Tìm kiếm tài liệu tại đây..."></input>
-                    <button type="submit" className="buttonSearch">Tìm kiếm</button>
-                </form>
-                <a href='#' className="customLink" onClick={() => {
-                    router.push(`/`, { scroll: false })
-                }}>
-                    Trang chủ
-                </a>
-                <a href='#' className="customLink">
-                    Tài liệu miễn phí
-                </a>
-                <a href="#" className="customLink">
-                    Hướng dẫn
-                </a>
-                <Login />
-            </div>
+            <Search placeholder="Tìm kiếm tài liệu tại đây..." onSearch={()=>{}} style={{ width: "50%" }} />
+            <Login />
         </nav>
     );
 }

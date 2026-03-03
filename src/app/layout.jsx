@@ -9,6 +9,7 @@ import { getDocuments } from '@/endpoints/document';
 import { Suspense } from "react";
 import Right from '@/components/right';
 import Category from '@/components/category';
+import Sidebar from '@/components/sidebar';
 
 export const metadata = {
 
@@ -67,8 +68,11 @@ export default async function RootLayout({ children }) {
           <div className="container pb-3">
             <div className="col-lg-12 col-xl-12">
               <div className="row">
-                <div className="col-md-9">
+                <div className="col-md-3">
                   <Category props={{ categories }} />
+                </div>
+                <div className="col-md-9">
+                  <Sidebar />
                 </div>
 
               </div>
