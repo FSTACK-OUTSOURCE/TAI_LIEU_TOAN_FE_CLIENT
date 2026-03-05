@@ -5,6 +5,7 @@ import BreadCrumbItem from '@/components/breadcrumbitem';
 import DocumentAction from '@/components/documentaction';
 import Description from '@/components/description';
 import DocumentItem from '@/components/documentitem';
+import DocumentDetail from '@/components/documentDetail';
 
 const fetchDocuments = async ({ query }) => {
     var response = await getDocuments({ query });
@@ -59,7 +60,10 @@ export default async function Page({
     const breadData = await fetchBreadCrumb(documentinfo.DOCUMENT_ID);
     var childDocuments = await fetchChildDocuments(documentinfo.DOCUMENT_ID)
     const topics = childDocuments.length > 0 ? await fetchTopics(documentinfo.DOCUMENT_ID) : []
-
+    console.log("documentinfo", documentinfo)
+    // console.log("breadData", breadData)
+    // console.log("childDocuments", childDocuments)
+    // console.log("topics", topics)
 
     return (
         <section>
@@ -68,6 +72,7 @@ export default async function Page({
                     items={breadData}
                 /> : <></>}
             </div>
+            {/* <DocumentDetail/> */}
             <div className="section-heading mt-3 pt-3 pb-3 mb-3 filterListFile">
                 <DocumentAction props={{ documentinfo }} />
             </div>

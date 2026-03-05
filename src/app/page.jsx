@@ -4,6 +4,7 @@ import { Tabs } from 'antd';
 import PinItem from '@/components/pinitem';
 import { getGroups } from '@/endpoints/group';
 import DocumentGroupItem from '@/components/documentgroupitem';
+import MainTempalte from '@/components/mainTempalte';
 
 const fetchDocuments = async ({ query }) => {
   var response = await getDocuments({ query });
@@ -42,6 +43,7 @@ export default async function Page() {
     }
   }
   return (
+    <MainTempalte>
     <section>
       <div className="mt-3 divLe categoriesBox backgroundHome">
         <div className="centerContent fontBold titleYellow">
@@ -74,5 +76,6 @@ export default async function Page() {
         <DocumentGroupItem props={{ groups }} />
       </div>
     </section>
+    </MainTempalte>
   )
 }

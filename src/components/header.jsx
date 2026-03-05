@@ -6,7 +6,9 @@ import { getConfig } from "@/constants/server";
 import Login from '@/components/login';
 import { useAppContext } from "@/appcontext";
 import { useRouter } from 'next/navigation'
-import { Input, Space } from 'antd';
+import { Input } from 'antd';
+import { DollarOutlined } from "@ant-design/icons";
+
 const { Search } = Input;
 
 const Header = ({ props }) => {
@@ -34,7 +36,17 @@ const Header = ({ props }) => {
                 />
             </div>
             <Search placeholder="Tìm kiếm tài liệu tại đây..." onSearch={()=>{}} style={{ width: "50%" }} />
-            <Login />
+
+            <div className="" style={{display:"flex", alignItems:"center", gap:"10px"}}>
+                <div className="" style={{display:"flex", alignItems:"center", gap:"8px"}}>
+                    <div style={{display:"flex", alignItems:"center", gap:"0px"}}>
+                        <DollarOutlined style={{marginRight:"8px"}}/>
+                        <p style={{margin:0, fontWeight:"bold"}}>Số dư:</p>
+                    </div>
+                    <p style={{margin:0, fontWeight:"bold"}}>{appcontext?.balance || 0}</p>
+                </div>
+                <Login />
+            </div>
         </nav>
     );
 }

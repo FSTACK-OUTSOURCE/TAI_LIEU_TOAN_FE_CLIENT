@@ -50,7 +50,7 @@ const Sidebar = () => {
                 <PhoneOutlined style={{
                     color:"#fff"
                 }}/>
-                <p style={textStyles}>0123456789</p>
+                <p style={textStyles}>0386.117.490</p>
             </FormCommon>
         </div>
     );

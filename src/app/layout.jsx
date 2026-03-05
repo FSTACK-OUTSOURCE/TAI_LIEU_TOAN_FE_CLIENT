@@ -57,7 +57,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <AppContextProvider>
-        <body>
+        <body style={{minHeight:"100vh"}}>
           <div className="container">
             <div className="row d-flex">
               <div className="col-lg-12 col-xl-12">
@@ -76,14 +76,19 @@ export default async function RootLayout({ children }) {
                 </div>
 
               </div>
-              <div className="row">
+              <div>
+                <Suspense>
+                  {children}
+                </Suspense>
+              </div>
+              {/* <div className="row">
                 <div className="col-lg-9 col-xl-9">
                   <Suspense>
                     {children}
                   </Suspense>
                 </div>
                 <Right />
-              </div>
+              </div> */}
             </div>
           </div>
           <Footer />

@@ -1,11 +1,12 @@
 "use client"
 import React, { useEffect } from "react";
-import { Button, Dropdown, Form, Input, Select, Card } from "antd";
+import { Button, Dropdown, Form, Input, Select, Card, Divider } from "antd";
 import { useRouter } from 'next/navigation'
 import Swal from 'sweetalert2'
 import { useAppContext } from "@/appcontext";
 import axios from "axios";
 import { signInGoogle } from "@/constants/client"
+import { LogoutOutlined } from "@ant-design/icons";
 
 
 const Login = () => {
@@ -14,6 +15,14 @@ const Login = () => {
     const router = useRouter();
 
     const items = [
+        {
+            key:"5",
+            label:<button style={{ border: 'none', background: 'none', color: 'black' }}>{appcontext?.username || ""}</button>
+        },
+        {
+            key:"6",
+            label:<Divider style={{margin:"0px"}}/>
+        },
         {
             key: '2',
             label: (
@@ -59,7 +68,7 @@ const Login = () => {
                         allowOutsideClick: false
                     })
                 }
-            }} className="customLink">Đăng xuất</button>),
+            }} className="customLink"><LogoutOutlined style={{marginRight:"8px"}}/> Đăng xuất</button>),
             key: '4',
         },
     ];
@@ -143,8 +152,6 @@ const Login = () => {
     };
     return (
         <section>
-
-
             {
                 appcontext.username && !appcontext.phonenumber ?
                     <div className="overlay">
