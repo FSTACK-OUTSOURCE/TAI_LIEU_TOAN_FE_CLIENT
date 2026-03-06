@@ -61,9 +61,9 @@ export default async function Page({
     var childDocuments = await fetchChildDocuments(documentinfo.DOCUMENT_ID)
     const topics = childDocuments.length > 0 ? await fetchTopics(documentinfo.DOCUMENT_ID) : []
     console.log("documentinfo", documentinfo)
-    // console.log("breadData", breadData)
-    // console.log("childDocuments", childDocuments)
-    // console.log("topics", topics)
+    console.log("breadData", breadData)
+    console.log("childDocuments", childDocuments)
+    console.log("topics", topics)
 
     return (
         <section>
@@ -72,10 +72,13 @@ export default async function Page({
                     items={breadData}
                 /> : <></>}
             </div>
-            {/* <DocumentDetail/> */}
-            <div className="section-heading mt-3 pt-3 pb-3 mb-3 filterListFile">
+            {documentinfo?.PRICE ?
+            <div className="section-heading mt-3 pt-3 pb-3 mb-3">
+                <DocumentDetail documentinfo={documentinfo} />
+            </div> : <></>}
+            {/* <div className="section-heading mt-3 pt-3 pb-3 mb-3 filterListFile">
                 <DocumentAction props={{ documentinfo }} />
-            </div>
+            </div> */}
             <Description props={{ documentinfo }} />
             <DocumentItem props={{ documentinfo: { childDocuments, ...documentinfo }, topics }} />
         </section>
