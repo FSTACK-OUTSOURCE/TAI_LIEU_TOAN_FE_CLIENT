@@ -79,7 +79,7 @@ export default async function Page({
             {/* <div className="section-heading mt-3 pt-3 pb-3 mb-3 filterListFile">
                 <DocumentAction props={{ documentinfo }} />
             </div> */}
-            <Description props={{ documentinfo }} />
+            {/* <Description props={{ documentinfo }} /> */}
             <DocumentItem props={{ documentinfo: { childDocuments, ...documentinfo }, topics }} />
         </section>
     );

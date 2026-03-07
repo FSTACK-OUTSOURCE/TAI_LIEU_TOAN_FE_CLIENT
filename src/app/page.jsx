@@ -5,6 +5,9 @@ import PinItem from '@/components/pinitem';
 import { getGroups } from '@/endpoints/group';
 import DocumentGroupItem from '@/components/documentgroupitem';
 import MainTempalte from '@/components/mainTempalte';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Banner from '@/components/banner';
 
 const fetchDocuments = async ({ query }) => {
   var response = await getDocuments({ query });
@@ -57,6 +60,12 @@ export default async function Page() {
           </div>
         </div>
       </div>
+      {/* banner */}
+      <div style={{
+        margin:"20px 0"
+      }}>
+        <Banner/>
+      </div>
       <div className="divLe">
         <Tabs
           defaultActiveKey="0"
@@ -72,7 +81,6 @@ export default async function Page() {
         />
       </div>
       <div className="divLe">
-
         <DocumentGroupItem props={{ groups }} />
       </div>
     </section>

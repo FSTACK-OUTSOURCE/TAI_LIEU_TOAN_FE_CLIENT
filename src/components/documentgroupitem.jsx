@@ -7,6 +7,7 @@ import DocumentPreview from '@/components/documentpreview';
 import { useState } from 'react';
 import { checkSignIn, downloadDocument } from '@/constants/client';
 import { useAppContext } from "@/appcontext";
+import './styles/documentGroupItem.css';
 
 const DocumentGroupItem = ({ props }) => {
     const router = useRouter();
@@ -92,9 +93,9 @@ const DocumentGroupItem = ({ props }) => {
 
     return (
         <section>
-            <Collapse accordion style={{ background: '#4189f5' }}>
+            <Collapse accordion style={{ background: '#4189f5'}}>
                 {groups.map((group, index) => (
-                    <Collapse.Panel header={<span style={{ color: "white", fontWeight: "bold" }}>{group.GROUP_NAME}</span>} key={index} >
+                    <Collapse.Panel  header={<span style={{ color: "white", fontWeight: "bold" }}>{group.GROUP_NAME}</span>} key={index} >
                         <List
                             dataSource={group.documents}
                             renderItem={(item) => {

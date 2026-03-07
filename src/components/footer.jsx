@@ -20,10 +20,21 @@ const Footer = () => {
         }
     }, [appcontext]);
     return (
-        <footer style={{ backgroundColor: '#fdf9ed', padding: '30px' }}>
+        <footer style={{ backgroundColor: '#fdf9ed', padding: '30px 100px' }}>
             <div dangerouslySetInnerHTML={{ __html: getConfig({ configs, name: 'footer' }) }} />
 
-            <div className='pb-5'>
+            <div className='pb-5' style={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
+                <Image
+                    // src={`${process.env.NEXT_PUBLIC_API_URL}${getConfig({ configs, name: 'logo' })}`}
+                    src="/logo.png"
+                    alt="Ảnh bị ẩn do mạng"
+                    className='img-fluid link-danger'
+                    onClick={() => {
+                        router.push(`/`, { scroll: false })
+                    }}
+                    style={{ cursor: 'pointer' }}   
+                    preview={false}
+                />
                 <span>
                     <Image
                         src="/zaloimg.png"
@@ -32,7 +43,7 @@ const Footer = () => {
                         preview={false}
                         width={150}
                         height={50}
-                        style={{ cursor: 'pointer' }}
+                        style={{ cursor: 'pointer', objectFit:"contain" }}
                         onClick={() => {
                             redirectLink(getConfig({ configs, name: 'zalo' }))
                         }}
@@ -44,7 +55,7 @@ const Footer = () => {
                         preview={false}
                         width={150}
                         height={50}
-                        style={{ cursor: 'pointer' }}
+                        style={{ cursor: 'pointer', objectFit:"contain" }}
                         onClick={() => {
                             redirectLink(getConfig({ configs, name: 'zalo' }))
                         }}
@@ -56,7 +67,7 @@ const Footer = () => {
                         preview={false}
                         width={150}
                         height={50}
-                        style={{ cursor: 'pointer' }}
+                        style={{ cursor: 'pointer', objectFit:"contain" }}
                         onClick={() => {
                             redirectLink(getConfig({ configs, name: 'facebook' }))
                         }}

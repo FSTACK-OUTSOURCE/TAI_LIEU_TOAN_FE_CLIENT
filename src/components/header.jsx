@@ -25,7 +25,8 @@ const Header = ({ props }) => {
         <nav className="navbar navbar-expand-md navbar-main homeNav">
             <div className="logoPage">
                 <Image
-                    src={`${process.env.NEXT_PUBLIC_API_URL}${getConfig({ configs, name: 'logo' })}`}
+                    // src={`${process.env.NEXT_PUBLIC_API_URL}${getConfig({ configs, name: 'logo' })}`}
+                    src="/logo.png"
                     alt="Ảnh bị ẩn do mạng"
                     className='img-fluid link-danger'
                     onClick={() => {
@@ -35,7 +36,7 @@ const Header = ({ props }) => {
                     preview={false}
                 />
             </div>
-            <Search placeholder="Tìm kiếm tài liệu tại đây..." onSearch={()=>{}} style={{ width: "50%" }} />
+            <Search placeholder="Tìm kiếm tài liệu tại đây..." onSearch={()=>{}} style={{ width: "30%" }} />
 
             <div className="" style={{display:"flex", alignItems:"center", gap:"10px"}}>
                 <div className="" style={{display:"flex", alignItems:"center", gap:"8px"}}>

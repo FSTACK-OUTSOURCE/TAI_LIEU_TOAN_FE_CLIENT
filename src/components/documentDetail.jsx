@@ -6,7 +6,7 @@ import { useAppContext } from '@/appcontext';
 import { useRouter } from 'next/navigation';
 import { checkSignIn } from '@/constants/client';
 import DocumentTopup from './documenttopup';
-import { Divider } from 'antd';
+import { Divider, Image } from 'antd';
 
 const DocumentDetail = ({documentinfo}) =>{
     const router = useRouter();
@@ -32,10 +32,17 @@ const DocumentDetail = ({documentinfo}) =>{
     return (
         <div 
             className="row" 
-            style={{backgroundColor:"#ffffff", padding:"30px", borderRadius:"10px", boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"}}
+            style={{backgroundColor:"#ffffff", padding:"30px", borderRadius:"2px", boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"}}
             >
             <div className="col-md-5 col-lg-5 col-xl-5">
-                a
+                <Image
+                        preview={false}
+                        src={documentinfo.IMAGE_LINK ? `${process.env.NEXT_PUBLIC_API_URL}${documentinfo.IMAGE_LINK}` : "/folder.png"}
+                        alt="Ảnh bị ẩn do mạng"
+                        className='img-fluid'
+                        width={122}
+                        height={122}
+                    />
             </div>
             <div className="col-md-7 col-lg-7 col-xl-7">
                 
@@ -157,6 +164,13 @@ const DocumentDetail = ({documentinfo}) =>{
                         <span className="fs-5" style={{color:"#FF5722"}}> 0386.117.490 </span>
                     </p>
                 </div>
+                <Divider/>
+
+                {/* description */}
+                <div >
+                    <div dangerouslySetInnerHTML={{ __html: documentinfo.DESCRIPTION }} />
+                </div>
+
             </div>
             {/* MOdal */}
             {showTopup && <DocumentTopup props={{ onClose: toggleTopup, documentinfo }} />}

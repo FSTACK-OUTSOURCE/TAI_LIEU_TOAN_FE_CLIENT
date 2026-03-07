@@ -1,0 +1,154 @@
+'use client'
+
+import { Modal, Button } from "antd";
+import { useState } from "react";
+import { ArrowLeftOutlined } from '@ant-design/icons';
+import './styles/modalRecharge.css';
+
+const ModalRecharge = ({ showTopup, handleOk, handleCancel }) => {
+    const listBudget = [
+        {
+            value: 100000,
+            label: '100.000 đ'
+        },
+        {
+            value: 200000,
+            label: '200.000 đ'
+        },
+        {
+            value: 300000,
+            label: '300.000 đ'
+        },
+        {
+            value: 400000,
+            label: '400.000 đ'
+        },
+        {
+            value: 500000,
+            label: '500.000 đ'
+        }
+    ]
+
+    const [budgetSelected, setBudgetSelected] = useState(0)
+
+    const handleClose = () => {
+        setBudgetSelected(0);
+        handleCancel();
+    };
+
+    const handleSupport = () =>{
+        
+    }
+
+    return (
+        <Modal
+            title={<span style={{ fontSize: '18px', fontWeight: 'bold', textTransform: 'uppercase' }}>Nạp tiền vào tài khoản</span>}
+            open={showTopup}
+            onOk={handleOk}
+            onCancel={handleClose}
+            width={900}
+            footer={null}
+            centered
+        >
+            <div className="modal-recharge-container">
+                {budgetSelected ? (
+                    <div className="payment-method-container">
+                        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px', gap: '8px' }}>
+                            <ArrowLeftOutlined 
+                                style={{ fontSize: '18px', cursor: 'pointer', color: '#555' }} 
+                                onClick={() => setBudgetSelected(0)} 
+                            />
+                            <span style={{ color: '#e5a100', fontSize: '16px' }}>Chọn phương thức thanh toán phù hợp</span>
+                        </div>
+                        
+                        <div className="payment-split-layout">
+                            {/* Left Column */}
+                            <div className="payment-left-col">
+                                <h3 style={{ textAlign: 'center', margin: '0 0 20px 0', fontSize: '20px' }}>
+                                    Nạp <span style={{ color: '#ff4d4f', fontWeight: 'bold' }}>{new Intl.NumberFormat('vi-VN').format(budgetSelected)}đ</span> vào tài khoản
+                                </h3>
+                                
+                                <div className="payment-instruction-box">
+                                    Dùng phần mềm quét mã QR trong ứng dụng ngân hàng hoặc Momo để quét mã sau
+                                </div>
+                                
+                                <div className="payment-instruction-box">
+                                    Vui lòng giữ đúng nội dung <span style={{ color: '#ff4d4f', fontWeight: 'bold' }}>TLC1293851772899142</span> để hệ thống tự động nạp tiền
+                                </div>
+                                
+                                <table className="payment-info-table">
+                                    <tbody>
+                                        <tr>
+                                            <td className="info-label">Tên tài khoản:</td>
+                                            <td className="info-value">TODO</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="info-label">Số tài khoản:</td>
+                                            <td className="info-value">TODO</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="info-label">Ngân hàng:</td>
+                                            <td className="info-value">
+                                                <img src="/mbbank-logo.png" style={{width:"50px"}}/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td className="info-label">Số tiền:</td>
+                                            <td className="info-value">{new Intl.NumberFormat('vi-VN').format(budgetSelected)} vnđ</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="info-label">Nội dung bắt buộc*:</td>
+                                            <td className="info-value" style={{ color: '#ff4d4f', fontWeight: 'bold', fontSize: '16px' }}>TLC1293851772899142</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            {/* Right Column */}
+                            <div className="payment-right-col">
+                                <div className="qr-code-wrapper">
+                                    {/* QR code will be placed here */}
+                                </div>
+                                <div style={{ textAlign: 'center', marginTop: '12px' }}>
+                                    <a href="#" style={{ color: '#1890ff', fontWeight: 'bold', textDecoration: 'none', fontSize: '14px' }}>Hướng dẫn quét mã QR</a>
+                                    <p style={{ marginTop: '16px', fontSize: '13px', color: '#555', padding: '0 10px', lineHeight: '1.5' }}>
+                                        Vui lòng giữ nguyên cửa sổ này và chờ 2-3 giây sau khi quét mã xong để giao dịch hoàn tất tự động
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '24px' }}>
+                            <img src="/ho_tro_ki_thuat.png" alt="zalo" style={{ width: '150px', objectFit: 'contain', cursor:"pointer" }} onClick={handleSupport} />
+                        </div>
+                    </div>
+                ) : (
+                    <>
+                        <p style={{ fontSize: '16px', color: '#555', marginBottom: '16px' }}>
+                            Vui lòng chọn hoặc nhập số tiền bạn muốn nạp vào tài khoản:
+                        </p>
+                        <div className="budget-grid">
+                            {listBudget.map(i => {
+                                const isSelected = budgetSelected === i.value;
+                                return (
+                                    <div 
+                                        className={`budget-item ${isSelected ? 'selected' : ''}`} 
+                                        key={i.value}
+                                        onClick={() => setBudgetSelected(i.value)}
+                                    >
+                                        <div className="budget-value">{i.label}</div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                        <div style={{ marginTop: '32px', display: 'flex', justifyContent: 'flex-end', gap: '12px' }}>
+                            <Button size="large" onClick={handleClose} style={{ borderRadius: '8px' }}>Hủy bỏ</Button>
+                        </div>
+                    </>
+                )}
+            </div>
+        </Modal>
+    );
+}
+
+export default ModalRecharge;
