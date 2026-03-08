@@ -55,9 +55,9 @@ export default async function RootLayout({ children }) {
   const userInfo = await fetchUserInfo();
   const categories = await fetchCategories();
   return (
-    <html lang="en">
+    <html lang="en" style={{minHeight:"100vh"}}>
       <AppContextProvider>
-        <body style={{minHeight:"100vh"}}>
+        <body style={{display:"flex", flexDirection:"column", minHeight:"100vh"}}>
           <div className="container">
             <div className="row d-flex">
               <div className="col-lg-12 col-xl-12">
@@ -65,7 +65,7 @@ export default async function RootLayout({ children }) {
               </div>
             </div>
           </div>
-          <div className="container pb-3">
+          <div className="container pb-3 flex-grow-1">
             <div className="col-lg-12 col-xl-12">
               <div className="row">
                 <div className="col-md-3">

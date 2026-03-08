@@ -141,7 +141,7 @@ const DocumentDetail = ({documentinfo}) =>{
                         color:"#008000"
                     }}>CÁCH MUA:</h6>
                     <ul className="ps-4">
-                        <li><strong>B1:</strong> Gửi phí vào TK: <code class="fs-5">1133836868</code> - CT TNHH DAU TU VA DV GD VIETJACK - Ngân hàng MB<a href="/assets/images/qr_code.png?id=2" target="_blank"> (QR)</a></li>
+                        <li><strong>B1:</strong> Gửi phí vào TK: <code class="fs-5">109004822580</code> - NGUYỄN THỊ LONG - Ngân hàng VietinBank<a href="#" target="_blank"> (QR)</a></li>
                         <li><strong>B2:</strong> Nhắn tin tới Zalo <a href="https://zalo.me/3800062780558660756" target="_blank">VietJack Official <span>( nhấn vào đây )</span></a> để xác nhận thanh toán và tải tài liệu - giáo án</li>
                     </ul>
                     <p className="mt-2 ms-3"

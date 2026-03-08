@@ -23,7 +23,7 @@ const Banner = ()=>{
             <a href="#"> 
                 <img
                     style={{maxWidth:"100%"}}
-                    src="https://s1.tailieuchuan.vn/tailieuchuan-prod/public/uploads/xxx108059/T%E1%BB%B0%20TIN%20%282%29-tGRGdJUJe.png"
+                    src="banner.png"
                     alt="banner"
                    />
             </a>
@@ -32,7 +32,7 @@ const Banner = ()=>{
             <a href="#">
                 <img
                     style={{maxWidth:"100%"}}
-                    src="https://s1.tailieuchuan.vn/tailieuchuan-prod/public/uploads/xxx108059/T%E1%BB%B0%20TIN%20%282%29-tGRGdJUJe.png"
+                    src="banner.png"
                     alt="banner"
                 />
             </a>

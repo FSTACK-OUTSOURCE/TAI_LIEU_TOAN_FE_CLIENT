@@ -32,7 +32,7 @@ const Footer = () => {
                     onClick={() => {
                         router.push(`/`, { scroll: false })
                     }}
-                    style={{ cursor: 'pointer' }}   
+                    style={{ cursor: 'pointer', width:"250px" }}
                     preview={false}
                 />
                 <span>
