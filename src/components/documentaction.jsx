@@ -63,7 +63,7 @@ const DocumentAction = ({ props }) => {
                     <Image
                         preview={false}
                         src={documentinfo.IMAGE_LINK ? `${process.env.NEXT_PUBLIC_API_URL}${documentinfo.IMAGE_LINK}` : "/folder.png"}
-                        alt="Ảnh bị ẩn do mạng"
+                        alt="Tài liệu toán.vn"
                         className='img-fluid'
                         width={122}
                         height={122}

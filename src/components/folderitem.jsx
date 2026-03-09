@@ -11,7 +11,7 @@ const FolderItem = ({ props }) => {
             <span>
                 <Image
                     src="/folder.png"
-                    alt="Ảnh bị ẩn do mạng"
+                    alt="Tài liệu toán.vn"
                     preview={false}
                     className='img-fluid'
                     width={40}

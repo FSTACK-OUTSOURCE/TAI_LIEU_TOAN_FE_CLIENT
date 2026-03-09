@@ -98,14 +98,14 @@ const DocumentSearch = ({ documents }) => {
                                                     avatar={item.IS_FOLDER ? <Image
                                                         preview={false}
                                                         src={item.IMAGE_LINK ? `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}` : "/folder.png"}
-                                                        alt="Ảnh bị ẩn do mạng"
+                                                        alt="Tài liệu toán.vn"
                                                         className='img-fluid'
                                                         width={50}
                                                         height={50}
                                                     /> : <Image
                                                         preview={false}
                                                         src={item.IMAGE_LINK ? `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}` : "/docTaiLieu.png"}
-                                                        alt="Ảnh bị ẩn do mạng"
+                                                        alt="Tài liệu toán.vn"
                                                         className='img-fluid'
                                                         width={50}
                                                         height={50}

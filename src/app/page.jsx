@@ -1,13 +1,13 @@
-import { getDocuments } from '@/endpoints/document';
-import FolderItem from '@/components/folderitem';
-import { Tabs } from 'antd';
-import PinItem from '@/components/pinitem';
-import { getGroups } from '@/endpoints/group';
-import DocumentGroupItem from '@/components/documentgroupitem';
-import MainTempalte from '@/components/mainTempalte';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import Banner from '@/components/banner';
+import DocumentGroupItem from '@/components/documentgroupitem';
+import FolderItem from '@/components/folderitem';
+import MainTempalte from '@/components/mainTempalte';
+import PinItem from '@/components/pinitem';
+import { getDocuments } from '@/endpoints/document';
+import { getGroups } from '@/endpoints/group';
+import { Tabs } from 'antd';
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 
 const fetchDocuments = async ({ query }) => {
   var response = await getDocuments({ query });
@@ -49,7 +49,9 @@ export default async function Page() {
     <MainTempalte>
     <section>
       <div className="mt-3 divLe categoriesBox backgroundHome">
-        <div className="centerContent fontBold titleYellow">
+        <div className="centerContent fontBold titleYellow" style={{
+            color: "#333",
+        }}>
           DANH MỤC
         </div>
         <div className={`card-body  col-lg-12 col-xs-12`} style={{ backgroundColor: '#fdf9ed' }}>

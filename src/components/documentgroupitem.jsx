@@ -1,12 +1,12 @@
 'use client'
-import { List, Collapse, Image, Button } from 'antd';
-import { DownloadOutlined, EyeOutlined } from '@ant-design/icons';
-import { useRouter } from 'next/navigation'
-import DocumentTopup from '@/components/documenttopup';
-import DocumentPreview from '@/components/documentpreview';
-import { useState } from 'react';
-import { checkSignIn, downloadDocument } from '@/constants/client';
 import { useAppContext } from "@/appcontext";
+import DocumentPreview from '@/components/documentpreview';
+import DocumentTopup from '@/components/documenttopup';
+import { checkSignIn, downloadDocument } from '@/constants/client';
+import { DownloadOutlined, EyeOutlined } from '@ant-design/icons';
+import { Button, Collapse, Image, List } from 'antd';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import './styles/documentGroupItem.css';
 
 const DocumentGroupItem = ({ props }) => {
@@ -106,14 +106,14 @@ const DocumentGroupItem = ({ props }) => {
                                             avatar={item.IS_FOLDER ? <Image
                                                 preview={false}
                                                 src={item.IMAGE_LINK ? `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}` : "/folder.png"}
-                                                alt="Ảnh bị ẩn do mạng"
+                                                alt="Tài liệu toán.vn"
                                                 className='img-fluid'
                                                 width={50}
                                                 height={50}
                                             /> : <Image
                                                 preview={false}
                                                 src={item.ImageLink ? `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}` : "/docTaiLieu.png"}
-                                                alt="Ảnh bị ẩn do mạng"
+                                                alt="Tài liệu toán.vn"
                                                 className='img-fluid'
                                                 width={50}
                                                 height={50}
@@ -133,7 +133,6 @@ const DocumentGroupItem = ({ props }) => {
                         />
                     </Collapse.Panel>
                 ))}
-
                 {showPopup && <DocumentPreview props={{ documentinfo: childDocumentInfo, onClose: togglePopup }} />}
                 {showTopup && <DocumentTopup props={{ onClose: toggleTopup, documentinfo: childDocumentInfo }} />}
             </Collapse>

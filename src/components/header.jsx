@@ -1,13 +1,10 @@
 "use client"
-import React, { useMemo } from "react";
-import { useEffect } from 'react';
-import { Image } from 'antd';
-import { getConfig } from "@/constants/server";
-import Login from '@/components/login';
 import { useAppContext } from "@/appcontext";
-import { useRouter, useSearchParams } from 'next/navigation'
-import { Input } from 'antd';
+import Login from '@/components/login';
 import { DollarOutlined } from "@ant-design/icons";
+import { Image, Input } from 'antd';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useMemo } from "react";
 
 const { Search } = Input;
 
@@ -29,11 +26,11 @@ const Header = ({ props }) => {
     }, [appcontext]);
     return (
         <nav className="navbar navbar-expand-md navbar-main homeNav">
-            <div className="logoPage">
+            <div className="logoPage d-flex align-items-center">
                 <Image
                     // src={`${process.env.NEXT_PUBLIC_API_URL}${getConfig({ configs, name: 'logo' })}`}
                     src="/logo.png"
-                    alt="Ảnh bị ẩn do mạng"
+                    alt="Tài liệu toán.vn"
                     className='img-fluid link-danger'
                     onClick={() => {
                         router.push(`/`, { scroll: false })
@@ -41,9 +38,13 @@ const Header = ({ props }) => {
                     style={{ cursor: 'pointer', width:"200px" }}
                     preview={false}
                 />
+                <Search
+                    placeholder="Tìm kiếm tài liệu tại đây..."
+                    onSearch={handleSearch}
+                    style={{ width: "600px" }}
+                    defaultValue={keyword}
+                />
             </div>
-            <Search placeholder="Tìm kiếm tài liệu tại đây..." onSearch={handleSearch} style={{ width: "30%" }} defaultValue={keyword} />
-
             <div className="" style={{display:"flex", alignItems:"center", gap:"10px"}}>
                 <div className="" style={{display:"flex", alignItems:"center", gap:"8px"}}>
                     <div style={{display:"flex", alignItems:"center", gap:"0px"}}>

@@ -38,13 +38,13 @@ const DocumentTopup = ({ props }) => {
                         <div className="row form-group">
                             <div className="col-md-1">{documentinfo.IS_FOLDER ? <Image
                                 src="/folder.png"
-                                alt="Ảnh bị ẩn do mạng"
+                                alt="Tài liệu toán.vn"
                                 className='img-fluid'
                                 width={50}
                                 height={50}
                             /> : <Image
                                 src="/docTaiLieu.png"
-                                alt="Ảnh bị ẩn do mạng"
+                                alt="Tài liệu toán.vn"
                                 className='img-fluid'
                                 width={50}
                                 height={50}
@@ -72,7 +72,7 @@ const DocumentTopup = ({ props }) => {
                                         {
                                             appcontext.balance < documentinfo.PRICE ? <div className="border-top">
                                                 <span className="fs-13 text-red me-2">Số dư không đủ vui lòng liên hệ Zalo</span>
-                                                <Image preview={false} src="/zaloimg.png" alt="Ảnh bị ẩn do mạng" width={200} height={50} onClick={
+                                                <Image preview={false} src="/zaloimg.png" alt="Tài liệu toán.vn" width={200} height={50} onClick={
                                                     () => { redirectLink(getConfig({ configs: appcontext.configs, name: 'zalo' })) }
                                                 } />
                                             </div> : <p className="text-center">Hoặc chuyển khoản nhanh bằng hình thức quét mã QR ngân hàng</p>

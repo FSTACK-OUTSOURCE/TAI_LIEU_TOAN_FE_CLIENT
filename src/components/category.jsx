@@ -19,7 +19,7 @@ export default function Category({ props }) {
                                 <Image
                                     preview={false}
                                     src={"/folder.png"}
-                                    alt="Ảnh bị ẩn do mạng"
+                                    alt="Tài liệu toán.vn"
                                     className='img-fluid'
                                     width={20}
                                     height={20}

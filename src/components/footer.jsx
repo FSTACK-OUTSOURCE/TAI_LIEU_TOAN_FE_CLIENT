@@ -27,7 +27,7 @@ const Footer = () => {
                 <Image
                     // src={`${process.env.NEXT_PUBLIC_API_URL}${getConfig({ configs, name: 'logo' })}`}
                     src="/logo.png"
-                    alt="Ảnh bị ẩn do mạng"
+                    alt="Tài liệu toán.vn"
                     className='img-fluid link-danger'
                     onClick={() => {
                         router.push(`/`, { scroll: false })
@@ -38,7 +38,7 @@ const Footer = () => {
                 <span>
                     <Image
                         src="/zaloimg.png"
-                        alt="Ảnh bị ẩn do mạng"
+                        alt="Tài liệu toán.vn"
                         className='img-fluid'
                         preview={false}
                         width={150}
@@ -50,7 +50,7 @@ const Footer = () => {
                     />
                     <Image
                         src="/kythuatimg.png"
-                        alt="Ảnh bị ẩn do mạng"
+                        alt="Tài liệu toán.vn"
                         className='img-fluid'
                         preview={false}
                         width={150}
@@ -62,7 +62,7 @@ const Footer = () => {
                     />
                     <Image
                         src="/facebook.png"
-                        alt="Ảnh bị ẩn do mạng"
+                        alt="Tài liệu toán.vn"
                         className='img-fluid'
                         preview={false}
                         width={150}
