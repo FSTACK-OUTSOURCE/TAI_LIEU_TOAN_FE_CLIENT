@@ -525,3 +525,32 @@
     opacity: 0;
   }
 }
+
+.custom-arrow-slider::before{
+    display: none;
+}
+
+.slick-dots {
+    bottom: -40px !important;
+    
+    li{
+        width: 10px !important;
+        height: 10px !important;
+        border-radius: 50%;
+        background-color: #999;
+
+        &.slick-active{
+            background-color: #000;
+        }
+
+        button{
+            &::after{
+                display: none;
+            }
+            
+            &::before{
+                display: none;
+            }
+        }
+    }
+}
