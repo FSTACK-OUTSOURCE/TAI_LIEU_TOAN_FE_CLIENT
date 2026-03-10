@@ -1,16 +1,14 @@
 'use client'
 import { useRouter } from 'next/navigation'
 import { useAppContext } from "@/appcontext";
-import { List, Checkbox, Row, Col, Image, Button } from 'antd';
+import { List, Checkbox, Row, Col, Image, Button, Divider } from 'antd';
 import { DownloadOutlined, EyeOutlined } from '@ant-design/icons';
 import { useState, useEffect } from 'react';
 import { checkSignIn, downloadDocument } from '@/constants/client';
 import DocumentTopup from '@/components/documenttopup';
-import DocumentPreview from '@/components/documentpreview';
-
 
 const DocumentItem = ({ props }) => {
-    const { documentinfo, topics } = props
+    const { documentinfo, topics, isShowDetail, parentDocument } = props
     const [childDocuments, setChildDocuments] = useState([])
     const [childDocumentInfo, setChildDocumentInfo] = useState({})
     const [topicIds, setTopicIds] = useState([])
@@ -18,7 +16,7 @@ const DocumentItem = ({ props }) => {
     const { appcontext, setAppContext } = useAppContext();
     const router = useRouter();
 
-
+console.log("check data", parentDocument?.NAME, isShowDetail)
     const toggleTopup = () => {
         setShowTopup(!showTopup);
     };
@@ -60,15 +58,15 @@ const DocumentItem = ({ props }) => {
             }
 
             if (!item.BOUGHT) {
-                result.push(<label className="font10pt fontBold fontBlack">Giá tiền: <span className="colorTaiLieu">{new Intl.NumberFormat('vi-VN').format(item.PRICE)}</span></label>)
-                result.push(<Button style={{ marginLeft: 3, backgroundColor: 'green' }} type="primary" icon={<DownloadOutlined />} size={'small'} onClick={() => {
+                result.push(<label className="font12pt fontBold fontBlack">Giá tiền: <span className="colorTaiLieu">{new Intl.NumberFormat('vi-VN').format(item.PRICE)}</span></label>)
+                result.push(<Button style={{ marginLeft: 3, backgroundColor: 'green', borderRadius: "4px", padding: "16px 20px" }} type="primary" icon={<DownloadOutlined />} size={'small'} onClick={() => {
                     buyDocument(item)
                 }}>
                     Tải về
                 </Button>)
 
                 if (item.LINK_FULL) {
-                    result.push(<Button style={{ marginLeft: 3 }} type="primary" icon={<EyeOutlined />} size={'small'} onClick={() => {
+                    result.push(<Button style={{ marginLeft: 3, borderRadius: "4px", padding: "16px 20px" }} type="primary" icon={<EyeOutlined />} size={'small'} onClick={() => {
                         window.open(`${item.LINK_FULL}`)
                     }}>
                         Xem thử gói
@@ -76,7 +74,7 @@ const DocumentItem = ({ props }) => {
                 }
             }
             else {
-                result.push(<Button style={{ marginLeft: 3, backgroundColor: '#5ab5ff' }} type="primary" icon={<DownloadOutlined />} size={'small'} onClick={() => {
+                result.push(<Button style={{ marginLeft: 3, backgroundColor: '#5ab5ff', borderRadius: "4px", padding: "16px 20px" }} type="primary" icon={<DownloadOutlined />} size={'small'} onClick={() => {
                     downloadDocument(item)
                 }}>
                     Đã mua
@@ -105,7 +103,7 @@ const DocumentItem = ({ props }) => {
             {
                 documentinfo.IS_FOLDER ?
                     <div className="form-group row">
-                        <div className="col-md-12">
+                        {!isShowDetail ? <div className="col-md-12">
                             {documentinfo.PRICE || !documentinfo.childDocuments.some((x) => !x.IS_FOLDER) || topics.length == 0 ? <div></div> :
                                 <div className="card">
                                     <div className="card-header">
@@ -134,7 +132,14 @@ const DocumentItem = ({ props }) => {
                                     </div>
                                 </div>
                             }
-                        </div>
+                        </div> : null}
+
+                        {isShowDetail && parentDocument?.NAME ? <>
+                        <div className="">{parentDocument?.NAME || ""}</div>
+                        <Divider style={{margin:"10px 0 0"}}/>
+                        </>: null}
+                        
+
                         {
                             childDocuments.length > 0 ?
                                 <div className="table-responsive">
@@ -150,6 +155,7 @@ const DocumentItem = ({ props }) => {
                                                 return (
                                                     <List.Item
                                                         className='filterListFile'
+                                                        style={{ padding: "12px" }}
                                                         actions={getActions(item)}>
                                                         <List.Item.Meta
                                                             avatar={item.IS_FOLDER ? <Image

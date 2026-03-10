@@ -48,6 +48,26 @@ const fetchTopics = async (documentId) => {
     return []
 }
 
+const fetchSimilarDocuments = async (documentId) => {
+    if (documentId) {
+        var response = await getDocuments({ query: { PARENT_DOCUMENT_ID: documentId, Columns: 'BOUGHT,ROOT_PARENT' } })
+        if (response.success) {
+            return response.Items
+        }
+    }
+    return []
+}
+
+const fetchParentDocument = async (documentId) => {
+    if (documentId) {
+        var response = await getParentDocuments({ query: { DOCUMENT_IDS: documentId, Columns: '*' } })
+        if (response.success) {
+            return response.Data.pop()
+        }
+    }
+    return {}
+}
+
 export default async function Page({
     params,
 }) {
@@ -58,12 +78,16 @@ export default async function Page({
     }
     const documentinfo = await fetchDocument(identityKey)
     const breadData = await fetchBreadCrumb(documentinfo.DOCUMENT_ID);
-    var childDocuments = await fetchChildDocuments(documentinfo.DOCUMENT_ID)
+    const childDocuments = await fetchChildDocuments(documentinfo.DOCUMENT_ID)
     const topics = childDocuments.length > 0 ? await fetchTopics(documentinfo.DOCUMENT_ID) : []
+    const similarDocuments = await fetchSimilarDocuments(documentinfo.PARENT_DOCUMENT_ID)
+    const parentDocument = await fetchParentDocument(documentinfo.PARENT_DOCUMENT_ID)
     console.log("documentinfo", documentinfo)
     console.log("breadData", breadData)
     console.log("childDocuments", childDocuments)
     console.log("topics", topics)
+    console.log("similarDocuments", similarDocuments)
+    console.log("parentDocument", parentDocument)
 
     return (
         <section>
@@ -73,14 +97,16 @@ export default async function Page({
                 /> : <></>}
             </div>
             {documentinfo?.PRICE ?
-            <div className="section-heading mt-3 pt-3 pb-3 mb-3">
-                <DocumentDetail documentinfo={documentinfo} />
-            </div> : <></>}
-            {/* <div className="section-heading mt-3 pt-3 pb-3 mb-3 filterListFile">
-                <DocumentAction props={{ documentinfo }} />
-            </div> */}
-            {/* <Description props={{ documentinfo }} /> */}
-            <DocumentItem props={{ documentinfo: { childDocuments, ...documentinfo }, topics }} />
+                <div className="section-heading mt-3 pt-3 pb-3 mb-3">
+                    <DocumentDetail documentinfo={documentinfo} />
+                </div> : <></>}
+            <DocumentItem 
+                props={{ 
+                    documentinfo: { childDocuments: childDocuments?.length > 0 ? childDocuments : similarDocuments.filter(x => x.DOCUMENT_ID != documentinfo.DOCUMENT_ID), ...documentinfo }, 
+                    topics, 
+                    isShowDetail: childDocuments?.length === 0 && documentinfo?.PRICE, 
+                    parentDocument
+                }} />
         </section>
     );
 }
