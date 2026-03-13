@@ -46,13 +46,13 @@ const Header = ({ props }) => {
                 />
             </div>
             <div className="" style={{display:"flex", alignItems:"center", gap:"10px"}}>
-                <div className="" style={{display:"flex", alignItems:"center", gap:"8px"}}>
+                {/* <div className="" style={{display:"flex", alignItems:"center", gap:"8px"}}>
                     <div style={{display:"flex", alignItems:"center", gap:"0px"}}>
                         <DollarOutlined style={{marginRight:"8px"}}/>
                         <p style={{margin:0, fontWeight:"bold"}}>Số dư:</p>
                     </div>
                     <p style={{margin:0, fontWeight:"bold"}}>{appcontext?.balance || 0}</p>
-                </div>
+                </div> */}
                 <Login />
             </div>
         </nav>

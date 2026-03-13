@@ -234,11 +234,20 @@ const Login = () => {
             }
             {
                 appcontext.username ? <Dropdown
+                placement="bottomCenter"
                     menu={{
                         items
                     }}
                 >
-                    <Button className="btn btn-login-v2 btn-danger btn-auth-home" size='large' onClick={(e) => e.preventDefault()}>{appcontext.username}</Button>
+                    <Button className="btn btn-login-v2 btn-danger btn-auth-home"
+                        style={{
+                            borderRadius: "100%",
+                            width: "32px",
+                            height: "32px",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }} size='large' onClick={(e) => e.preventDefault()}>{appcontext.username.charAt(0)}</Button>
                 </Dropdown> :
                     <div id="googleSignIn"></div>
             }
