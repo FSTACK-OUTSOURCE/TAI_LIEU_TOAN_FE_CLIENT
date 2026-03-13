@@ -1,16 +1,14 @@
 'use client'
-import { DownloadOutlined, FilePdfOutlined, CheckCircleOutlined, PhoneOutlined } from '@ant-design/icons';
+import { DownloadOutlined, FilePdfOutlined, PhoneOutlined } from '@ant-design/icons';
 import './styles/documentDetail.css'
 import { useState } from 'react';
 import { useAppContext } from '@/appcontext';
-import { useRouter } from 'next/navigation';
-import { checkSignIn } from '@/constants/client';
+import { checkSignIn, downloadDocument } from '@/constants/client';
 import DocumentTopup from './documenttopup';
 import { Divider, Image } from 'antd';
 
 const DocumentDetail = ({documentinfo}) =>{
-    const router = useRouter();
-    const { appcontext } = useAppContext();
+const { appcontext } = useAppContext();
     const [showTopup, setShowTopup] = useState(false);
 
     const toggleTopup = () => {
@@ -26,9 +24,7 @@ const DocumentDetail = ({documentinfo}) =>{
             }
     }
 
-    const handleToBought = ()=>{
-        router.push("/bought")
-    }
+
     return (
         <div 
             className="row" 
@@ -123,11 +119,11 @@ const DocumentDetail = ({documentinfo}) =>{
                                     <FilePdfOutlined style={{marginRight:"10px"}}/> XEM THỬ
                     </button> : null}
                     
-                    <button 
+                    <button
                         className="btn btn-success rounded-0 mb-2 mt-2" type="button" data-bs-toggle="modal" data-bs-target="#buyDocumentModal"
-                        onClick={()=>documentinfo?.BOUGHT ? handleToBought()  : buyDocument()}
+                        onClick={()=>documentinfo?.BOUGHT ? downloadDocument(documentinfo) : buyDocument()}
                     >
-                        {documentinfo?.BOUGHT ?<><CheckCircleOutlined style={{marginRight:"10px"}}/> ĐÃ MUA</> : <><DownloadOutlined style={{marginRight:"10px"}}/> TẢI XUỐNG</>}
+                        {documentinfo?.BOUGHT ?<><DownloadOutlined style={{marginRight:"10px"}}/> TẢI LẠI</> : <><DownloadOutlined style={{marginRight:"10px"}}/> TẢI XUỐNG</>}
                     </button>
                 </div>
                 <Divider/>
@@ -142,7 +138,7 @@ const DocumentDetail = ({documentinfo}) =>{
                     }}>CÁCH MUA:</h6>
                     <ul className="ps-4">
                         <li><strong>B1:</strong> Gửi phí vào TK: <code class="fs-5">109004822580</code> - NGUYỄN THỊ LONG - Ngân hàng VietinBank<a href="#" target="_blank"> (QR)</a></li>
-                        <li><strong>B2:</strong> Nhắn tin tới Zalo <a href="https://zalo.me/3800062780558660756" target="_blank">VietJack Official <span>( nhấn vào đây )</span></a> để xác nhận thanh toán và tải tài liệu - giáo án</li>
+                        <li><strong>B2:</strong> Nhắn tin tới Zalo <a href="https://zalo.me/3800062780558660756" target="_blank">tailieutoan.vn <span>( nhấn vào đây )</span></a> để xác nhận thanh toán và tải tài liệu - giáo án</li>
                     </ul>
                     <p className="mt-2 ms-3"
                         style={{

@@ -16,7 +16,6 @@ const DocumentItem = ({ props }) => {
     const { appcontext, setAppContext } = useAppContext();
     const router = useRouter();
 
-console.log("check data", parentDocument?.NAME, isShowDetail)
     const toggleTopup = () => {
         setShowTopup(!showTopup);
     };
@@ -104,7 +103,6 @@ console.log("check data", parentDocument?.NAME, isShowDetail)
     }, [documentinfo]);
 
     return (
-
         <section>
             {
                 documentinfo.IS_FOLDER ?

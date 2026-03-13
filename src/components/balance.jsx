@@ -26,7 +26,7 @@ const Balance = () => {
                     <div className="card-body">
                         <img src="/coin.png" width={30} height={30} /><i className="bi-cash-coin m-1"></i><b>Số dư: </b><span className="fw-bold text-danger">{new Intl.NumberFormat('vi-VN').format(appcontext.balance)} đ</span>
                     </div>
-                    <button className='btn btn-primary' style={{ marginRight: '10px' }} onClick={() => {
+                    <button className='btn btn-primary' style={{ marginRight: '8px', fontSize:"14px" }} onClick={() => {
                         setShowTopup(true)
                     }}>Nạp tiền</button>
                 </div>

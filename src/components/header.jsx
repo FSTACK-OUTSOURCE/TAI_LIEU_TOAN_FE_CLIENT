@@ -24,6 +24,7 @@ const Header = ({ props }) => {
             setAppContext({ configs, ...userInfo });
         }
     }, [appcontext]);
+    console.log(appcontext)
     return (
         <nav className="navbar navbar-expand-md navbar-main homeNav">
             <div className="logoPage d-flex align-items-center">
