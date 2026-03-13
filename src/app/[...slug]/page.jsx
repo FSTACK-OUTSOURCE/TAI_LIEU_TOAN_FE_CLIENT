@@ -2,10 +2,11 @@ import { Breadcrumb } from 'antd';
 import { getDocuments, getParentDocuments } from '@/endpoints/document';
 import { getTopics } from '@/endpoints/topic';
 import BreadCrumbItem from '@/components/breadcrumbitem';
-import DocumentAction from '@/components/documentaction';
-import Description from '@/components/description';
+// import DocumentAction from '@/components/documentaction';
+// import Description from '@/components/description';
 import DocumentItem from '@/components/documentitem';
 import DocumentDetail from '@/components/documentDetail';
+import MainTempalte from '@/components/mainTempalte';
 
 const fetchDocuments = async ({ query }) => {
     var response = await getDocuments({ query });
@@ -82,21 +83,20 @@ export default async function Page({
     const topics = childDocuments.length > 0 ? await fetchTopics(documentinfo.DOCUMENT_ID) : []
     const similarDocuments = await fetchSimilarDocuments(documentinfo.PARENT_DOCUMENT_ID)
     const parentDocument = await fetchParentDocument(documentinfo.PARENT_DOCUMENT_ID)
-    console.log("documentinfo", documentinfo)
-    console.log("breadData", breadData)
-    console.log("childDocuments", childDocuments)
-    console.log("topics", topics)
-    console.log("similarDocuments", similarDocuments)
-    console.log("parentDocument", parentDocument)
+    // console.log("documentinfo", documentinfo)
+    // console.log("breadData", breadData)
+    // console.log("childDocuments", childDocuments)
+    // console.log("topics", topics)
+    // console.log("similarDocuments", similarDocuments)
+    // console.log("parentDocument", parentDocument)
 
-    return (
-        <section>
+    const content =  <section>
             <div className="section-heading mt-3 pt-3 pb-3 mb-3 filterListFile">
                 {breadData ? <Breadcrumb
                     items={breadData}
                 /> : <></>}
             </div>
-            {documentinfo?.PRICE ?
+            {!childDocuments?.length && documentinfo?.PRICE ?
                 <div className="section-heading mt-3 pt-3 pb-3 mb-3">
                     <DocumentDetail documentinfo={documentinfo} />
                 </div> : <></>}
@@ -108,5 +108,30 @@ export default async function Page({
                     parentDocument
                 }} />
         </section>
-    );
+
+    // return (
+    //     <section>
+    //         <div className="section-heading mt-3 pt-3 pb-3 mb-3 filterListFile">
+    //             {breadData ? <Breadcrumb
+    //                 items={breadData}
+    //             /> : <></>}
+    //         </div>
+    //         {!childDocuments?.length && documentinfo?.PRICE ?
+    //             <div className="section-heading mt-3 pt-3 pb-3 mb-3">
+    //                 <DocumentDetail documentinfo={documentinfo} />
+    //             </div> : <></>}
+    //         <DocumentItem 
+    //             props={{ 
+    //                 documentinfo: { childDocuments: childDocuments?.length > 0 ? childDocuments : similarDocuments.filter(x => x.DOCUMENT_ID != documentinfo.DOCUMENT_ID), ...documentinfo }, 
+    //                 topics, 
+    //                 isShowDetail: childDocuments?.length === 0 && documentinfo?.PRICE, 
+    //                 parentDocument
+    //             }} />
+    //     </section>
+    // );
+    // 
+    if(childDocuments?.length ){
+        return <MainTempalte>{content}</MainTempalte> 
+    }
+    return <>{content}</>
 }

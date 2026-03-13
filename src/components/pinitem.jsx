@@ -30,7 +30,7 @@ const CustomArrow = ({ className, style, onClick, direction }) => (
 const PinItem = ({ props }) => {
     const router = useRouter();
     const { pin } = props;
-    
+
     const settings = {
         dots: true,
         infinite: true,
@@ -75,8 +75,8 @@ const PinItem = ({ props }) => {
                 <Slider {...settings}>
                     {pin.documents.map((item, index) => (
                         <div key={index} style={{ padding: '10px' }}>
-                            <div 
-                                style={{ 
+                            <div
+                                style={{
                                     margin: '0 10px',
                                     cursor: 'pointer',
                                     display: 'flex',
@@ -92,13 +92,13 @@ const PinItem = ({ props }) => {
                                     router.push(`/${item.ROOT_PARENT_NAME_SLUG}/${item.NAME_SLUG}-${item.IDENTITY_KEY}`, { scroll: false })
                                 }}
                             >
-                                <div style={{ 
-                                    width: '100%', 
-                                    height: '160px', 
+                                <div style={{
+                                    width: '100%',
+                                    height: '160px',
                                     background: '#f8f9fa',
-                                    display: 'flex', 
-                                    alignItems: 'center', 
-                                    justifyContent: 'center' 
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center'
                                 }}>
                                     <Image
                                         preview={false}
@@ -108,14 +108,14 @@ const PinItem = ({ props }) => {
                                         style={{ width: '100%', height: '160px', objectFit: 'cover' }}
                                     />
                                 </div>
-                                <div style={{ 
-                                    padding: '12px', 
+                                <div style={{
+                                    padding: '12px',
                                     width: '100%',
                                     flex: 1,
                                     display: 'flex',
                                     flexDirection: 'column'
                                 }}>
-                                    <div className="customLink font12pt boxDocument" title={item.NAME} style={{ 
+                                    <div className="customLink font12pt boxDocument" title={item.NAME} style={{
                                         display: '-webkit-box',
                                         WebkitLineClamp: 2,
                                         WebkitBoxOrient: 'vertical',

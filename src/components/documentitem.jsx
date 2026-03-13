@@ -54,34 +54,40 @@ console.log("check data", parentDocument?.NAME, isShowDetail)
 
         if (item.PRICE) {
             if (checkDownloaded(item.DOCUMENT_ID)) {
-                result.push(<span>Đã tải</span>)
+                result.push(
+                    <span style={{
+                        display: "inline-flex", alignItems: "center", gap: 4,
+                        background: "#f6ffed", color: "#52c41a", border: "1px solid #b7eb8f",
+                        borderRadius: 12, padding: "2px 10px", fontSize: "0.78rem", fontWeight: 600
+                    }}>✓ Đã tải</span>
+                )
             }
 
             if (!item.BOUGHT) {
-                result.push(<label className="font12pt fontBold fontBlack">Giá tiền: <span className="colorTaiLieu">{new Intl.NumberFormat('vi-VN').format(item.PRICE)}</span></label>)
-                result.push(<Button style={{ marginLeft: 3, backgroundColor: 'green', borderRadius: "4px", padding: "16px 20px" }} type="primary" icon={<DownloadOutlined />} size={'small'} onClick={() => {
-                    buyDocument(item)
-                }}>
-                    Tải về
-                </Button>)
-
+                result.push(
+                    <span style={{ fontSize: "0.82rem", color: "#595959" }}>
+                        Giá: <span style={{ fontWeight: 700, color: "#d46b08" }}>{new Intl.NumberFormat('vi-VN').format(item.PRICE)} đ</span>
+                    </span>
+                )
+                result.push(
+                    <Button style={{ marginLeft: 3, backgroundColor: '#389e0d', borderRadius: 6, padding: "0 14px", fontWeight: 600, border: "none" }} type="primary" icon={<DownloadOutlined />} size={'small'} onClick={() => { buyDocument(item) }}>
+                        Tải về
+                    </Button>
+                )
                 if (item.LINK_FULL) {
-                    result.push(<Button style={{ marginLeft: 3, borderRadius: "4px", padding: "16px 20px" }} type="primary" icon={<EyeOutlined />} size={'small'} onClick={() => {
-                        window.open(`${item.LINK_FULL}`)
-                    }}>
-                        Xem thử gói
-                    </Button>)
+                    result.push(
+                        <Button style={{ marginLeft: 3, borderRadius: 6, padding: "0 14px", fontWeight: 600 }} type="default" icon={<EyeOutlined />} size={'small'} onClick={() => { window.open(`${item.LINK_FULL}`) }}>
+                            Xem thử
+                        </Button>
+                    )
                 }
+            } else {
+                result.push(
+                    <Button style={{ marginLeft: 3, backgroundColor: '#1677ff', borderRadius: 6, padding: "0 14px", fontWeight: 600, border: "none" }} type="primary" icon={<DownloadOutlined />} size={'small'} onClick={() => { downloadDocument(item) }}>
+                        Tải lại
+                    </Button>
+                )
             }
-            else {
-                result.push(<Button style={{ marginLeft: 3, backgroundColor: '#5ab5ff', borderRadius: "4px", padding: "16px 20px" }} type="primary" icon={<DownloadOutlined />} size={'small'} onClick={() => {
-                    downloadDocument(item)
-                }}>
-                    Đã mua
-                </Button>)
-            }
-
-
         }
 
         return result;
@@ -135,62 +141,78 @@ console.log("check data", parentDocument?.NAME, isShowDetail)
                         </div> : null}
 
                         {isShowDetail && parentDocument?.NAME ? <>
-                        <div className="">{parentDocument?.NAME || ""}</div>
+                        <div style={{
+                            width: "100%",
+                            padding: "10px 14px",
+                            background: "linear-gradient(90deg, #fff7e6 0%, #fff 100%)",
+                            borderLeft: "4px solid #fa8c16",
+                            borderRadius: "4px",
+                            marginBottom: "4px"
+                        }}>
+                            <span style={{ fontSize: "0.82rem", color: "#8c8c8c", fontWeight: 500 }}>Thuộc bộ tài liệu:</span>
+                            <div style={{ fontSize: "1rem", fontWeight: 700, color: "#d46b08", marginTop: "2px" }}
+                                dangerouslySetInnerHTML={{ __html: parentDocument.NAME }}
+                            />
+                        </div>
                         <Divider style={{margin:"10px 0 0"}}/>
                         </>: null}
                         
 
                         {
                             childDocuments.length > 0 ?
-                                <div className="table-responsive">
-                                    <div className="table table-bordered table-topic">
-                                        <List
-                                            pagination={{
-                                                pageSize: 10,
-                                                locale: { items_per_page: "tài liệu / trang" }
-                                            }}
-                                            grid={!childDocuments.some((x) => x.PRICE) ? { gutter: 16, column: 2 } : undefined}
-                                            dataSource={childDocuments}
-                                            renderItem={(item) => {
-                                                return (
-                                                    <List.Item
-                                                        className='filterListFile'
-                                                        style={{ padding: "12px" }}
-                                                        actions={getActions(item)}>
-                                                        <List.Item.Meta
-                                                            avatar={item.IS_FOLDER ? <Image
-                                                                preview={false}
-                                                                src={item.IMAGE_LINK ? `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}` : "/folder.png"}
-                                                                alt="Tài liệu toán.vn"
-                                                                className='img-fluid'
-                                                                width={50}
-                                                                height={50}
-                                                            /> : <Image
-                                                                preview={false}
-                                                                src={item.IMAGE_LINK ? `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}` : "/docTaiLieu.png"}
-                                                                alt="Tài liệu toán.vn"
-                                                                className='img-fluid'
-                                                                width={50}
-                                                                height={50}
-                                                            />}
-                                                            title={
-                                                                <button style={{ border: 'none', background: 'none', textAlign: 'left' }} className="customLink font10pt" title={item.NAME} onClick={() => {
-                                                                    if (item.PRICE) {
-                                                                        window.open(`/${item.ROOT_PARENT_NAME_SLUG}/${item.NAME_SLUG}-${item.IDENTITY_KEY}`, "_blank");
-                                                                    }
-                                                                    else {
-                                                                        router.push(`/${item.ROOT_PARENT_NAME_SLUG}/${item.NAME_SLUG}-${item.IDENTITY_KEY}`, { scroll: false })
-                                                                    }
-                                                                }}>
-                                                                    <div dangerouslySetInnerHTML={{ __html: item.NAME }} />
-                                                                </button>
-                                                            }
-                                                        />
-                                                    </List.Item>
-                                                )
-                                            }}
-                                        />
-                                    </div>
+                                <div style={{ width: "100%", marginTop: 8 }}>
+                                    <List
+                                        pagination={{
+                                            pageSize: 10,
+                                            locale: { items_per_page: "tài liệu / trang" }
+                                        }}
+                                        grid={!childDocuments.some((x) => x.PRICE) ? { gutter: 12, column: 2 } : undefined}
+                                        dataSource={childDocuments}
+                                        renderItem={(item) => {
+                                            return (
+                                                <List.Item
+                                                    className='filterListFile'
+                                                    style={{
+                                                        padding: "10px 14px",
+                                                        marginBottom: 6,
+                                                        background: "#fff",
+                                                        borderRadius: 8,
+                                                        border: "1px solid #f0f0f0",
+                                                        boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
+                                                        transition: "box-shadow 0.2s",
+                                                    }}
+                                                    onMouseEnter={e => e.currentTarget.style.boxShadow = "0 3px 10px rgba(0,0,0,0.12)"}
+                                                    onMouseLeave={e => e.currentTarget.style.boxShadow = "0 1px 4px rgba(0,0,0,0.06)"}
+                                                    actions={getActions(item)}>
+                                                    <List.Item.Meta
+                                                        avatar={
+                                                            <div style={{ width: 50, height: 50, display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 8, background: "#fafafa", overflow: "hidden" }}>
+                                                                <Image
+                                                                    preview={false}
+                                                                    src={item.IMAGE_LINK ? `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}` : (item.IS_FOLDER ? "/folder.png" : "/docTaiLieu.png")}
+                                                                    alt="Tài liệu toán.vn"
+                                                                    className='img-fluid'
+                                                                    width={44}
+                                                                    height={44}
+                                                                />
+                                                            </div>
+                                                        }
+                                                        title={
+                                                            <button style={{ border: 'none', background: 'none', textAlign: 'left', padding: 0 }} className="customLink font10pt" title={item.NAME} onClick={() => {
+                                                                if (item.PRICE) {
+                                                                    window.open(`/${item.ROOT_PARENT_NAME_SLUG}/${item.NAME_SLUG}-${item.IDENTITY_KEY}`, "_blank");
+                                                                } else {
+                                                                    router.push(`/${item.ROOT_PARENT_NAME_SLUG}/${item.NAME_SLUG}-${item.IDENTITY_KEY}`, { scroll: false })
+                                                                }
+                                                            }}>
+                                                                <div dangerouslySetInnerHTML={{ __html: item.NAME }} />
+                                                            </button>
+                                                        }
+                                                    />
+                                                </List.Item>
+                                            )
+                                        }}
+                                    />
                                 </div>
                                 : <></>
                         }
