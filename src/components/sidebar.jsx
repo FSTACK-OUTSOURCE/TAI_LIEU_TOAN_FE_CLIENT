@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import React from "react";
 import { HomeOutlined , InfoCircleOutlined, FileOutlined, PhoneOutlined } from "@ant-design/icons";
+import { AdminPhoneNumber } from "@/constants/dataCommon";
 
 const Sidebar = () => {
     const router = useRouter();
@@ -50,7 +51,7 @@ const Sidebar = () => {
                 <PhoneOutlined style={{
                     color:"#fff"
                 }}/>
-                <p style={textStyles}>0386.117.490</p>
+                <p style={textStyles}>{AdminPhoneNumber}</p>
             </FormCommon>
         </div>
     );

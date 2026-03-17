@@ -6,6 +6,7 @@ import { CloseOutlined } from '@ant-design/icons';
 import { getConfig } from "@/constants/server";
 import { downloadDocument } from "@/constants/client";
 import Swal from "sweetalert2";
+import { AdminPhoneNumber } from "@/constants/dataCommon";
 
 const DocumentTopup = ({ props }) => {
     const { documentinfo, onClose } = props
@@ -99,7 +100,7 @@ const DocumentTopup = ({ props }) => {
                                         <p></p>
                                         (CK XONG THẦY CÔ GỬI ẢNH VÀO ZALO: <a href="#" onClick={
                                             () => { redirectLink(getConfig({ configs: appcontext.configs, name: 'zalo' })) }
-                                        } >0386.117.490</a>)
+                                        } >{AdminPhoneNumber}</a>)
                                     </div>
                                 </div>
                             </div>

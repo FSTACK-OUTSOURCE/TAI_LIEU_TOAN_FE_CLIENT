@@ -6,6 +6,7 @@ import { useAppContext } from '@/appcontext';
 import { checkSignIn, downloadDocument } from '@/constants/client';
 import DocumentTopup from './documenttopup';
 import { Divider, Image } from 'antd';
+import { AdminPhoneNumber } from '@/constants/dataCommon';
 
 const DocumentDetail = ({documentinfo}) =>{
 const { appcontext } = useAppContext();
@@ -157,7 +158,7 @@ const { appcontext } = useAppContext();
                         </a>
                         <PhoneOutlined style={{ margin:"0 8px" }}/>
                         <span className="d-none d-md-inline">Hotline hỗ trợ:</span>
-                        <span className="fs-5" style={{color:"#FF5722"}}> 0386.117.490 </span>
+                        <span className="fs-5" style={{color:"#FF5722"}}> {AdminPhoneNumber} </span>
                     </p>
                 </div>
                 <Divider/>
