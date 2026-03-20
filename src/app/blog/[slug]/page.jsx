@@ -52,6 +52,12 @@ export default async function BlogDetailPage({ params }) {
                     )}
                 </div>
 
+                {blog.THUMBNAIL && (
+                    <div className="blogDetailThumb">
+                        <img src={blog.THUMBNAIL} alt={blog.TITLE} />
+                    </div>
+                )}
+
                 {blog.DESCRIPTION && (
                     <div className="blogDetailDesc">{blog.DESCRIPTION}</div>
                 )}

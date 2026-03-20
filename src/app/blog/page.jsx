@@ -42,7 +42,13 @@ export default async function BlogListPage() {
                     {blogs.map((blog) => (
                         <div className="col-sm-6 col-lg-4" key={blog.BLOG_ID}>
                             <Link href={`/blog/${blog.TITLE_SLUG}`} className="blogCard">
-                                <div className="blogCardAccent" />
+                                {blog.THUMBNAIL ? (
+                                    <div className="blogCardThumb">
+                                        <img src={blog.THUMBNAIL} alt={blog.TITLE} />
+                                    </div>
+                                ) : (
+                                    <div className="blogCardAccent" />
+                                )}
                                 <div className="blogCardBody">
                                     <h2 className="blogCardTitle">{blog.TITLE}</h2>
                                     {blog.DESCRIPTION && (
