@@ -83,10 +83,10 @@ const Login = () => {
             }
         });
         try {
-            var response = await axios.get('/api/userinfo', {
-                params: {
-                    body: JSON.stringify(values)
-                }
+            var response = await axios.post('/api/identity', {
+                PHONE_NUMBER: values.phonenumber,
+                JOB: values.job,
+                LEVEL: values.level,
             })
             if (response.status == 200) {
                 setAppContext({ ...appcontext, phonenumber: values.phonenumber })
@@ -96,7 +96,7 @@ const Login = () => {
             await Swal.fire({
                 title: 'Thông báo',
                 text: 'Cập nhật thất bại! Thử lại sau',
-                icon: 'success',
+                icon: 'error',
                 allowOutsideClick: false,
                 showConfirmButton: false,
                 timer: 1500
