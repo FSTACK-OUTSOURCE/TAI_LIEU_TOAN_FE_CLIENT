@@ -1,17 +1,24 @@
 'use client'
 import { useRouter } from 'next/navigation'
 import { useAppContext } from "@/appcontext";
-import { List, Checkbox, Row, Col, Image, Button, Divider } from 'antd';
-import { DownloadOutlined, EyeOutlined } from '@ant-design/icons';
-import { useState, useEffect } from 'react';
+import { List, Checkbox, Row, Col, Image, Button, Divider, Select } from 'antd';
+import { DownloadOutlined, EyeOutlined, SortAscendingOutlined } from '@ant-design/icons';
+import { useState, useEffect, useCallback } from 'react';
 import { checkSignIn, downloadDocument } from '@/constants/client';
 import DocumentTopup from '@/components/documenttopup';
 
+const SORT_OPTIONS = [
+    { label: 'Mặc định', value: 'default' },
+    { label: 'Mới nhất', value: 'date_desc' },
+    { label: 'Cũ nhất', value: 'date_asc' },
+];
+
 const DocumentItem = ({ props }) => {
     const { documentinfo, topics, isShowDetail, parentDocument } = props
-    const [childDocuments, setChildDocuments] = useState([])
+    const [displayDocuments, setDisplayDocuments] = useState([])
     const [childDocumentInfo, setChildDocumentInfo] = useState({})
-    const [topicIds, setTopicIds] = useState([])
+    const [selectedTopicIds, setSelectedTopicIds] = useState([])
+    const [sortBy, setSortBy] = useState('default')
     const [showTopup, setShowTopup] = useState(false);
     const { appcontext, setAppContext } = useAppContext();
     const router = useRouter();
@@ -19,7 +26,6 @@ const DocumentItem = ({ props }) => {
     const toggleTopup = () => {
         setShowTopup(!showTopup);
     };
-
 
     const buyDocument = async (item) => {
         setChildDocumentInfo(item)
@@ -35,12 +41,10 @@ const DocumentItem = ({ props }) => {
         }
     }
 
-
     const checkDownloaded = (documentId) => {
         var downloaded = localStorage.getItem('downloaded');
         if (downloaded) {
             var downloadedArray = JSON.parse(downloaded);
-
             if (downloadedArray.includes(documentId)) {
                 return true;
             }
@@ -92,15 +96,40 @@ const DocumentItem = ({ props }) => {
         return result;
     }
 
-    const filterTopic = (values) => {
-        setTopicIds(values)
-    }
+    const getFirstTopicName = useCallback((doc) => {
+        if (!doc.TOPIC_IDS) return '';
+        const firstId = doc.TOPIC_IDS.split(',')[0].trim();
+        return topics.find(t => t.TOPIC_ID === firstId)?.NAME || '';
+    }, [topics]);
+
+    const applyFilterAndSort = useCallback((docs, topicFilter, sort) => {
+        let result = [...docs];
+
+        if (topicFilter.length > 0) {
+            result = result.filter(x =>
+                topicFilter.some(tid => x.TOPIC_IDS && x.TOPIC_IDS.includes(tid))
+            );
+        }
+
+        if (sort === 'date_desc') {
+            result.sort((a, b) => new Date(b.CREATED_DATE) - new Date(a.CREATED_DATE));
+        } else if (sort === 'date_asc') {
+            result.sort((a, b) => new Date(a.CREATED_DATE) - new Date(b.CREATED_DATE));
+        } else if (sort === 'topic') {
+            result.sort((a, b) => getFirstTopicName(a).localeCompare(getFirstTopicName(b), 'vi'));
+        } else if (sort === 'author') {
+            result.sort((a, b) => (a.CREATED_USER || '').localeCompare(b.CREATED_USER || '', 'vi'));
+        }
+
+        return result;
+    }, [getFirstTopicName]);
 
     useEffect(() => {
-        if (documentinfo.childDocuments.length > 0) {
-            setChildDocuments(documentinfo.childDocuments.filter(x => x.IS_FOLDER))
-        }
-    }, [documentinfo]);
+        setDisplayDocuments(applyFilterAndSort(documentinfo.childDocuments, selectedTopicIds, sortBy));
+    }, [documentinfo, selectedTopicIds, sortBy, applyFilterAndSort]);
+
+    const hasNonFolderDocs = documentinfo.childDocuments.some(x => !x.IS_FOLDER);
+    const showFilterCard = !documentinfo.PRICE && hasNonFolderDocs && topics.length > 0;
 
     return (
         <section>
@@ -108,33 +137,56 @@ const DocumentItem = ({ props }) => {
                 documentinfo.IS_FOLDER ?
                     <div className="form-group row">
                         {!isShowDetail ? <div className="col-md-12">
-                            {documentinfo.PRICE || !documentinfo.childDocuments.some((x) => !x.IS_FOLDER) || topics.length == 0 ? <div></div> :
+                            {showFilterCard ?
                                 <div className="card">
                                     <div className="card-header">
-                                        <span className="text-danger fontBold" style={{ fontSize: "1.3rem" }}>LỌC CHỦ ĐỀ</span> <span>(có thể chọn nhiều chủ đề)</span>
+                                        <span className="text-danger fontBold" style={{ fontSize: "1.3rem" }}>LỌC & SẮP XẾP</span>
                                     </div>
                                     <div className="card-body">
-                                        <Checkbox.Group style={{ width: '100%' }} onChange={(values) => { filterTopic(values) }}>
-                                            <Row>
-                                                {
-                                                    topics.map((element) =>
-                                                        <Col span={8} className="p-1" >
+                                        <div style={{ marginBottom: 10 }}>
+                                            <span style={{ fontSize: "0.85rem", color: "#595959", marginRight: 8 }}>Chủ đề <span style={{ color: "#8c8c8c" }}>(có thể chọn nhiều)</span>:</span>
+                                            <Checkbox.Group style={{ width: '100%', marginTop: 6 }} value={selectedTopicIds} onChange={setSelectedTopicIds}>
+                                                <Row>
+                                                    {topics.map((element) =>
+                                                        <Col span={8} className="p-1" key={element.TOPIC_ID}>
                                                             <Checkbox value={element.TOPIC_ID}>{element.NAME}</Checkbox>
                                                         </Col>
-                                                    )
-                                                }
-                                            </Row>
-                                        </Checkbox.Group>
-
-                                    </div>
-                                    <div className="card-footer">
-                                        <button type="button" className="btn btn-primary" onClick={() => {
-                                            var childDocuments = topicIds.length == 0 ? documentinfo.childDocuments : documentinfo.childDocuments.filter(x => topicIds.includes(x.TOPIC_IDS))
-                                            setChildDocuments(childDocuments)
-                                        }
-                                        }>Lọc</button>
+                                                    )}
+                                                </Row>
+                                            </Checkbox.Group>
+                                        </div>
+                                        <Divider style={{ margin: "8px 0" }} />
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                                            <SortAscendingOutlined style={{ color: "#595959" }} />
+                                            <span style={{ fontSize: "0.85rem", color: "#595959" }}>Sắp xếp:</span>
+                                            <Select
+                                                value={sortBy}
+                                                onChange={setSortBy}
+                                                options={SORT_OPTIONS}
+                                                style={{ width: 160 }}
+                                                size="small"
+                                            />
+                                            {selectedTopicIds.length > 0 && (
+                                                <Button size="small" onClick={() => setSelectedTopicIds([])}>
+                                                    Xóa lọc
+                                                </Button>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
+                                : (
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+                                        <SortAscendingOutlined style={{ color: "#595959" }} />
+                                        <span style={{ fontSize: "0.85rem", color: "#595959" }}>Sắp xếp:</span>
+                                        <Select
+                                            value={sortBy}
+                                            onChange={setSortBy}
+                                            options={SORT_OPTIONS}
+                                            style={{ width: 160 }}
+                                            size="small"
+                                        />
+                                    </div>
+                                )
                             }
                         </div> : null}
 
@@ -154,18 +206,17 @@ const DocumentItem = ({ props }) => {
                         </div>
                         <Divider style={{margin:"10px 0 0"}}/>
                         </>: null}
-                        
 
                         {
-                            childDocuments.length > 0 ?
+                            displayDocuments.length > 0 ?
                                 <div style={{ width: "100%", marginTop: 8 }}>
                                     <List
                                         pagination={{
                                             pageSize: 10,
                                             locale: { items_per_page: "tài liệu / trang" }
                                         }}
-                                        grid={!childDocuments.some((x) => x.PRICE) ? { gutter: 12, column: 2 } : undefined}
-                                        dataSource={childDocuments}
+                                        grid={!displayDocuments.some((x) => x.PRICE) ? { gutter: 12, column: 2 } : undefined}
+                                        dataSource={displayDocuments}
                                         renderItem={(item) => {
                                             return (
                                                 <List.Item
@@ -222,8 +273,6 @@ const DocumentItem = ({ props }) => {
             }
             {showTopup && <DocumentTopup props={{ onClose: toggleTopup, documentinfo: childDocumentInfo }} />}
         </section>
-
-
     );
 }
 

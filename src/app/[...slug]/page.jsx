@@ -35,7 +35,7 @@ const fetchDocument = async (identityKey) => {
 }
 
 const fetchChildDocuments = async (documentId) => {
-    var childDocuments = await fetchDocuments({ query: { PARENT_DOCUMENT_ID: documentId, Columns: 'BOUGHT,ROOT_PARENT' } })
+    var childDocuments = await fetchDocuments({ query: { PARENT_DOCUMENT_ID: documentId, Columns: 'BOUGHT,ROOT_PARENT,CREATED_USER' } })
     return childDocuments;
 }
 
