@@ -47,7 +47,7 @@ const Login = () => {
             label: (<button style={{ border: 'none', background: 'none', color: 'black' }} onClick={async () => {
 
                 try {
-                    const response = await axios.get('/api/logout');
+                    await axios.get('/api/logout');
                     setAppContext({ configs: appcontext.configs })
                     await Swal.fire({
                         title: 'Thông báo',
@@ -83,14 +83,12 @@ const Login = () => {
             }
         });
         try {
-            var response = await axios.post('/api/identity', {
+            await axios.post('/api/identity', {
                 PHONE_NUMBER: values.phonenumber,
                 JOB: values.job,
                 LEVEL: values.level,
             })
-            if (response.status == 200) {
-                setAppContext({ ...appcontext, phonenumber: values.phonenumber })
-            }
+            setAppContext({ ...appcontext, phonenumber: values.phonenumber })
         }
         catch {
             await Swal.fire({
@@ -175,6 +173,14 @@ const Login = () => {
                                     autoComplete="off"
                                 >
                                     <Form.Item
+                                        label="Họ và tên:"
+                                        name="name"
+                                        rules={[{ required: true, message: 'Vui lòng nhập họ và tên!' }]}
+                                    >
+                                        <Input />
+                                    </Form.Item>
+
+                                    <Form.Item
                                         label="Số điện thoại:"
                                         name="phonenumber"
                                         extra="Vui lòng nhập chính xác để được hỗ trợ."
@@ -218,6 +224,21 @@ const Login = () => {
                                             <Select.Option value="pt">THPT</Select.Option>
                                             <Select.Option value="dh">Đại học</Select.Option>
                                             <Select.Option value="ch">Cao học</Select.Option>
+                                        </Select>
+                                    </Form.Item>
+
+                                    <Form.Item name="subject" label="Môn học:">
+                                        <Select placeholder="-- Lựa chọn --" allowClear>
+                                            <Select.Option value="toan">Toán</Select.Option>
+                                            <Select.Option value="van">Ngữ văn</Select.Option>
+                                            <Select.Option value="anh">Tiếng Anh</Select.Option>
+                                            <Select.Option value="ly">Vật lý</Select.Option>
+                                            <Select.Option value="hoa">Hóa học</Select.Option>
+                                            <Select.Option value="sinh">Sinh học</Select.Option>
+                                            <Select.Option value="su">Lịch sử</Select.Option>
+                                            <Select.Option value="dia">Địa lý</Select.Option>
+                                            <Select.Option value="tin">Tin học</Select.Option>
+                                            <Select.Option value="khac">Khác</Select.Option>
                                         </Select>
                                     </Form.Item>
 

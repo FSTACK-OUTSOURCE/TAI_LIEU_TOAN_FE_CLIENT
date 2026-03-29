@@ -1,7 +1,16 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getBlogs } from '@/endpoints/blog';
+import { marked } from 'marked';
 import '../blog.css';
+
+const renderContent = (content) => {
+    if (!content) return '';
+    const trimmed = content.trim();
+    // Nếu content là HTML (từ Quill editor) thì giữ nguyên, nếu là Markdown thì convert
+    if (trimmed.startsWith('<')) return trimmed;
+    return marked.parse(trimmed);
+};
 
 const formatDate = (dateStr) => {
     if (!dateStr) return '';
@@ -27,7 +36,7 @@ export default async function BlogDetailPage({ params }) {
     const blog = (res.Items || []).find((b) => b.TITLE_SLUG === slug);
 
     if (!blog) notFound();
-
+console.log('Blog found:', blog);
     return (
         <section className="mt-2">
             <div className="blogDetailContainer">
@@ -64,7 +73,7 @@ export default async function BlogDetailPage({ params }) {
 
                 <div
                     className="blogContent"
-                    dangerouslySetInnerHTML={{ __html: blog.CONTENT || '' }}
+                    dangerouslySetInnerHTML={{ __html: renderContent(blog.CONTENT) }}
                 />
             </div>
         </section>
