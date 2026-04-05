@@ -133,13 +133,15 @@ const { appcontext } = useAppContext();
                 <div class="alert alert-info rounded-0" role="alert">
                     MUA NGAY ĐỂ XEM TOÀN BỘ TÀI LIỆU
                 </div>
-                <div class="order-step">
+                <div className="order-step">
                     <h6 style={{
                         color:"#008000"
-                    }}>CÁCH MUA:</h6>
+                    }}>CÁCH TẢI TÀI LIỆU:</h6>
                     <ul className="ps-4">
-                        <li><strong>B1:</strong> Gửi phí vào TK: <code class="fs-5">109004822580</code> - NGUYỄN THỊ LONG - Ngân hàng VietinBank<a href="#" target="_blank"> (QR)</a></li>
-                        <li><strong>B2:</strong> Nhắn tin tới Zalo <a href="https://zalo.me/3800062780558660756" target="_blank">tailieutoan.vn <span>( nhấn vào đây )</span></a> để xác nhận thanh toán và tải tài liệu - giáo án</li>
+                        <li className="mb-1"><strong>Bước 1:</strong> Nếu số dư tài khoản đủ, bạn chỉ cần ấn nút <strong>TẢI XUỐNG</strong>.</li>
+                        <li className="mb-1"><strong>Bước 2:</strong> Nếu số dư không đủ, ấn TẢI XUỐNG để mở bảng chọn <strong>Nạp tiền</strong>. Sau đó chọn số tiền muốn nạp và quét mã QR để thanh toán.</li>
+                        <li className="mb-1"><strong>Bước 3:</strong> Sau khi thanh toán thành công, vui lòng chụp lại giao dịch rồi gửi đến số Zalo <a href="https://zalo.me/0386117490" target="_blank" rel="noreferrer"><strong>0386.117.490</strong> <span>(nhấn vào đây)</span></a> để được xác nhận.</li>
+                        <li className="mb-1"><strong>Bước 4:</strong> Sau khi được xác nhận thành công, quay lại trang này và tải tài liệu.</li>
                     </ul>
                     <p className="mt-2 ms-3"
                         style={{
@@ -151,14 +153,15 @@ const { appcontext } = useAppContext();
                                 fontSize:"16px",
                                 padding:"3px 7px"
                             }}
-                            href="https://zalo.me/3800062780558660756" // TODO
+                            href="https://zalo.me/0386117490"
                             target="_blank"
+                            rel="noreferrer"
                         >
                             Tư vấn nhanh
                         </a>
                         <PhoneOutlined style={{ margin:"0 8px" }}/>
                         <span className="d-none d-md-inline">Hotline hỗ trợ:</span>
-                        <span className="fs-5" style={{color:"#FF5722"}}> {AdminPhoneNumber} </span>
+                        <span className="fs-5" style={{color:"#FF5722"}}> 0386.117.490 </span>
                     </p>
                 </div>
                 <Divider/>
