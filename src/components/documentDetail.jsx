@@ -1,16 +1,63 @@
 'use client'
 import { DownloadOutlined, FilePdfOutlined, PhoneOutlined } from '@ant-design/icons';
 import './styles/documentDetail.css'
-import { useState } from 'react';
+import { useState, useMemo, useRef, useEffect } from 'react';
 import { useAppContext } from '@/appcontext';
 import { checkSignIn, downloadDocument } from '@/constants/client';
 import DocumentTopup from './documenttopup';
 import { Divider, Image } from 'antd';
-import { AdminPhoneNumber } from '@/constants/dataCommon';
+
 
 const DocumentDetail = ({documentinfo}) =>{
 const { appcontext } = useAppContext();
     const [showTopup, setShowTopup] = useState(false);
+
+    const detailImages = useMemo(() => {
+        const result = [];
+        if (documentinfo.IMAGE_LINK)
+            result.push(`${process.env.NEXT_PUBLIC_API_URL}${documentinfo.IMAGE_LINK}`);
+        try {
+            const arr = JSON.parse(documentinfo.IMAGES || '[]');
+            if (Array.isArray(arr))
+                arr.forEach(p => result.push(`${process.env.NEXT_PUBLIC_API_URL}${p}`));
+        } catch {}
+        return result;
+    }, [documentinfo.IMAGE_LINK, documentinfo.IMAGES]);
+
+    const thumbnailSrc = documentinfo.IS_FOLDER ? '/folder.png' : '/docTaiLieu.png';
+
+    const [selectedImg, setSelectedImg] = useState(null);
+    const [orderedImages, setOrderedImages] = useState([]);
+    const [slideOffset, setSlideOffset] = useState(0);
+    const [animating, setAnimating] = useState(false);
+    const [needsLoop, setNeedsLoop] = useState(false);
+    const stripWrapRef = useRef(null);
+
+    const THUMB_W = 80; // 72px + 8px gap
+
+    useEffect(() => {
+        setOrderedImages(detailImages);
+        setSelectedImg(detailImages[0] ?? null);
+    }, [detailImages]);
+
+    useEffect(() => {
+        if (!stripWrapRef.current || orderedImages.length === 0) return;
+        const containerWidth = stripWrapRef.current.offsetWidth;
+        setNeedsLoop(orderedImages.length * THUMB_W > containerWidth);
+    }, [orderedImages]);
+
+    const handleSelectImg = (img, idx) => {
+        if (animating) return;
+        setSelectedImg(img);
+        if (!needsLoop || idx === 0) return;
+        setAnimating(true);
+        setSlideOffset(-(idx * THUMB_W));
+        setTimeout(() => {
+            setOrderedImages(prev => [...prev.slice(idx), ...prev.slice(0, idx)]);
+            setSlideOffset(0);
+            setAnimating(false);
+        }, 300);
+    };
 
     const toggleTopup = () => {
         setShowTopup(!showTopup);
@@ -32,14 +79,68 @@ const { appcontext } = useAppContext();
             style={{backgroundColor:"#ffffff", padding:"30px", borderRadius:"2px", boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"}}
             >
             <div className="col-md-5 col-lg-5 col-xl-5">
-                <Image
-                        preview={false}
-                        src={documentinfo.IMAGE_LINK ? `${process.env.NEXT_PUBLIC_API_URL}${documentinfo.IMAGE_LINK}` : "/folder.png"}
-                        alt="Tài liệu toán.vn"
-                        className='img-fluid'
-                        width={122}
-                        height={122}
-                    />
+                <div style={{ width: '100%' }}>
+                    {(() => {
+                        const src = selectedImg || detailImages[0];
+                        const wrapperStyle = {
+                            width: '100%',
+                            aspectRatio: '3/4',
+                            border: '1px solid #eee',
+                            borderRadius: 4,
+                            background: '#fafafa',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            overflow: 'hidden',
+                        };
+                        return src ? (
+                            <div style={wrapperStyle}>
+                                <Image src={src} alt="Tài liệu toán.vn" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                            </div>
+                        ) : (
+                            <div style={wrapperStyle}>
+                                <img src={thumbnailSrc} alt="Tài liệu toán.vn" style={{ width: 100, height: 100, objectFit: 'contain', opacity: 0.6 }} />
+                            </div>
+                        );
+                    })()}
+                    {orderedImages.length > 0 && (
+                        <>
+                        <div ref={stripWrapRef} style={{ marginTop: 10, overflow: 'hidden' }}>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    gap: 8,
+                                    flexWrap: needsLoop ? 'nowrap' : 'wrap',
+                                    transform: needsLoop ? `translateX(${slideOffset}px)` : 'none',
+                                    transition: animating ? 'transform 0.3s ease' : 'none',
+                                }}
+                            >
+                                {orderedImages.map((img, idx) => (
+                                    <img
+                                        key={img}
+                                        src={img}
+                                        alt={`preview-${idx}`}
+                                        onClick={() => handleSelectImg(img, idx)}
+                                        style={{
+                                            flexShrink: 0,
+                                            width: 72,
+                                            height: 72,
+                                            objectFit: 'cover',
+                                            cursor: animating ? 'default' : 'pointer',
+                                            borderRadius: 4,
+                                            border: selectedImg === img ? '2px solid #1890ff' : '1px solid #ddd',
+                                            transition: 'border 0.2s',
+                                        }}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                        <p style={{ fontStyle: 'italic', fontSize: 14, color: '#888', marginTop: 6, marginBottom: 0, textAlign: 'center' }}>
+                            Click vào ảnh để xem chi tiết hơn
+                        </p>
+                        </>
+                    )}
+                </div>
             </div>
             <div className="col-md-7 col-lg-7 col-xl-7">
                 
