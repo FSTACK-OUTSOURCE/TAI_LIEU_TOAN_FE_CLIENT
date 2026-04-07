@@ -1,5 +1,5 @@
 "use client"
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAppContext } from "@/appcontext";
 import { Card, Image } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
@@ -7,10 +7,25 @@ import { getConfig } from "@/constants/server";
 import { downloadDocument } from "@/constants/client";
 import Swal from "sweetalert2";
 import { AdminPhoneNumber } from "@/constants/dataCommon";
+import { getPaymentInfo } from "@/endpoints/payment-info";
 
 const DocumentTopup = ({ props }) => {
     const { documentinfo, onClose } = props
     const { appcontext } = useAppContext();
+    const [bankInfo, setBankInfo] = useState({ bankName: '', accountName: '', accountNumber: '' });
+
+    useEffect(() => {
+        getPaymentInfo().then(res => {
+            if (res?.Items?.length > 0) {
+                const first = res.Items[0];
+                setBankInfo({
+                    bankName: first.BANK_NAME || '',
+                    accountName: first.ACCOUNT_NAME || '',
+                    accountNumber: first.ACCOUNT_NUMBER || '',
+                });
+            }
+        });
+    }, []);
     const redirectLink = (link) => {
         window.open(link, '_blank').focus();
     }
@@ -91,9 +106,9 @@ const DocumentTopup = ({ props }) => {
                                     <div className="mt-3 payment-method-desc" data-key="18870" data-user-id="70037" data-action="quick-download-qr">
                                         <p>CHUYỂN KHOẢN : {new Intl.NumberFormat('vi-VN').format(documentinfo.PRICE)} VÀO TÀI KHOẢN</p>
                                         <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                            <div> Tên tài khoản: NGUYỄN THỊ LONG</div>
-                                            <div>SỐ TK: 109004822580</div>
-                                            <div>Ngân hàng: VietinBank</div>
+                                            <div>Tên tài khoản: {bankInfo.accountName}</div>
+                                            <div>SỐ TK: {bankInfo.accountNumber}</div>
+                                            <div>Ngân hàng: {bankInfo.bankName}</div>
                                             <div>Số Tiền: {new Intl.NumberFormat('vi-VN').format(documentinfo.PRICE)}</div>
                                             <div>Nội dung chuyển khoản: MUA TÀI LIỆU</div>
                                         </div>

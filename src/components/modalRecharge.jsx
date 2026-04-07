@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import './styles/modalRecharge.css';
 import { getPaymentInfo } from "@/endpoints/payment-info";
-import { AccountNumber, AdminPhoneNumber, BankName } from "@/constants/dataCommon";
+import { AdminPhoneNumber } from "@/constants/dataCommon";
 
 const ModalRecharge = ({ showTopup, handleOk, handleCancel }) => {
     const [listBudget, setListBudget] = useState([]);
@@ -17,6 +17,9 @@ const ModalRecharge = ({ showTopup, handleOk, handleCancel }) => {
                     value: Number(item.VALUE),
                     label: `${Number(item.VALUE).toLocaleString('vi-VN')} đ`,
                     qrUrl: item.QR_URL ? `${process.env.NEXT_PUBLIC_API_URL}${item.QR_URL}` : null,
+                    bankName: item.BANK_NAME || '',
+                    accountName: item.ACCOUNT_NAME || '',
+                    accountNumber: item.ACCOUNT_NUMBER || '',
                 })));
             }
         });
@@ -75,17 +78,15 @@ const ModalRecharge = ({ showTopup, handleOk, handleCancel }) => {
                                     <tbody>
                                         <tr>
                                             <td className="info-label">Tên tài khoản:</td>
-                                            <td className="info-value">{BankName}</td>
+                                            <td className="info-value">{selectedItem?.accountName}</td>
                                         </tr>
                                         <tr>
                                             <td className="info-label">Số tài khoản:</td>
-                                            <td className="info-value">{AccountNumber}</td>
+                                            <td className="info-value">{selectedItem?.accountNumber}</td>
                                         </tr>
                                         <tr>
                                             <td className="info-label">Ngân hàng:</td>
-                                            <td className="info-value">
-                                                <img src="/mbbank-logo.png" style={{width:"50px"}}/>
-                                            </td>
+                                            <td className="info-value">{selectedItem?.bankName}</td>
                                         </tr>
                                         <tr>
                                             <td className="info-label">Số tiền:</td>
