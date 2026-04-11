@@ -75,6 +75,30 @@ console.log('Blog found:', blog);
                     className="blogContent"
                     dangerouslySetInnerHTML={{ __html: renderContent(blog.CONTENT) }}
                 />
+
+                {blog.FILE_URL && (
+                    <div className="blogFilePreview">
+                        <h3 className="blogFilePreviewTitle">Xem trước tài liệu</h3>
+                        <iframe
+                            src={
+                                blog.FILE_URL.includes('drive.google.com')
+                                    ? blog.FILE_URL.replace('/view', '/preview').replace('/edit', '/preview')
+                                    : blog.FILE_URL
+                            }
+                            className="blogFilePreviewFrame"
+                            allow="autoplay"
+                            allowFullScreen
+                        />
+                        <a
+                            href={blog.FILE_URL}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="blogFilePreviewLink"
+                        >
+                            Mở tài liệu trong tab mới ↗
+                        </a>
+                    </div>
+                )}
             </div>
         </section>
     );
