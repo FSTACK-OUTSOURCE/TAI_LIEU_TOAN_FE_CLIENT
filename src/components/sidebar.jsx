@@ -1,7 +1,7 @@
 "use client"
 import { useRouter } from "next/navigation";
 import React from "react";
-import { HomeOutlined , InfoCircleOutlined, FileOutlined, PhoneOutlined } from "@ant-design/icons";
+import { HomeOutlined , InfoCircleOutlined, FileOutlined, PhoneOutlined, ReadOutlined } from "@ant-design/icons";
 import { AdminPhoneNumber } from "@/constants/dataCommon";
 
 const Sidebar = () => {
@@ -34,6 +34,10 @@ const Sidebar = () => {
             <p style={textStyles} >
                 Trang chủ
             </p>
+            </FormCommon>
+            <FormCommon action={() => router.push('/blog', { scroll: false })}>
+                <ReadOutlined style={{ color:"#fff" }}/>
+                <p style={textStyles}>Blog</p>
             </FormCommon>
             <FormCommon>
                 <FileOutlined style={{
