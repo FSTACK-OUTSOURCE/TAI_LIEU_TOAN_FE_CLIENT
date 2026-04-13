@@ -1,3 +1,49 @@
+/* ── Document Banner ────────────────────────────── */
+.blogDocumentBanner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: #fff7e6;
+    border: 1px solid #ffd591;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 28px 0;
+    flex-wrap: wrap;
+}
+
+.blogDocumentBannerText {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #595959;
+    font-weight: 500;
+}
+
+.blogDocumentBannerIcon {
+    font-size: 18px;
+}
+
+.blogDocumentBannerBtn {
+    display: inline-block;
+    background: #fa8c16;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s;
+}
+
+.blogDocumentBannerBtn:hover {
+    background: #d46b08;
+    color: #fff;
+    text-decoration: none;
+}
+
 /* ── Blog File Preview ───────────────────────────── */
 .blogFilePreview {
     margin-top: 40px;

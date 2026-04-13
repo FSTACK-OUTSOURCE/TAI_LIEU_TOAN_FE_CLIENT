@@ -76,6 +76,18 @@ console.log('Blog found:', blog);
                     dangerouslySetInnerHTML={{ __html: renderContent(blog.CONTENT) }}
                 />
 
+                {blog.DOCUMENT_URL && (
+                    <div className="blogDocumentBanner">
+                        <div className="blogDocumentBannerText">
+                            <span className="blogDocumentBannerIcon">📄</span>
+                            <span>Tải tài liệu liên quan đến bài viết tại đây</span>
+                        </div>
+                        <Link href={blog.DOCUMENT_URL} className="blogDocumentBannerBtn">
+                            Tải xuống →
+                        </Link>
+                    </div>
+                )}
+
                 {blog.FILE_URL && (
                     <div className="blogFilePreview">
                         <h3 className="blogFilePreviewTitle">Xem trước tài liệu</h3>
