@@ -37,21 +37,27 @@ export default function Category({ props }) {
         </div>
     );
 
+    const menuItems = [
+        {
+            key: 'danh-muc',
+            style: { height: '42px', fontWeight: 'bold', fontSize: 16, backgroundColor: '#fdcd02', borderRadius: '0px', margin: '0px' },
+            label: (
+                <Dropdown
+                    dropdownRender={() => gridContent}
+                    trigger={['click']}
+                    placement="bottomLeft"
+                    open={visible}
+                    onOpenChange={(flag) => setVisible(flag)}
+                >
+                    <Space style={{ color: '#000000' }}>
+                        <MenuOutlined /> DANH MỤC TÀI LIỆU
+                    </Space>
+                </Dropdown>
+            ),
+        },
+    ];
+
     return (
-       <Menu mode="inline" >
-        <Menu.Item key="danh-muc" style={{height:"42px", fontWeight: 'bold', fontSize: 16, backgroundColor: '#fdcd02', borderRadius:"0px", margin:"0px" }}>
-                            <Dropdown
-                                overlay={gridContent}
-                                trigger={['click']}
-                                placement="bottomLeft" // Adjusts the placement of the popup
-                                open={visible}
-                                onOpenChange={(flag) => setVisible(flag)}
-                            >
-                                <Space style={{ color: '#000000' }}>
-                                    <MenuOutlined /> DANH MỤC TÀI LIỆU
-                                </Space>
-                            </Dropdown>
-                        </Menu.Item>
-                    </Menu>
+        <Menu mode="inline" items={menuItems} />
     );
 }

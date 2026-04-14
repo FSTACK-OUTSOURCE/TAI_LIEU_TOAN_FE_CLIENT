@@ -1,5 +1,5 @@
 'use client'
-import { DownloadOutlined, FilePdfOutlined, PhoneOutlined } from '@ant-design/icons';
+import { DownloadOutlined, FilePdfOutlined, FileWordOutlined, FileExcelOutlined, FilePptOutlined, FileZipOutlined, FileOutlined, PhoneOutlined } from '@ant-design/icons';
 import './styles/documentDetail.css'
 import { useState, useMemo, useRef, useEffect } from 'react';
 import { useAppContext } from '@/appcontext';
@@ -59,6 +59,28 @@ const { appcontext } = useAppContext();
         }, 300);
     };
 
+    const fileTypeIcon = (type) => {
+        const iconStyle = { fontSize: 32 };
+        switch ((type || '').toLowerCase()) {
+            case 'doc':
+            case 'docx':
+                return <FileWordOutlined style={{ ...iconStyle, color: '#2b579a' }} />;
+            case 'pdf':
+                return <FilePdfOutlined style={{ ...iconStyle, color: '#f40f02' }} />;
+            case 'xls':
+            case 'xlsx':
+                return <FileExcelOutlined style={{ ...iconStyle, color: '#217346' }} />;
+            case 'ppt':
+            case 'pptx':
+                return <FilePptOutlined style={{ ...iconStyle, color: '#d24726' }} />;
+            case 'rar':
+            case 'zip':
+                return <FileZipOutlined style={{ ...iconStyle, color: '#f5a623' }} />;
+            default:
+                return <FileOutlined style={{ ...iconStyle, color: '#888' }} />;
+        }
+    };
+
     const toggleTopup = () => {
         setShowTopup(!showTopup);
     };
@@ -72,6 +94,7 @@ const { appcontext } = useAppContext();
             }
     }
 
+    console.log(documentinfo)
 
     return (
         <div 
@@ -167,19 +190,21 @@ const { appcontext } = useAppContext();
                             <tbody>
                                 <tr>
                                     <td width="100">Lớp:</td>
-                                    <td><strong>Lớp 10</strong></td>
+                                    <td><strong>{documentinfo?.GRADE || 'đang cập nhật'}</strong></td>
                                 </tr>
                                 <tr>
                                     <td>Môn:</td>
-                                    <td><strong>Hóa Học</strong></td>
+                                    <td><strong>{documentinfo?.SUBJECT || 'đang cập nhật'}</strong></td>
                                 </tr>
                                 <tr>
-                                    <td>Bộ sách:</td>
-                                    <td><strong>Kết nối tri thức</strong></td>
-                                </tr>
-                                <tr>
-                                    <td>Dạng:</td>
-                                    <td><strong>Giáo án</strong></td>
+                                    <td>Loại:</td>
+                                    <td>
+                                        <strong>
+                                            {documentinfo?.CATEGORY === 'single' ? 'Tài liệu lẻ'
+                                                : documentinfo?.CATEGORY === 'bundle' ? 'Tài liệu bộ'
+                                                : 'đang cập nhật'}
+                                        </strong>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -189,20 +214,16 @@ const { appcontext } = useAppContext();
                             <tbody>
                                 <tr>
                                     <td width="100">File:</td>
-                                    <td className="js-file_type">
-                                        <img className="img-fluid" src="https://tailieugiaovien.com.vn/assets/images/doc.png" alt="Word" width="40"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Loại:</td>
                                     <td>
-                                        <strong>Tài liệu lẻ</strong>
+                                        {documentinfo?.FILE_TYPE
+                                            ? fileTypeIcon(documentinfo.FILE_TYPE)
+                                            : <span>đang cập nhật</span>}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Số trang:</td>
                                     <td>
-                                        <strong>17 trang</strong>
+                                        <strong>{documentinfo?.PAGE_COUNT ? `${documentinfo.PAGE_COUNT} trang` : 'đang cập nhật'}</strong>
                                     </td>
                                 </tr>
                             </tbody>
@@ -231,7 +252,7 @@ const { appcontext } = useAppContext();
                 <Divider/>
 
                 {/* buy step */}
-                <div class="alert alert-info rounded-0" role="alert">
+                <div className="alert alert-info rounded-0" role="alert">
                     MUA NGAY ĐỂ XEM TOÀN BỘ TÀI LIỆU
                 </div>
                 <div className="order-step">
