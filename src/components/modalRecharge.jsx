@@ -1,29 +1,23 @@
 'use client'
 
 import { Modal, Button } from "antd";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import './styles/modalRecharge.css';
-import { getPaymentInfo } from "@/endpoints/payment-info";
-import { AdminPhoneNumber } from "@/constants/dataCommon";
+import {
+    AdminPhoneNumber,
+    VIETQR_BANK_NAME,
+    VIETQR_ACCOUNT_NAME,
+    VIETQR_ACCOUNT_NO,
+    VIETQR_BUDGET_LIST,
+    getVietQRUrl,
+} from "@/constants/dataCommon";
 
 const ModalRecharge = ({ showTopup, handleOk, handleCancel }) => {
-    const [listBudget, setListBudget] = useState([]);
-
-    useEffect(() => {
-        getPaymentInfo().then(res => {
-            if (res?.Items?.length > 0) {
-                setListBudget(res.Items.map(item => ({
-                    value: Number(item.VALUE),
-                    label: `${Number(item.VALUE).toLocaleString('vi-VN')} đ`,
-                    qrUrl: item.QR_URL ? `${process.env.NEXT_PUBLIC_API_URL}${item.QR_URL}` : null,
-                    bankName: item.BANK_NAME || '',
-                    accountName: item.ACCOUNT_NAME || '',
-                    accountNumber: item.ACCOUNT_NUMBER || '',
-                })));
-            }
-        });
-    }, []);
+    const listBudget = VIETQR_BUDGET_LIST.map(amount => ({
+        value: amount,
+        label: `${amount.toLocaleString('vi-VN')} đ`,
+    }));
 
     const [budgetSelected, setBudgetSelected] = useState(null)
 
@@ -36,7 +30,7 @@ const ModalRecharge = ({ showTopup, handleOk, handleCancel }) => {
 
     }
 
-    const selectedItem = listBudget.find(i => i.value === budgetSelected);
+    const qrUrl = budgetSelected ? getVietQRUrl(budgetSelected, 'NAP TIEN TAI LIEU TOAN') : null;
 
     return (
         <Modal
@@ -78,15 +72,15 @@ const ModalRecharge = ({ showTopup, handleOk, handleCancel }) => {
                                     <tbody>
                                         <tr>
                                             <td className="info-label">Tên tài khoản:</td>
-                                            <td className="info-value">{selectedItem?.accountName}</td>
+                                            <td className="info-value">{VIETQR_ACCOUNT_NAME}</td>
                                         </tr>
                                         <tr>
                                             <td className="info-label">Số tài khoản:</td>
-                                            <td className="info-value">{selectedItem?.accountNumber}</td>
+                                            <td className="info-value">{VIETQR_ACCOUNT_NO}</td>
                                         </tr>
                                         <tr>
                                             <td className="info-label">Ngân hàng:</td>
-                                            <td className="info-value">{selectedItem?.bankName}</td>
+                                            <td className="info-value">{VIETQR_BANK_NAME}</td>
                                         </tr>
                                         <tr>
                                             <td className="info-label">Số tiền:</td>
@@ -103,11 +97,11 @@ const ModalRecharge = ({ showTopup, handleOk, handleCancel }) => {
                             {/* Right Column */}
                             <div className="payment-right-col">
                                 <div className="qr-code-wrapper">
-                                    {selectedItem?.qrUrl && (
+                                    {qrUrl && (
                                         <img
-                                            src={selectedItem.qrUrl}
+                                            src={qrUrl}
                                             alt="QR Code"
-                                            style={{ width: '100%', maxWidth: 220, height: 'auto', objectFit: 'contain' }}
+                                            style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
                                         />
                                     )}
                                 </div>

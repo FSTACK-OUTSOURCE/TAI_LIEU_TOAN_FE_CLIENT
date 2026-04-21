@@ -1,31 +1,22 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useAppContext } from "@/appcontext";
 import { Card, Image } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import { getConfig } from "@/constants/server";
 import { downloadDocument } from "@/constants/client";
 import Swal from "sweetalert2";
-import { AdminPhoneNumber } from "@/constants/dataCommon";
-import { getPaymentInfo } from "@/endpoints/payment-info";
+import {
+    AdminPhoneNumber,
+    VIETQR_BANK_NAME,
+    VIETQR_ACCOUNT_NAME,
+    VIETQR_ACCOUNT_NO,
+    getVietQRUrl,
+} from "@/constants/dataCommon";
 
 const DocumentTopup = ({ props }) => {
     const { documentinfo, onClose } = props
     const { appcontext } = useAppContext();
-    const [bankInfo, setBankInfo] = useState({ bankName: '', accountName: '', accountNumber: '' });
-
-    useEffect(() => {
-        getPaymentInfo().then(res => {
-            if (res?.Items?.length > 0) {
-                const first = res.Items[0];
-                setBankInfo({
-                    bankName: first.BANK_NAME || '',
-                    accountName: first.ACCOUNT_NAME || '',
-                    accountNumber: first.ACCOUNT_NUMBER || '',
-                });
-            }
-        });
-    }, []);
     const redirectLink = (link) => {
         window.open(link, '_blank').focus();
     }
@@ -101,14 +92,14 @@ const DocumentTopup = ({ props }) => {
                                     }
                                 }>
                                     <div className="mt-2">
-                                        <img src="/qrcode.png" alt="icon" width={250} height={250} />
+                                        <img src={getVietQRUrl(documentinfo.PRICE, 'MUA TAI LIEU')} alt="QR Code" width={250} height={250} />
                                     </div>
-                                    <div className="mt-3 payment-method-desc" data-key="18870" data-user-id="70037" data-action="quick-download-qr">
+                                    <div className="mt-3 payment-method-desc" data-action="quick-download-qr">
                                         <p>CHUYỂN KHOẢN : {new Intl.NumberFormat('vi-VN').format(documentinfo.PRICE)} VÀO TÀI KHOẢN</p>
                                         <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                            <div>Tên tài khoản: {bankInfo.accountName}</div>
-                                            <div>SỐ TK: {bankInfo.accountNumber}</div>
-                                            <div>Ngân hàng: {bankInfo.bankName}</div>
+                                            <div>Tên tài khoản: {VIETQR_ACCOUNT_NAME}</div>
+                                            <div>SỐ TK: {VIETQR_ACCOUNT_NO}</div>
+                                            <div>Ngân hàng: {VIETQR_BANK_NAME}</div>
                                             <div>Số Tiền: {new Intl.NumberFormat('vi-VN').format(documentinfo.PRICE)}</div>
                                             <div>Nội dung chuyển khoản: MUA TÀI LIỆU</div>
                                         </div>
