@@ -10,8 +10,13 @@ export default async function Page({ searchParams }) {
     const params = await searchParams;
     const keyword = params.keyword || '';
 
+    const query = { NAME: keyword, IS_HIDDEN: false };
+    if (params.price === '0') {
+        query.PRICE = 0;
+    }
+
     // Server-side fetching
-    const documents = await fetchDocuments({ query: { NAME: keyword, IS_HIDDEN: false } });
+    const documents = await fetchDocuments({ query });
 
     return <div className=""><DocumentSearch documents={documents} /></div>
 }
