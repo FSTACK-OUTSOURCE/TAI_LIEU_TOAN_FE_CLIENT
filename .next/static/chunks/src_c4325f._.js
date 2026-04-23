@@ -1741,7 +1741,6 @@ var _s = __turbopack_refresh__.signature();
 ;
 ;
 ;
-;
 const { Search } = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$input$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Input$3e$__["Input"];
 const Header = ({ props })=>{
     _s();
@@ -1755,7 +1754,9 @@ const Header = ({ props })=>{
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     const { appcontext, setAppContext } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$appcontext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAppContext"])();
     const handleSearch = (value)=>{
-        router.push(`/search?keyword=${value}`, {
+        const v = (value || '').trim();
+        if (!v) return;
+        router.push(`/search?keyword=${encodeURIComponent(v)}`, {
             scroll: false
         });
     };
@@ -1771,72 +1772,84 @@ const Header = ({ props })=>{
     }["Header.useEffect"], [
         appcontext
     ]);
-    console.log(appcontext);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
         className: "navbar navbar-expand-md navbar-main homeNav",
+        style: {
+            background: "#ffffff",
+            boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
+            padding: "12px 32px",
+            gap: 16,
+            flexWrap: "wrap"
+        },
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "logoPage d-flex align-items-center",
+                style: {
+                    gap: 20,
+                    flex: "1 1 auto",
+                    minWidth: 280
+                },
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$image$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Image$3e$__["Image"], {
-                        // src={`${process.env.NEXT_PUBLIC_API_URL}${getConfig({ configs, name: 'logo' })}`}
                         src: "/logo.png",
                         alt: "Tài liệu toán.vn",
-                        className: "img-fluid link-danger",
-                        onClick: ()=>{
-                            router.push(`/`, {
+                        className: "img-fluid",
+                        onClick: ()=>router.push(`/`, {
                                 scroll: false
-                            });
-                        },
+                            }),
                         style: {
                             cursor: 'pointer',
-                            width: "200px"
+                            width: 200,
+                            flexShrink: 0
                         },
                         preview: false
                     }, void 0, false, {
                         fileName: "[project]/src/components/header.jsx",
-                        lineNumber: 31,
+                        lineNumber: 44,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Search, {
-                        placeholder: "Tìm kiếm tài liệu tại đây...",
+                        placeholder: "Tìm kiếm tài liệu, đề thi, chuyên đề...",
                         onSearch: handleSearch,
+                        enterButton: true,
+                        allowClear: true,
+                        size: "large",
                         style: {
-                            width: "600px"
+                            maxWidth: 600,
+                            flex: "1 1 auto"
                         },
                         defaultValue: keyword
                     }, void 0, false, {
                         fileName: "[project]/src/components/header.jsx",
-                        lineNumber: 42,
+                        lineNumber: 52,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/header.jsx",
-                lineNumber: 30,
+                lineNumber: 40,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "",
                 style: {
                     display: "flex",
                     alignItems: "center",
-                    gap: "10px"
+                    gap: 12
                 },
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$login$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                     fileName: "[project]/src/components/header.jsx",
-                    lineNumber: 57,
+                    lineNumber: 63,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/header.jsx",
-                lineNumber: 49,
+                lineNumber: 62,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/header.jsx",
-        lineNumber: 29,
+        lineNumber: 30,
         columnNumber: 9
     }, this);
 };
@@ -2354,9 +2367,14 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navi
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$appcontext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/appcontext.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$modalRecharge$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/components/modalRecharge.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$WalletOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__WalletOutlined$3e$__ = __turbopack_import__("[project]/node_modules/@ant-design/icons/es/icons/WalletOutlined.js [app-client] (ecmascript) <export default as WalletOutlined>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$PlusOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__PlusOutlined$3e$__ = __turbopack_import__("[project]/node_modules/@ant-design/icons/es/icons/PlusOutlined.js [app-client] (ecmascript) <export default as PlusOutlined>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$InboxOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__InboxOutlined$3e$__ = __turbopack_import__("[project]/node_modules/@ant-design/icons/es/icons/InboxOutlined.js [app-client] (ecmascript) <export default as InboxOutlined>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$RightOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__RightOutlined$3e$__ = __turbopack_import__("[project]/node_modules/@ant-design/icons/es/icons/RightOutlined.js [app-client] (ecmascript) <export default as RightOutlined>");
 ;
 var _s = __turbopack_refresh__.signature();
 'use client';
+;
 ;
 ;
 ;
@@ -2366,163 +2384,246 @@ const Balance = ()=>{
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     const { appcontext } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$appcontext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAppContext"])();
     const [showTopup, setShowTopup] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const handleOk = ()=>{
-        setShowTopup(false);
-    };
-    const handleCancel = ()=>{
-        setShowTopup(false);
-    };
-    return appcontext.username ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+    if (!appcontext.username) return null;
+    const balance = new Intl.NumberFormat('vi-VN').format(appcontext.balance || 0);
+    const bought = appcontext.bought || 0;
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "card mt-3",
                 style: {
-                    display: 'flex',
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'space-between'
+                    marginTop: 12,
+                    borderRadius: 12,
+                    overflow: "hidden",
+                    background: "linear-gradient(135deg, #c0392b 0%, #e74c3c 60%, #f39c12 100%)",
+                    color: "#fff",
+                    boxShadow: "0 8px 20px rgba(192,57,43,0.18)"
+                },
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        padding: "16px 18px"
+                    },
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                display: "flex",
+                                alignItems: "center",
+                                gap: 8,
+                                opacity: 0.9,
+                                fontSize: 13
+                            },
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$WalletOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__WalletOutlined$3e$__["WalletOutlined"], {}, void 0, false, {
+                                    fileName: "[project]/src/components/balance.jsx",
+                                    lineNumber: 32,
+                                    columnNumber: 25
+                                }, this),
+                                " Số dư khả dụng"
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/balance.jsx",
+                            lineNumber: 31,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                fontSize: 26,
+                                fontWeight: 700,
+                                marginTop: 4,
+                                letterSpacing: 0.3
+                            },
+                            children: [
+                                balance,
+                                " ",
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    style: {
+                                        fontSize: 16,
+                                        fontWeight: 500,
+                                        opacity: 0.9
+                                    },
+                                    children: "đ"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/balance.jsx",
+                                    lineNumber: 35,
+                                    columnNumber: 35
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/balance.jsx",
+                            lineNumber: 34,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            onClick: ()=>setShowTopup(true),
+                            style: {
+                                marginTop: 12,
+                                border: "none",
+                                background: "#ffffff",
+                                color: "#c0392b",
+                                fontWeight: 600,
+                                fontSize: 14,
+                                padding: "8px 16px",
+                                borderRadius: 999,
+                                cursor: "pointer",
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: 6,
+                                boxShadow: "0 4px 10px rgba(0,0,0,0.12)"
+                            },
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$PlusOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__PlusOutlined$3e$__["PlusOutlined"], {}, void 0, false, {
+                                    fileName: "[project]/src/components/balance.jsx",
+                                    lineNumber: 55,
+                                    columnNumber: 25
+                                }, this),
+                                " Nạp tiền ngay"
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/balance.jsx",
+                            lineNumber: 37,
+                            columnNumber: 21
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/components/balance.jsx",
+                    lineNumber: 30,
+                    columnNumber: 17
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/src/components/balance.jsx",
+                lineNumber: 20,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                onClick: ()=>router.push(`/bought`, {
+                        scroll: false
+                    }),
+                style: {
+                    marginTop: 12,
+                    padding: "14px 16px",
+                    borderRadius: 12,
+                    background: "#ffffff",
+                    border: "1px solid #f0f0f0",
+                    boxShadow: "0 2px 6px rgba(0,0,0,0.04)",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    transition: "box-shadow 0.2s, transform 0.2s"
+                },
+                onMouseEnter: (e)=>{
+                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.08)";
+                },
+                onMouseLeave: (e)=>{
+                    e.currentTarget.style.boxShadow = "0 2px 6px rgba(0,0,0,0.04)";
                 },
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "card-body",
+                        style: {
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 12
+                        },
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                src: "/coin.png",
-                                width: 30,
-                                height: 30
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    width: 40,
+                                    height: 40,
+                                    borderRadius: 10,
+                                    background: "#eaf4ff",
+                                    color: "#1677ff",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    fontSize: 20
+                                },
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$InboxOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__InboxOutlined$3e$__["InboxOutlined"], {}, void 0, false, {
+                                    fileName: "[project]/src/components/balance.jsx",
+                                    lineNumber: 84,
+                                    columnNumber: 25
+                                }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/balance.jsx",
-                                lineNumber: 27,
-                                columnNumber: 25
+                                lineNumber: 79,
+                                columnNumber: 21
                             }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                className: "bi-cash-coin m-1"
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/balance.jsx",
-                                lineNumber: 27,
-                                columnNumber: 71
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("b", {
-                                children: "Số dư: "
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/balance.jsx",
-                                lineNumber: 27,
-                                columnNumber: 107
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "fw-bold text-danger",
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 children: [
-                                    new Intl.NumberFormat('vi-VN').format(appcontext.balance),
-                                    " đ"
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            fontSize: 13,
+                                            color: "#8c8c8c"
+                                        },
+                                        children: "Tài liệu đã mua"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/balance.jsx",
+                                        lineNumber: 87,
+                                        columnNumber: 25
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            fontSize: 16,
+                                            fontWeight: 700,
+                                            color: "#1f1f1f"
+                                        },
+                                        children: [
+                                            bought,
+                                            " ",
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                style: {
+                                                    fontSize: 13,
+                                                    fontWeight: 400,
+                                                    color: "#8c8c8c"
+                                                },
+                                                children: "tài liệu"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/balance.jsx",
+                                                lineNumber: 89,
+                                                columnNumber: 38
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/balance.jsx",
+                                        lineNumber: 88,
+                                        columnNumber: 25
+                                    }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/balance.jsx",
-                                lineNumber: 27,
-                                columnNumber: 121
+                                lineNumber: 86,
+                                columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/balance.jsx",
-                        lineNumber: 26,
-                        columnNumber: 21
+                        lineNumber: 78,
+                        columnNumber: 17
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                        className: "btn btn-primary",
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$RightOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__RightOutlined$3e$__["RightOutlined"], {
                         style: {
-                            marginRight: '8px',
-                            fontSize: "14px"
-                        },
-                        onClick: ()=>{
-                            setShowTopup(true);
-                        },
-                        children: "Nạp tiền"
+                            color: "#bfbfbf"
+                        }
                     }, void 0, false, {
                         fileName: "[project]/src/components/balance.jsx",
-                        lineNumber: 29,
-                        columnNumber: 21
+                        lineNumber: 93,
+                        columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/balance.jsx",
-                lineNumber: 25,
-                columnNumber: 17
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "card mt-3",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "card-body",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                        style: {
-                            border: 'none',
-                            background: 'none'
-                        },
-                        onClick: ()=>{
-                            router.push(`/bought`, {
-                                scroll: false
-                            });
-                        },
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                src: "/inbox.png",
-                                width: 30,
-                                height: 30
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/balance.jsx",
-                                lineNumber: 38,
-                                columnNumber: 29
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                className: "bi-cash-coin m-1"
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/balance.jsx",
-                                lineNumber: 38,
-                                columnNumber: 76
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("b", {
-                                children: [
-                                    "Tài liệu đã mua (",
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "fw-bold text-danger",
-                                        children: appcontext.bought
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/balance.jsx",
-                                        lineNumber: 38,
-                                        columnNumber: 132
-                                    }, this),
-                                    ")"
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/balance.jsx",
-                                lineNumber: 38,
-                                columnNumber: 112
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/components/balance.jsx",
-                        lineNumber: 35,
-                        columnNumber: 25
-                    }, this)
-                }, void 0, false, {
-                    fileName: "[project]/src/components/balance.jsx",
-                    lineNumber: 34,
-                    columnNumber: 21
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/src/components/balance.jsx",
-                lineNumber: 33,
-                columnNumber: 17
+                lineNumber: 60,
+                columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$modalRecharge$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                 showTopup: showTopup,
-                handleOk: handleOk,
-                handleCancel: handleCancel
+                handleOk: ()=>setShowTopup(false),
+                handleCancel: ()=>setShowTopup(false)
             }, void 0, false, {
                 fileName: "[project]/src/components/balance.jsx",
-                lineNumber: 42,
-                columnNumber: 17
+                lineNumber: 96,
+                columnNumber: 13
             }, this)
         ]
-    }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {}, void 0, false);
+    }, void 0, true);
 };
 _s(Balance, "VALBGgZP1a1JEeHTFxQubhgiC7M=", false, function() {
     return [
@@ -3105,7 +3206,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$des
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$InfoCircleOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__InfoCircleOutlined$3e$__ = __turbopack_import__("[project]/node_modules/@ant-design/icons/es/icons/InfoCircleOutlined.js [app-client] (ecmascript) <export default as InfoCircleOutlined>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$PhoneOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__PhoneOutlined$3e$__ = __turbopack_import__("[project]/node_modules/@ant-design/icons/es/icons/PhoneOutlined.js [app-client] (ecmascript) <export default as PhoneOutlined>");
 ;
-var _s = __turbopack_refresh__.signature();
+var _s = __turbopack_refresh__.signature(), _s1 = __turbopack_refresh__.signature();
 "use client";
 ;
 ;
@@ -3117,12 +3218,6 @@ const Sidebar = ()=>{
     _s();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     const { appcontext } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$appcontext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAppContext"])();
-    const textStyles = {
-        color: "#ffffff",
-        fontWeight: 400,
-        fontSize: "14px",
-        marginBottom: "0px"
-    };
     const redirectLink = (link)=>{
         if (!link) return;
         window.open(link, "_blank")?.focus();
@@ -3131,161 +3226,84 @@ const Sidebar = ()=>{
         const tel = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$constants$2f$dataCommon$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AdminPhoneNumber"].replace(/\D/g, "");
         window.location.href = `tel:${tel}`;
     };
+    const items = [
+        {
+            icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$HomeOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__HomeOutlined$3e$__["HomeOutlined"], {}, void 0, false, {
+                fileName: "[project]/src/components/sidebar.jsx",
+                lineNumber: 24,
+                columnNumber: 17
+            }, this),
+            label: "Trang chủ",
+            action: ()=>router.push(`/`, {
+                    scroll: false
+                })
+        },
+        {
+            icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$ReadOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ReadOutlined$3e$__["ReadOutlined"], {}, void 0, false, {
+                fileName: "[project]/src/components/sidebar.jsx",
+                lineNumber: 25,
+                columnNumber: 17
+            }, this),
+            label: "Blog",
+            action: ()=>router.push(`/blog`, {
+                    scroll: false
+                })
+        },
+        {
+            icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$FileOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FileOutlined$3e$__["FileOutlined"], {}, void 0, false, {
+                fileName: "[project]/src/components/sidebar.jsx",
+                lineNumber: 26,
+                columnNumber: 17
+            }, this),
+            label: "Tài liệu miễn phí",
+            action: ()=>router.push(`/search?price=0`, {
+                    scroll: false
+                })
+        },
+        {
+            icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$InfoCircleOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__InfoCircleOutlined$3e$__["InfoCircleOutlined"], {}, void 0, false, {
+                fileName: "[project]/src/components/sidebar.jsx",
+                lineNumber: 27,
+                columnNumber: 17
+            }, this),
+            label: "Hướng dẫn",
+            action: ()=>redirectLink((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$constants$2f$server$2f$index$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getConfig"])({
+                    configs: appcontext?.configs,
+                    name: 'zalo'
+                }))
+        },
+        {
+            icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$PhoneOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__PhoneOutlined$3e$__["PhoneOutlined"], {}, void 0, false, {
+                fileName: "[project]/src/components/sidebar.jsx",
+                lineNumber: 28,
+                columnNumber: 17
+            }, this),
+            label: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$constants$2f$dataCommon$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AdminPhoneNumber"],
+            action: callHotline,
+            highlight: true
+        }
+    ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         style: {
-            paddingRight: "20px",
-            height: "42px",
             width: "100%",
+            height: 44,
             display: "flex",
-            alignItems: "center",
-            justifyContent: "end",
-            gap: "20px",
-            background: "#0074a6"
+            alignItems: "stretch",
+            justifyContent: "flex-end",
+            paddingRight: 20,
+            background: "linear-gradient(90deg, #006590 0%, #0088c2 100%)",
+            boxShadow: "0 2px 6px rgba(0,0,0,0.08)"
         },
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FormCommon, {
-                action: ()=>router.push(`/`, {
-                        scroll: false
-                    }),
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$HomeOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__HomeOutlined$3e$__["HomeOutlined"], {
-                        style: {
-                            color: "#fff"
-                        }
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/sidebar.jsx",
-                        lineNumber: 42,
-                        columnNumber: 17
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        style: textStyles,
-                        children: "Trang chủ"
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/sidebar.jsx",
-                        lineNumber: 43,
-                        columnNumber: 17
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/src/components/sidebar.jsx",
-                lineNumber: 41,
-                columnNumber: 13
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FormCommon, {
-                action: ()=>router.push('/blog', {
-                        scroll: false
-                    }),
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$ReadOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ReadOutlined$3e$__["ReadOutlined"], {
-                        style: {
-                            color: "#fff"
-                        }
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/sidebar.jsx",
-                        lineNumber: 46,
-                        columnNumber: 17
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        style: textStyles,
-                        children: "Blog"
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/sidebar.jsx",
-                        lineNumber: 47,
-                        columnNumber: 17
-                    }, this)
-                ]
-            }, void 0, true, {
+        children: items.map((it, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(NavItem, {
+                ...it
+            }, i, false, {
                 fileName: "[project]/src/components/sidebar.jsx",
                 lineNumber: 45,
-                columnNumber: 13
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FormCommon, {
-                action: ()=>router.push('/search?price=0', {
-                        scroll: false
-                    }),
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$FileOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FileOutlined$3e$__["FileOutlined"], {
-                        style: {
-                            color: "#fff"
-                        }
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/sidebar.jsx",
-                        lineNumber: 50,
-                        columnNumber: 17
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        style: textStyles,
-                        children: "Tài liệu miễn phí"
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/sidebar.jsx",
-                        lineNumber: 51,
-                        columnNumber: 17
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/src/components/sidebar.jsx",
-                lineNumber: 49,
-                columnNumber: 13
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FormCommon, {
-                action: ()=>redirectLink((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$constants$2f$server$2f$index$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getConfig"])({
-                        configs: appcontext?.configs,
-                        name: 'zalo'
-                    })),
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$InfoCircleOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__InfoCircleOutlined$3e$__["InfoCircleOutlined"], {
-                        style: {
-                            color: "#fff"
-                        }
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/sidebar.jsx",
-                        lineNumber: 54,
-                        columnNumber: 17
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        style: textStyles,
-                        children: "Hướng dẫn"
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/sidebar.jsx",
-                        lineNumber: 55,
-                        columnNumber: 17
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/src/components/sidebar.jsx",
-                lineNumber: 53,
-                columnNumber: 13
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FormCommon, {
-                action: callHotline,
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$PhoneOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__PhoneOutlined$3e$__["PhoneOutlined"], {
-                        style: {
-                            color: "#fff"
-                        }
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/sidebar.jsx",
-                        lineNumber: 58,
-                        columnNumber: 17
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        style: textStyles,
-                        children: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$constants$2f$dataCommon$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AdminPhoneNumber"]
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/sidebar.jsx",
-                        lineNumber: 59,
-                        columnNumber: 17
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/src/components/sidebar.jsx",
-                lineNumber: 57,
-                columnNumber: 13
-            }, this)
-        ]
-    }, void 0, true, {
+                columnNumber: 17
+            }, this))
+    }, void 0, false, {
         fileName: "[project]/src/components/sidebar.jsx",
-        lineNumber: 31,
+        lineNumber: 32,
         columnNumber: 9
     }, this);
 };
@@ -3296,28 +3314,76 @@ _s(Sidebar, "s+QTppqNAsxH3o5tLykMK8o0dDQ=", false, function() {
     ];
 });
 _c = Sidebar;
-const __TURBOPACK__default__export__ = Sidebar;
-const FormCommon = ({ children, action })=>{
+const NavItem = ({ icon, label, action, highlight })=>{
+    _s1();
+    const [hover, setHover] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        onClick: action,
+        onMouseEnter: ()=>setHover(true),
+        onMouseLeave: ()=>setHover(false),
         style: {
             display: "flex",
-            justifyContent: "center",
             alignItems: "center",
-            gap: "8px",
-            cursor: "pointer"
+            gap: 8,
+            padding: "0 16px",
+            color: "#ffffff",
+            fontSize: 14,
+            fontWeight: highlight ? 600 : 400,
+            cursor: "pointer",
+            position: "relative",
+            background: hover ? "rgba(255,255,255,0.12)" : "transparent",
+            transition: "background 0.2s ease"
         },
-        onClick: action,
-        children: children
-    }, void 0, false, {
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                style: {
+                    color: "#fff",
+                    display: "inline-flex"
+                },
+                children: icon
+            }, void 0, false, {
+                fileName: "[project]/src/components/sidebar.jsx",
+                lineNumber: 73,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                children: label
+            }, void 0, false, {
+                fileName: "[project]/src/components/sidebar.jsx",
+                lineNumber: 74,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                style: {
+                    position: "absolute",
+                    left: 12,
+                    right: 12,
+                    bottom: 6,
+                    height: 2,
+                    background: "#fdcd02",
+                    borderRadius: 2,
+                    transform: hover ? "scaleX(1)" : "scaleX(0)",
+                    transformOrigin: "center",
+                    transition: "transform 0.25s ease"
+                }
+            }, void 0, false, {
+                fileName: "[project]/src/components/sidebar.jsx",
+                lineNumber: 75,
+                columnNumber: 13
+            }, this)
+        ]
+    }, void 0, true, {
         fileName: "[project]/src/components/sidebar.jsx",
-        lineNumber: 68,
-        columnNumber: 12
+        lineNumber: 55,
+        columnNumber: 9
     }, this);
 };
-_c1 = FormCommon;
+_s1(NavItem, "bRXmKus9fOZFlca/6zXTYU+twGY=");
+_c1 = NavItem;
+const __TURBOPACK__default__export__ = Sidebar;
 var _c, _c1;
 __turbopack_refresh__.register(_c, "Sidebar");
-__turbopack_refresh__.register(_c1, "FormCommon");
+__turbopack_refresh__.register(_c1, "NavItem");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
 }

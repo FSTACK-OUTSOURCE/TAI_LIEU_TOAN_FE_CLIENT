@@ -1,7 +1,6 @@
 "use client"
 import { useAppContext } from "@/appcontext";
 import Login from '@/components/login';
-import { DollarOutlined } from "@ant-design/icons";
 import { Image, Input } from 'antd';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useMemo } from "react";
@@ -11,12 +10,14 @@ const { Search } = Input;
 const Header = ({ props }) => {
     const { configs, userInfo } = props
     const searchParams = useSearchParams()
-    const keyword = useMemo(()=>searchParams.get('keyword'), [searchParams])
+    const keyword = useMemo(() => searchParams.get('keyword'), [searchParams])
     const router = useRouter();
     const { appcontext, setAppContext } = useAppContext();
 
     const handleSearch = (value) => {
-        router.push(`/search?keyword=${value}`, { scroll: false })
+        const v = (value || '').trim();
+        if (!v) return;
+        router.push(`/search?keyword=${encodeURIComponent(v)}`, { scroll: false })
     }
 
     useEffect(() => {
@@ -24,36 +25,41 @@ const Header = ({ props }) => {
             setAppContext({ configs, ...userInfo });
         }
     }, [appcontext]);
-    console.log(appcontext)
+
     return (
-        <nav className="navbar navbar-expand-md navbar-main homeNav">
-            <div className="logoPage d-flex align-items-center">
+        <nav
+            className="navbar navbar-expand-md navbar-main homeNav"
+            style={{
+                background: "#ffffff",
+                boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
+                padding: "12px 32px",
+                gap: 16,
+                flexWrap: "wrap",
+            }}
+        >
+            <div
+                className="logoPage d-flex align-items-center"
+                style={{ gap: 20, flex: "1 1 auto", minWidth: 280 }}
+            >
                 <Image
-                    // src={`${process.env.NEXT_PUBLIC_API_URL}${getConfig({ configs, name: 'logo' })}`}
                     src="/logo.png"
                     alt="Tài liệu toán.vn"
-                    className='img-fluid link-danger'
-                    onClick={() => {
-                        router.push(`/`, { scroll: false })
-                    }}
-                    style={{ cursor: 'pointer', width:"200px" }}
+                    className='img-fluid'
+                    onClick={() => router.push(`/`, { scroll: false })}
+                    style={{ cursor: 'pointer', width: 200, flexShrink: 0 }}
                     preview={false}
                 />
                 <Search
-                    placeholder="Tìm kiếm tài liệu tại đây..."
+                    placeholder="Tìm kiếm tài liệu, đề thi, chuyên đề..."
                     onSearch={handleSearch}
-                    style={{ width: "600px" }}
+                    enterButton
+                    allowClear
+                    size="large"
+                    style={{ maxWidth: 600, flex: "1 1 auto" }}
                     defaultValue={keyword}
                 />
             </div>
-            <div className="" style={{display:"flex", alignItems:"center", gap:"10px"}}>
-                {/* <div className="" style={{display:"flex", alignItems:"center", gap:"8px"}}>
-                    <div style={{display:"flex", alignItems:"center", gap:"0px"}}>
-                        <DollarOutlined style={{marginRight:"8px"}}/>
-                        <p style={{margin:0, fontWeight:"bold"}}>Số dư:</p>
-                    </div>
-                    <p style={{margin:0, fontWeight:"bold"}}>{appcontext?.balance || 0}</p>
-                </div> */}
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                 <Login />
             </div>
         </nav>

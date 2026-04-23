@@ -15,74 +15,66 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$sli
 ;
 ;
 ;
+const slides = [
+    {
+        src: "/banner.png",
+        alt: "Tài liệu toán.vn"
+    },
+    {
+        src: "/banner.png",
+        alt: "Tài liệu toán.vn"
+    }
+];
 const Banner = ()=>{
     const settings = {
-        dots: false,
+        dots: true,
+        arrows: false,
         infinite: true,
-        speed: 500,
+        speed: 600,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 2000,
-        pauseOnHover: true,
-        loop: true
+        autoplaySpeed: 3500,
+        pauseOnHover: true
     };
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$slick$2f$lib$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-        ...settings,
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                    href: "#",
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        style: {
+            borderRadius: 12,
+            overflow: "hidden",
+            boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
+            marginBottom: 16
+        },
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$slick$2f$lib$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+            ...settings,
+            children: slides.map((s, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                        src: s.src,
+                        alt: s.alt,
                         style: {
-                            maxWidth: "100%"
-                        },
-                        src: "banner.png",
-                        alt: "banner"
+                            width: "100%",
+                            height: "auto",
+                            display: "block",
+                            objectFit: "cover"
+                        }
                     }, void 0, false, {
                         fileName: "[project]/src/components/banner.jsx",
-                        lineNumber: 24,
-                        columnNumber: 17
+                        lineNumber: 36,
+                        columnNumber: 25
                     }, this)
-                }, void 0, false, {
+                }, i, false, {
                     fileName: "[project]/src/components/banner.jsx",
-                    lineNumber: 23,
-                    columnNumber: 13
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/src/components/banner.jsx",
-                lineNumber: 21,
-                columnNumber: 9
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                    href: "#",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                        style: {
-                            maxWidth: "100%"
-                        },
-                        src: "banner.png",
-                        alt: "banner"
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/banner.jsx",
-                        lineNumber: 33,
-                        columnNumber: 17
-                    }, this)
-                }, void 0, false, {
-                    fileName: "[project]/src/components/banner.jsx",
-                    lineNumber: 32,
-                    columnNumber: 13
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/src/components/banner.jsx",
-                lineNumber: 31,
-                columnNumber: 9
-            }, this)
-        ]
-    }, void 0, true, {
+                    lineNumber: 35,
+                    columnNumber: 21
+                }, this))
+        }, void 0, false, {
+            fileName: "[project]/src/components/banner.jsx",
+            lineNumber: 33,
+            columnNumber: 13
+        }, this)
+    }, void 0, false, {
         fileName: "[project]/src/components/banner.jsx",
-        lineNumber: 20,
-        columnNumber: 5
+        lineNumber: 25,
+        columnNumber: 9
     }, this);
 };
 _c = Banner;

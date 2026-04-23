@@ -13,14 +13,14 @@
     "static/chunks/node_modules_antd_es_input_a71ad2._.js",
     "static/chunks/node_modules_antd_es_0d7abd._.js",
     "static/chunks/node_modules_@ant-design_cssinjs_es_e20869._.js",
-    "static/chunks/node_modules_@ant-design_icons_es_967cb5._.js",
+    "static/chunks/node_modules_@ant-design_icons_es_859254._.js",
     "static/chunks/node_modules_sweetalert2_dist_sweetalert2_all_b240e9.js",
     "static/chunks/node_modules_rc-tabs_es_eb5572._.js",
     "static/chunks/node_modules_rc-menu_es_d50243._.js",
     "static/chunks/node_modules_rc-field-form_es_29709d._.js",
     "static/chunks/node_modules_rc-select_es_9bad84._.js",
     "static/chunks/node_modules_@rc-component_b56802._.js",
-    "static/chunks/node_modules_@ant-design_5b547c._.js",
+    "static/chunks/node_modules_@ant-design_d0a4cf._.js",
     "static/chunks/node_modules_29890a._.js"
   ],
   "source": "dynamic"
