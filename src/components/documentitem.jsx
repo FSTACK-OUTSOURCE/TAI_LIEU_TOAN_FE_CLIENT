@@ -238,7 +238,7 @@ const DocumentItem = ({ props }) => {
                                                             <div style={{ width: 50, height: 50, display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 8, background: "#fafafa", overflow: "hidden" }}>
                                                                 <Image
                                                                     preview={false}
-                                                                    src={item.IMAGE_LINK ? `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}` : (item.IS_FOLDER ? "/folder.png" : "/docTaiLieu.png")}
+                                                                    src={item.IMAGE_LINK ? `${item.IMAGE_LINK}` : (item.IS_FOLDER ? "/folder.png" : "/docTaiLieu.png")}
                                                                     alt="Tài liệu toán.vn"
                                                                     className='img-fluid'
                                                                     width={44}

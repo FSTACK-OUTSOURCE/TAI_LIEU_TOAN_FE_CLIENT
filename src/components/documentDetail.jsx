@@ -139,7 +139,7 @@ const { appcontext } = useAppContext();
                                 }}
                             >
                                 {orderedImages.map((img, idx) => (
-                                    <img
+                                    <Image
                                         key={img}
                                         src={img}
                                         alt={`preview-${idx}`}
