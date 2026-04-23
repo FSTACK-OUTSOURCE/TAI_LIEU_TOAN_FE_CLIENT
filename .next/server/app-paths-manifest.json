@@ -1,0 +1,17 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/file/route": "app/api/file/route.js",
+  "/api/buy/route": "app/api/buy/route.js",
+  "/api/logout/route": "app/api/logout/route.js",
+  "/api/userinfo/route": "app/api/userinfo/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/api/identity/route": "app/api/identity/route.js",
+  "/[...slug]/page": "app/[...slug]/page.js",
+  "/bought/page": "app/bought/page.js",
+  "/page": "app/page.js",
+  "/blog/[slug]/page": "app/blog/[slug]/page.js",
+  "/search/page": "app/search/page.js",
+  "/transaction/page": "app/transaction/page.js",
+  "/auth/page": "app/auth/page.js",
+  "/blog/page": "app/blog/page.js"
+}
