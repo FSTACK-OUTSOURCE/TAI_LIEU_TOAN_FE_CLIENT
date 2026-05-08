@@ -96,40 +96,20 @@ export default async function Page({
                     items={breadData}
                 /> : <></>}
             </div>
-            {!childDocuments?.length && documentinfo?.PRICE ?
+            { documentinfo?.PRICE ?
                 <div className="section-heading mt-3 pt-3 pb-3 mb-3">
                     <DocumentDetail documentinfo={documentinfo} />
                 </div> : <></>}
-            <DocumentItem 
-                props={{ 
-                    documentinfo: { childDocuments: childDocuments?.length > 0 ? childDocuments : similarDocuments.filter(x => x.DOCUMENT_ID != documentinfo.DOCUMENT_ID), ...documentinfo }, 
-                    topics, 
-                    isShowDetail: childDocuments?.length === 0 && documentinfo?.PRICE, 
+            <DocumentItem
+                props={{
+                    documentinfo: { childDocuments: childDocuments?.length > 0 ? childDocuments : similarDocuments.filter(x => x.DOCUMENT_ID != documentinfo.DOCUMENT_ID), ...documentinfo },
+                    topics,
+                    isShowDetail: !!documentinfo?.PRICE,
+                    isBundle: childDocuments?.length > 0,
                     parentDocument
                 }} />
         </section>
 
-    // return (
-    //     <section>
-    //         <div className="section-heading mt-3 pt-3 pb-3 mb-3 filterListFile">
-    //             {breadData ? <Breadcrumb
-    //                 items={breadData}
-    //             /> : <></>}
-    //         </div>
-    //         {!childDocuments?.length && documentinfo?.PRICE ?
-    //             <div className="section-heading mt-3 pt-3 pb-3 mb-3">
-    //                 <DocumentDetail documentinfo={documentinfo} />
-    //             </div> : <></>}
-    //         <DocumentItem 
-    //             props={{ 
-    //                 documentinfo: { childDocuments: childDocuments?.length > 0 ? childDocuments : similarDocuments.filter(x => x.DOCUMENT_ID != documentinfo.DOCUMENT_ID), ...documentinfo }, 
-    //                 topics, 
-    //                 isShowDetail: childDocuments?.length === 0 && documentinfo?.PRICE, 
-    //                 parentDocument
-    //             }} />
-    //     </section>
-    // );
-    // 
     if(childDocuments?.length ){
         return <MainTempalte>{content}</MainTempalte> 
     }
