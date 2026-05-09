@@ -8,7 +8,7 @@ import DocumentTopup from './documenttopup';
 import { Divider, Image } from 'antd';
 
 
-const DocumentDetail = ({documentinfo}) =>{
+const DocumentDetail = ({documentinfo, childDocumentsCount = 0}) =>{
 const { appcontext } = useAppContext();
     const [showTopup, setShowTopup] = useState(false);
 
@@ -32,6 +32,11 @@ const { appcontext } = useAppContext();
     const [animating, setAnimating] = useState(false);
     const [needsLoop, setNeedsLoop] = useState(false);
     const stripWrapRef = useRef(null);
+    const bottomRef = useRef(null);
+
+    const scrollToBottom = () => {
+        bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
 
     const THUMB_W = 80; // 72px + 8px gap
 
@@ -199,13 +204,9 @@ const { appcontext } = useAppContext();
                                     <td><strong>{documentinfo?.SUBJECT || 'đang cập nhật'}</strong></td>
                                 </tr>
                                 <tr>
-                                    <td>Loại:</td>
+                                     <td>Số trang:</td>
                                     <td>
-                                        <strong>
-                                            {documentinfo?.CATEGORY === 'single' ? 'Tài liệu lẻ'
-                                                : documentinfo?.CATEGORY === 'bundle' ? 'Tài liệu bộ'
-                                                : 'đang cập nhật'}
-                                        </strong>
+                                        <strong>{documentinfo?.PAGE_COUNT ? `${documentinfo.PAGE_COUNT} trang` : 'đang cập nhật'}</strong>
                                     </td>
                                 </tr>
                             </tbody>
@@ -223,9 +224,25 @@ const { appcontext } = useAppContext();
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Số trang:</td>
+                                    <td>Loại:</td>
                                     <td>
-                                        <strong>{documentinfo?.PAGE_COUNT ? `${documentinfo.PAGE_COUNT} trang` : 'đang cập nhật'}</strong>
+                                        <strong>
+                                            {documentinfo?.CATEGORY === 'single' ? 'Tài liệu lẻ'
+                                                : documentinfo?.CATEGORY === 'bundle' ? 'Tài liệu bộ'
+                                                : 'đang cập nhật'}
+                                        </strong>
+                                        {documentinfo?.CATEGORY === 'bundle' && childDocumentsCount > 0 && (
+                                            <div style={{ fontSize: 13, marginTop: 4 }}>
+                                                Bộ tài liệu bao gồm: <strong>{childDocumentsCount} TL lẻ</strong>
+                                                <br />
+                                                <span
+                                                    onClick={scrollToBottom}
+                                                    style={{ color: '#1890ff', cursor: 'pointer', fontStyle: 'italic' }}
+                                                >
+                                                    ( Xem chi tiết » )
+                                                </span>
+                                            </div>
+                                        )}
                                     </td>
                                 </tr>
                             </tbody>
@@ -294,7 +311,7 @@ const { appcontext } = useAppContext();
                 <Divider/>
 
                 {/* description */}
-                <div >
+                <div ref={bottomRef}>
                     <div dangerouslySetInnerHTML={{ __html: documentinfo.DESCRIPTION }} />
                 </div>
 

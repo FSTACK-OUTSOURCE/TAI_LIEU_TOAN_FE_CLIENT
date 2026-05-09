@@ -98,7 +98,7 @@ export default async function Page({
             </div>
             { documentinfo?.PRICE ?
                 <div className="section-heading mt-3 pt-3 pb-3 mb-3">
-                    <DocumentDetail documentinfo={documentinfo} />
+                    <DocumentDetail documentinfo={documentinfo} childDocumentsCount={childDocuments.length} />
                 </div> : <></>}
             <DocumentItem
                 props={{
