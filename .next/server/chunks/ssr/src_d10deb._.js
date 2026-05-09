@@ -510,15 +510,15 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$documen
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__ = __turbopack_import__("[project]/node_modules/antd/es/button/index.js [app-ssr] (ecmascript) <locals> <export default as Button>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$DownloadOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__DownloadOutlined$3e$__ = __turbopack_import__("[project]/node_modules/@ant-design/icons/es/icons/DownloadOutlined.js [app-ssr] (ecmascript) <export default as DownloadOutlined>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$EyeOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__EyeOutlined$3e$__ = __turbopack_import__("[project]/node_modules/@ant-design/icons/es/icons/EyeOutlined.js [app-ssr] (ecmascript) <export default as EyeOutlined>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$divider$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Divider$3e$__ = __turbopack_import__("[project]/node_modules/antd/es/divider/index.js [app-ssr] (ecmascript) <export default as Divider>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$SortAscendingOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__SortAscendingOutlined$3e$__ = __turbopack_import__("[project]/node_modules/@ant-design/icons/es/icons/SortAscendingOutlined.js [app-ssr] (ecmascript) <export default as SortAscendingOutlined>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$select$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Select$3e$__ = __turbopack_import__("[project]/node_modules/antd/es/select/index.js [app-ssr] (ecmascript) <export default as Select>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$checkbox$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Checkbox$3e$__ = __turbopack_import__("[project]/node_modules/antd/es/checkbox/index.js [app-ssr] (ecmascript) <export default as Checkbox>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__ = __turbopack_import__("[project]/node_modules/antd/es/row/index.js [app-ssr] (ecmascript) <export default as Row>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__ = __turbopack_import__("[project]/node_modules/antd/es/col/index.js [app-ssr] (ecmascript) <export default as Col>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$divider$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Divider$3e$__ = __turbopack_import__("[project]/node_modules/antd/es/divider/index.js [app-ssr] (ecmascript) <export default as Divider>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$list$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__List$3e$__ = __turbopack_import__("[project]/node_modules/antd/es/list/index.js [app-ssr] (ecmascript) <export default as List>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$image$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Image$3e$__ = __turbopack_import__("[project]/node_modules/antd/es/image/index.js [app-ssr] (ecmascript) <export default as Image>");
-'use client';
+"use client";
 ;
 ;
 ;
@@ -529,24 +529,24 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2
 ;
 const SORT_OPTIONS = [
     {
-        label: 'Mặc định',
-        value: 'default'
+        label: "Mặc định",
+        value: "default"
     },
     {
-        label: 'Mới nhất',
-        value: 'date_desc'
+        label: "Mới nhất",
+        value: "date_desc"
     },
     {
-        label: 'Cũ nhất',
-        value: 'date_asc'
+        label: "Cũ nhất",
+        value: "date_asc"
     }
 ];
 const DocumentItem = ({ props })=>{
-    const { documentinfo, topics, isShowDetail, parentDocument } = props;
+    const { documentinfo, topics, isShowDetail, isBundle, parentDocument } = props;
     const [displayDocuments, setDisplayDocuments] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [childDocumentInfo, setChildDocumentInfo] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({});
     const [selectedTopicIds, setSelectedTopicIds] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
-    const [sortBy, setSortBy] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('default');
+    const [sortBy, setSortBy] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("default");
     const [showTopup, setShowTopup] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const { appcontext, setAppContext } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$appcontext$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useAppContext"])();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
@@ -569,7 +569,7 @@ const DocumentItem = ({ props })=>{
         }
     };
     const checkDownloaded = (documentId)=>{
-        var downloaded = localStorage.getItem('downloaded');
+        var downloaded = localStorage.getItem("downloaded");
         if (downloaded) {
             var downloadedArray = JSON.parse(downloaded);
             if (downloadedArray.includes(documentId)) {
@@ -598,8 +598,8 @@ const DocumentItem = ({ props })=>{
                     children: "✓ Đã tải"
                 }, void 0, false, {
                     fileName: "[project]/src/components/documentitem.jsx",
-                    lineNumber: 61,
-                    columnNumber: 21
+                    lineNumber: 65,
+                    columnNumber: 11
                 }, this));
             }
             if (!item.BOUGHT) {
@@ -609,31 +609,32 @@ const DocumentItem = ({ props })=>{
                         color: "#595959"
                     },
                     children: [
-                        "Giá: ",
+                        "Giá:",
+                        " ",
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                             style: {
                                 fontWeight: 700,
                                 color: "#d46b08"
                             },
                             children: [
-                                new Intl.NumberFormat('vi-VN').format(item.PRICE),
+                                new Intl.NumberFormat("vi-VN").format(item.PRICE),
                                 " đ"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/documentitem.jsx",
-                            lineNumber: 72,
-                            columnNumber: 30
+                            lineNumber: 88,
+                            columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/documentitem.jsx",
-                    lineNumber: 71,
-                    columnNumber: 21
+                    lineNumber: 86,
+                    columnNumber: 11
                 }, this));
                 result.push(/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                     style: {
                         marginLeft: 3,
-                        backgroundColor: '#389e0d',
+                        backgroundColor: "#389e0d",
                         borderRadius: 6,
                         padding: "0 14px",
                         fontWeight: 600,
@@ -642,18 +643,18 @@ const DocumentItem = ({ props })=>{
                     type: "primary",
                     icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$DownloadOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__DownloadOutlined$3e$__["DownloadOutlined"], {}, void 0, false, {
                         fileName: "[project]/src/components/documentitem.jsx",
-                        lineNumber: 76,
-                        columnNumber: 173
+                        lineNumber: 104,
+                        columnNumber: 19
                     }, void 0),
-                    size: 'small',
+                    size: "small",
                     onClick: ()=>{
                         buyDocument(item);
                     },
                     children: "Tải về"
                 }, void 0, false, {
                     fileName: "[project]/src/components/documentitem.jsx",
-                    lineNumber: 76,
-                    columnNumber: 21
+                    lineNumber: 94,
+                    columnNumber: 11
                 }, this));
                 if (item.LINK_FULL) {
                     result.push(/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -666,25 +667,25 @@ const DocumentItem = ({ props })=>{
                         type: "default",
                         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$EyeOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__EyeOutlined$3e$__["EyeOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/components/documentitem.jsx",
-                            lineNumber: 82,
-                            columnNumber: 133
+                            lineNumber: 123,
+                            columnNumber: 21
                         }, void 0),
-                        size: 'small',
+                        size: "small",
                         onClick: ()=>{
                             window.open(`${item.LINK_FULL}`);
                         },
                         children: "Xem thử"
                     }, void 0, false, {
                         fileName: "[project]/src/components/documentitem.jsx",
-                        lineNumber: 82,
-                        columnNumber: 25
+                        lineNumber: 115,
+                        columnNumber: 13
                     }, this));
                 }
             } else {
                 result.push(/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                     style: {
                         marginLeft: 3,
-                        backgroundColor: '#1677ff',
+                        backgroundColor: "#1677ff",
                         borderRadius: 6,
                         padding: "0 14px",
                         fontWeight: 600,
@@ -693,27 +694,27 @@ const DocumentItem = ({ props })=>{
                     type: "primary",
                     icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$DownloadOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__DownloadOutlined$3e$__["DownloadOutlined"], {}, void 0, false, {
                         fileName: "[project]/src/components/documentitem.jsx",
-                        lineNumber: 89,
-                        columnNumber: 173
+                        lineNumber: 145,
+                        columnNumber: 19
                     }, void 0),
-                    size: 'small',
+                    size: "small",
                     onClick: ()=>{
                         (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$constants$2f$client$2f$index$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["downloadDocument"])(item);
                     },
                     children: "Tải lại"
                 }, void 0, false, {
                     fileName: "[project]/src/components/documentitem.jsx",
-                    lineNumber: 89,
-                    columnNumber: 21
+                    lineNumber: 135,
+                    columnNumber: 11
                 }, this));
             }
         }
         return result;
     };
     const getFirstTopicName = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])((doc)=>{
-        if (!doc.TOPIC_IDS) return '';
-        const firstId = doc.TOPIC_IDS.split(',')[0].trim();
-        return topics.find((t)=>t.TOPIC_ID === firstId)?.NAME || '';
+        if (!doc.TOPIC_IDS) return "";
+        const firstId = doc.TOPIC_IDS.split(",")[0].trim();
+        return topics.find((t)=>t.TOPIC_ID === firstId)?.NAME || "";
     }, [
         topics
     ]);
@@ -724,14 +725,14 @@ const DocumentItem = ({ props })=>{
         if (topicFilter.length > 0) {
             result = result.filter((x)=>topicFilter.some((tid)=>x.TOPIC_IDS && x.TOPIC_IDS.includes(tid)));
         }
-        if (sort === 'date_desc') {
+        if (sort === "date_desc") {
             result.sort((a, b)=>new Date(b.CREATED_DATE) - new Date(a.CREATED_DATE));
-        } else if (sort === 'date_asc') {
+        } else if (sort === "date_asc") {
             result.sort((a, b)=>new Date(a.CREATED_DATE) - new Date(b.CREATED_DATE));
-        } else if (sort === 'topic') {
-            result.sort((a, b)=>getFirstTopicName(a).localeCompare(getFirstTopicName(b), 'vi'));
-        } else if (sort === 'author') {
-            result.sort((a, b)=>(a.CREATED_USER || '').localeCompare(b.CREATED_USER || '', 'vi'));
+        } else if (sort === "topic") {
+            result.sort((a, b)=>getFirstTopicName(a).localeCompare(getFirstTopicName(b), "vi"));
+        } else if (sort === "author") {
+            result.sort((a, b)=>(a.CREATED_USER || "").localeCompare(b.CREATED_USER || "", "vi"));
         }
         return result;
     }, [
@@ -749,10 +750,109 @@ const DocumentItem = ({ props })=>{
     const showFilterCard = !documentinfo.PRICE && hasNonFolderDocs && topics.length > 0;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         children: [
-            documentinfo.IS_FOLDER ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            displayDocuments?.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "form-group row",
                 children: [
-                    !isShowDetail ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    (()=>{
+                        let content = null;
+                        if (isBundle) {
+                            const count = documentinfo.childDocuments.filter((x)=>!x.IS_FOLDER).length;
+                            content = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        style: {
+                                            fontSize: "1rem",
+                                            fontWeight: 700,
+                                            color: "#d46b08"
+                                        },
+                                        children: [
+                                            "Bộ tài liệu bao gồm: ",
+                                            count,
+                                            " tài liệu lẻ"
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/documentitem.jsx",
+                                        lineNumber: 226,
+                                        columnNumber: 19
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        style: {
+                                            fontSize: "0.9rem",
+                                            color: "#389e0d",
+                                            marginLeft: 8
+                                        },
+                                        children: "(mua theo bộ tiết kiệm đến 50%)"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/documentitem.jsx",
+                                        lineNumber: 235,
+                                        columnNumber: 19
+                                    }, this)
+                                ]
+                            }, void 0, true);
+                        } else if (!isBundle && parentDocument?.NAME) {
+                            content = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        style: {
+                                            fontSize: "0.82rem",
+                                            color: "#8c8c8c",
+                                            fontWeight: 500
+                                        },
+                                        children: "Thuộc bộ tài liệu:"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/documentitem.jsx",
+                                        lineNumber: 249,
+                                        columnNumber: 19
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            fontSize: "1rem",
+                                            fontWeight: 700,
+                                            color: "#d46b08",
+                                            marginTop: "2px"
+                                        },
+                                        dangerouslySetInnerHTML: {
+                                            __html: parentDocument.NAME
+                                        }
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/documentitem.jsx",
+                                        lineNumber: 258,
+                                        columnNumber: 19
+                                    }, this)
+                                ]
+                            }, void 0, true);
+                        }
+                        if (!content) return null;
+                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        width: "100%",
+                                        padding: "10px 14px",
+                                        background: "linear-gradient(90deg, #fff7e6 0%, #fff 100%)",
+                                        borderLeft: "4px solid #fa8c16",
+                                        borderRadius: "4px",
+                                        marginBottom: "4px"
+                                    },
+                                    children: content
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/documentitem.jsx",
+                                    lineNumber: 273,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$divider$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Divider$3e$__["Divider"], {
+                                    style: {
+                                        margin: "10px 0 0"
+                                    }
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/documentitem.jsx",
+                                    lineNumber: 285,
+                                    columnNumber: 17
+                                }, this)
+                            ]
+                        }, void 0, true);
+                    })(),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "col-md-12",
                         children: showFilterCard ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "card",
@@ -767,13 +867,13 @@ const DocumentItem = ({ props })=>{
                                         children: "LỌC & SẮP XẾP"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/documentitem.jsx",
-                                        lineNumber: 143,
-                                        columnNumber: 41
+                                        lineNumber: 296,
+                                        columnNumber: 21
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/documentitem.jsx",
-                                    lineNumber: 142,
-                                    columnNumber: 37
+                                    lineNumber: 295,
+                                    columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "card-body",
@@ -790,7 +890,8 @@ const DocumentItem = ({ props })=>{
                                                         marginRight: 8
                                                     },
                                                     children: [
-                                                        "Chủ đề ",
+                                                        "Chủ đề",
+                                                        " ",
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             style: {
                                                                 color: "#8c8c8c"
@@ -798,19 +899,19 @@ const DocumentItem = ({ props })=>{
                                                             children: "(có thể chọn nhiều)"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/documentitem.jsx",
-                                                            lineNumber: 147,
-                                                            columnNumber: 124
+                                                            lineNumber: 313,
+                                                            columnNumber: 25
                                                         }, this),
                                                         ":"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/documentitem.jsx",
-                                                    lineNumber: 147,
-                                                    columnNumber: 45
+                                                    lineNumber: 305,
+                                                    columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$checkbox$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Checkbox$3e$__["Checkbox"].Group, {
                                                     style: {
-                                                        width: '100%',
+                                                        width: "100%",
                                                         marginTop: 6
                                                     },
                                                     value: selectedTopicIds,
@@ -824,29 +925,29 @@ const DocumentItem = ({ props })=>{
                                                                     children: element.NAME
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/documentitem.jsx",
-                                                                    lineNumber: 152,
-                                                                    columnNumber: 61
+                                                                    lineNumber: 330,
+                                                                    columnNumber: 31
                                                                 }, this)
                                                             }, element.TOPIC_ID, false, {
                                                                 fileName: "[project]/src/components/documentitem.jsx",
-                                                                lineNumber: 151,
-                                                                columnNumber: 57
+                                                                lineNumber: 325,
+                                                                columnNumber: 29
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/documentitem.jsx",
-                                                        lineNumber: 149,
-                                                        columnNumber: 49
+                                                        lineNumber: 323,
+                                                        columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/documentitem.jsx",
-                                                    lineNumber: 148,
-                                                    columnNumber: 45
+                                                    lineNumber: 318,
+                                                    columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/documentitem.jsx",
-                                            lineNumber: 146,
-                                            columnNumber: 41
+                                            lineNumber: 304,
+                                            columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$divider$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Divider$3e$__["Divider"], {
                                             style: {
@@ -854,13 +955,13 @@ const DocumentItem = ({ props })=>{
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/documentitem.jsx",
-                                            lineNumber: 158,
-                                            columnNumber: 41
+                                            lineNumber: 338,
+                                            columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             style: {
-                                                display: 'flex',
-                                                alignItems: 'center',
+                                                display: "flex",
+                                                alignItems: "center",
                                                 gap: 8
                                             },
                                             children: [
@@ -870,8 +971,8 @@ const DocumentItem = ({ props })=>{
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/documentitem.jsx",
-                                                    lineNumber: 160,
-                                                    columnNumber: 45
+                                                    lineNumber: 342,
+                                                    columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     style: {
@@ -881,8 +982,8 @@ const DocumentItem = ({ props })=>{
                                                     children: "Sắp xếp:"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/documentitem.jsx",
-                                                    lineNumber: 161,
-                                                    columnNumber: 45
+                                                    lineNumber: 343,
+                                                    columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$select$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Select$3e$__["Select"], {
                                                     value: sortBy,
@@ -894,8 +995,8 @@ const DocumentItem = ({ props })=>{
                                                     size: "small"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/documentitem.jsx",
-                                                    lineNumber: 162,
-                                                    columnNumber: 45
+                                                    lineNumber: 346,
+                                                    columnNumber: 23
                                                 }, this),
                                                 selectedTopicIds.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                                                     size: "small",
@@ -903,30 +1004,30 @@ const DocumentItem = ({ props })=>{
                                                     children: "Xóa lọc"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/documentitem.jsx",
-                                                    lineNumber: 170,
-                                                    columnNumber: 49
+                                                    lineNumber: 354,
+                                                    columnNumber: 25
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/documentitem.jsx",
-                                            lineNumber: 159,
-                                            columnNumber: 41
+                                            lineNumber: 339,
+                                            columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/documentitem.jsx",
-                                    lineNumber: 145,
-                                    columnNumber: 37
+                                    lineNumber: 303,
+                                    columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/documentitem.jsx",
-                            lineNumber: 141,
-                            columnNumber: 33
+                            lineNumber: 294,
+                            columnNumber: 17
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             style: {
-                                display: 'flex',
-                                alignItems: 'center',
+                                display: "flex",
+                                alignItems: "center",
                                 gap: 8,
                                 marginBottom: 8
                             },
@@ -937,8 +1038,8 @@ const DocumentItem = ({ props })=>{
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/documentitem.jsx",
-                                    lineNumber: 179,
-                                    columnNumber: 41
+                                    lineNumber: 373,
+                                    columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     style: {
@@ -948,8 +1049,8 @@ const DocumentItem = ({ props })=>{
                                     children: "Sắp xếp:"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/documentitem.jsx",
-                                    lineNumber: 180,
-                                    columnNumber: 41
+                                    lineNumber: 374,
+                                    columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$select$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Select$3e$__["Select"], {
                                     value: sortBy,
@@ -961,76 +1062,20 @@ const DocumentItem = ({ props })=>{
                                     size: "small"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/documentitem.jsx",
-                                    lineNumber: 181,
-                                    columnNumber: 41
+                                    lineNumber: 377,
+                                    columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/documentitem.jsx",
-                            lineNumber: 178,
-                            columnNumber: 37
+                            lineNumber: 365,
+                            columnNumber: 17
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/documentitem.jsx",
-                        lineNumber: 139,
-                        columnNumber: 42
-                    }, this) : null,
-                    isShowDetail && parentDocument?.NAME ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                style: {
-                                    width: "100%",
-                                    padding: "10px 14px",
-                                    background: "linear-gradient(90deg, #fff7e6 0%, #fff 100%)",
-                                    borderLeft: "4px solid #fa8c16",
-                                    borderRadius: "4px",
-                                    marginBottom: "4px"
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        style: {
-                                            fontSize: "0.82rem",
-                                            color: "#8c8c8c",
-                                            fontWeight: 500
-                                        },
-                                        children: "Thuộc bộ tài liệu:"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/documentitem.jsx",
-                                        lineNumber: 202,
-                                        columnNumber: 29
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        style: {
-                                            fontSize: "1rem",
-                                            fontWeight: 700,
-                                            color: "#d46b08",
-                                            marginTop: "2px"
-                                        },
-                                        dangerouslySetInnerHTML: {
-                                            __html: parentDocument.NAME
-                                        }
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/documentitem.jsx",
-                                        lineNumber: 203,
-                                        columnNumber: 29
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/documentitem.jsx",
-                                lineNumber: 194,
-                                columnNumber: 25
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$divider$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Divider$3e$__["Divider"], {
-                                style: {
-                                    margin: "10px 0 0"
-                                }
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/documentitem.jsx",
-                                lineNumber: 207,
-                                columnNumber: 25
-                            }, this)
-                        ]
-                    }, void 0, true) : null,
+                        lineNumber: 292,
+                        columnNumber: 13
+                    }, this),
                     displayDocuments.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         style: {
                             width: "100%",
@@ -1077,26 +1122,26 @@ const DocumentItem = ({ props })=>{
                                             },
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$image$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Image$3e$__["Image"], {
                                                 preview: false,
-                                                src: item.IMAGE_LINK ? `${"TURBOPACK compile-time value", "https://api.tailieutoan.vn"}${item.IMAGE_LINK}` : item.IS_FOLDER ? "/folder.png" : "/docTaiLieu.png",
+                                                src: item.IMAGE_LINK ? `${item.IMAGE_LINK}` : item.IS_FOLDER ? "/folder.png" : "/docTaiLieu.png",
                                                 alt: "Tài liệu toán.vn",
                                                 className: "img-fluid",
                                                 width: 44,
                                                 height: 44
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/documentitem.jsx",
-                                                lineNumber: 239,
-                                                columnNumber: 65
+                                                lineNumber: 439,
+                                                columnNumber: 29
                                             }, void 0)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/documentitem.jsx",
-                                            lineNumber: 238,
-                                            columnNumber: 61
+                                            lineNumber: 427,
+                                            columnNumber: 27
                                         }, void 0),
                                         title: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             style: {
-                                                border: 'none',
-                                                background: 'none',
-                                                textAlign: 'left',
+                                                border: "none",
+                                                background: "none",
+                                                textAlign: "left",
                                                 padding: 0
                                             },
                                             className: "customLink font10pt",
@@ -1116,40 +1161,40 @@ const DocumentItem = ({ props })=>{
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/documentitem.jsx",
-                                                lineNumber: 257,
-                                                columnNumber: 65
+                                                lineNumber: 479,
+                                                columnNumber: 29
                                             }, void 0)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/documentitem.jsx",
-                                            lineNumber: 250,
-                                            columnNumber: 61
+                                            lineNumber: 456,
+                                            columnNumber: 27
                                         }, void 0)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/documentitem.jsx",
-                                        lineNumber: 236,
-                                        columnNumber: 53
+                                        lineNumber: 425,
+                                        columnNumber: 23
                                     }, void 0)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/documentitem.jsx",
-                                    lineNumber: 222,
-                                    columnNumber: 49
+                                    lineNumber: 404,
+                                    columnNumber: 21
                                 }, void 0);
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/components/documentitem.jsx",
-                            lineNumber: 213,
-                            columnNumber: 37
+                            lineNumber: 391,
+                            columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/documentitem.jsx",
-                        lineNumber: 212,
-                        columnNumber: 33
+                        lineNumber: 390,
+                        columnNumber: 13
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {}, void 0, false)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/documentitem.jsx",
-                lineNumber: 138,
-                columnNumber: 21
+                lineNumber: 217,
+                columnNumber: 9
             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: `text-center`,
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("iframe", {
@@ -1158,13 +1203,13 @@ const DocumentItem = ({ props })=>{
                     height: "750"
                 }, void 0, false, {
                     fileName: "[project]/src/components/documentitem.jsx",
-                    lineNumber: 271,
-                    columnNumber: 25
+                    lineNumber: 496,
+                    columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/documentitem.jsx",
-                lineNumber: 270,
-                columnNumber: 21
+                lineNumber: 495,
+                columnNumber: 9
             }, this),
             showTopup && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$documenttopup$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                 props: {
@@ -1173,14 +1218,14 @@ const DocumentItem = ({ props })=>{
                 }
             }, void 0, false, {
                 fileName: "[project]/src/components/documentitem.jsx",
-                lineNumber: 274,
-                columnNumber: 27
+                lineNumber: 504,
+                columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/documentitem.jsx",
-        lineNumber: 135,
-        columnNumber: 9
+        lineNumber: 215,
+        columnNumber: 5
     }, this);
 };
 const __TURBOPACK__default__export__ = DocumentItem;
@@ -1222,10 +1267,10 @@ const DocumentDetail = ({ documentinfo })=>{
     const [showTopup, setShowTopup] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const detailImages = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>{
         const result = [];
-        if (documentinfo.IMAGE_LINK) result.push(`${("TURBOPACK compile-time value", "https://api.tailieutoan.vn")}${documentinfo.IMAGE_LINK}`);
+        if (documentinfo.IMAGE_LINK) result.push(`${("TURBOPACK compile-time value", "http://localhost:5243")}${documentinfo.IMAGE_LINK}`);
         try {
             const arr = JSON.parse(documentinfo.IMAGES || '[]');
-            if (Array.isArray(arr)) arr.forEach((p)=>result.push(`${("TURBOPACK compile-time value", "https://api.tailieutoan.vn")}${p}`));
+            if (Array.isArray(arr)) arr.forEach((p)=>result.push(`${("TURBOPACK compile-time value", "http://localhost:5243")}${p}`));
         } catch  {}
         return result;
     }, [
@@ -1345,6 +1390,7 @@ const DocumentDetail = ({ documentinfo })=>{
                 }, this);
         }
     };
+    const [showPreview, setShowPreview] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const toggleTopup = ()=>{
         setShowTopup(!showTopup);
     };
@@ -1397,12 +1443,12 @@ const DocumentDetail = ({ documentinfo })=>{
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/documentDetail.jsx",
-                                    lineNumber: 121,
+                                    lineNumber: 123,
                                     columnNumber: 33
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                lineNumber: 120,
+                                lineNumber: 122,
                                 columnNumber: 29
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 style: wrapperStyle,
@@ -1417,12 +1463,12 @@ const DocumentDetail = ({ documentinfo })=>{
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/documentDetail.jsx",
-                                    lineNumber: 125,
+                                    lineNumber: 127,
                                     columnNumber: 33
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                lineNumber: 124,
+                                lineNumber: 126,
                                 columnNumber: 29
                             }, this);
                         })(),
@@ -1442,7 +1488,7 @@ const DocumentDetail = ({ documentinfo })=>{
                                             transform: needsLoop ? `translateX(${slideOffset}px)` : 'none',
                                             transition: animating ? 'transform 0.3s ease' : 'none'
                                         },
-                                        children: orderedImages.map((img, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                        children: orderedImages.map((img, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$image$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Image$3e$__["Image"], {
                                                 src: img,
                                                 alt: `preview-${idx}`,
                                                 onClick: ()=>handleSelectImg(img, idx),
@@ -1458,17 +1504,17 @@ const DocumentDetail = ({ documentinfo })=>{
                                                 }
                                             }, img, false, {
                                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                                lineNumber: 142,
+                                                lineNumber: 144,
                                                 columnNumber: 37
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                        lineNumber: 132,
+                                        lineNumber: 134,
                                         columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/documentDetail.jsx",
-                                    lineNumber: 131,
+                                    lineNumber: 133,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1483,7 +1529,7 @@ const DocumentDetail = ({ documentinfo })=>{
                                     children: "Click vào ảnh để xem chi tiết hơn"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/documentDetail.jsx",
-                                    lineNumber: 161,
+                                    lineNumber: 163,
                                     columnNumber: 25
                                 }, this)
                             ]
@@ -1491,12 +1537,12 @@ const DocumentDetail = ({ documentinfo })=>{
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/documentDetail.jsx",
-                    lineNumber: 105,
+                    lineNumber: 107,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/documentDetail.jsx",
-                lineNumber: 104,
+                lineNumber: 106,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1509,7 +1555,7 @@ const DocumentDetail = ({ documentinfo })=>{
                         }
                     }, void 0, false, {
                         fileName: "[project]/src/components/documentDetail.jsx",
-                        lineNumber: 171,
+                        lineNumber: 173,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1523,7 +1569,7 @@ const DocumentDetail = ({ documentinfo })=>{
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/documentDetail.jsx",
-                                    lineNumber: 176,
+                                    lineNumber: 178,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1533,18 +1579,18 @@ const DocumentDetail = ({ documentinfo })=>{
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/documentDetail.jsx",
-                                    lineNumber: 177,
+                                    lineNumber: 179,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/documentDetail.jsx",
-                            lineNumber: 175,
+                            lineNumber: 177,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/documentDetail.jsx",
-                        lineNumber: 174,
+                        lineNumber: 176,
                         columnNumber: 17
                     }, this),
                     documentinfo?.PRICE ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1556,12 +1602,12 @@ const DocumentDetail = ({ documentinfo })=>{
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/documentDetail.jsx",
-                            lineNumber: 183,
+                            lineNumber: 185,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/documentDetail.jsx",
-                        lineNumber: 182,
+                        lineNumber: 184,
                         columnNumber: 40
                     }, this) : null,
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1580,7 +1626,7 @@ const DocumentDetail = ({ documentinfo })=>{
                                                         children: "Lớp:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                                        lineNumber: 192,
+                                                        lineNumber: 194,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1588,18 +1634,18 @@ const DocumentDetail = ({ documentinfo })=>{
                                                             children: documentinfo?.GRADE || 'đang cập nhật'
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/documentDetail.jsx",
-                                                            lineNumber: 193,
+                                                            lineNumber: 195,
                                                             columnNumber: 41
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                                        lineNumber: 193,
+                                                        lineNumber: 195,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                                lineNumber: 191,
+                                                lineNumber: 193,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1608,7 +1654,7 @@ const DocumentDetail = ({ documentinfo })=>{
                                                         children: "Môn:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                                        lineNumber: 196,
+                                                        lineNumber: 198,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1616,18 +1662,18 @@ const DocumentDetail = ({ documentinfo })=>{
                                                             children: documentinfo?.SUBJECT || 'đang cập nhật'
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/documentDetail.jsx",
-                                                            lineNumber: 197,
+                                                            lineNumber: 199,
                                                             columnNumber: 41
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                                        lineNumber: 197,
+                                                        lineNumber: 199,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                                lineNumber: 195,
+                                                lineNumber: 197,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1636,7 +1682,7 @@ const DocumentDetail = ({ documentinfo })=>{
                                                         children: "Loại:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                                        lineNumber: 200,
+                                                        lineNumber: 202,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1644,34 +1690,34 @@ const DocumentDetail = ({ documentinfo })=>{
                                                             children: documentinfo?.CATEGORY === 'single' ? 'Tài liệu lẻ' : documentinfo?.CATEGORY === 'bundle' ? 'Tài liệu bộ' : 'đang cập nhật'
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/documentDetail.jsx",
-                                                            lineNumber: 202,
+                                                            lineNumber: 204,
                                                             columnNumber: 41
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                                        lineNumber: 201,
+                                                        lineNumber: 203,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                                lineNumber: 199,
+                                                lineNumber: 201,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                        lineNumber: 190,
+                                        lineNumber: 192,
                                         columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/documentDetail.jsx",
-                                    lineNumber: 189,
+                                    lineNumber: 191,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                lineNumber: 188,
+                                lineNumber: 190,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1687,7 +1733,7 @@ const DocumentDetail = ({ documentinfo })=>{
                                                         children: "File:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                                        lineNumber: 216,
+                                                        lineNumber: 218,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1695,18 +1741,18 @@ const DocumentDetail = ({ documentinfo })=>{
                                                             children: "đang cập nhật"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/documentDetail.jsx",
-                                                            lineNumber: 220,
+                                                            lineNumber: 222,
                                                             columnNumber: 47
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                                        lineNumber: 217,
+                                                        lineNumber: 219,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                                lineNumber: 215,
+                                                lineNumber: 217,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1715,7 +1761,7 @@ const DocumentDetail = ({ documentinfo })=>{
                                                         children: "Số trang:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                                        lineNumber: 224,
+                                                        lineNumber: 226,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1723,40 +1769,40 @@ const DocumentDetail = ({ documentinfo })=>{
                                                             children: documentinfo?.PAGE_COUNT ? `${documentinfo.PAGE_COUNT} trang` : 'đang cập nhật'
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/documentDetail.jsx",
-                                                            lineNumber: 226,
+                                                            lineNumber: 228,
                                                             columnNumber: 41
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                                        lineNumber: 225,
+                                                        lineNumber: 227,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                                lineNumber: 223,
+                                                lineNumber: 225,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                        lineNumber: 214,
+                                        lineNumber: 216,
                                         columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/documentDetail.jsx",
-                                    lineNumber: 213,
+                                    lineNumber: 215,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                lineNumber: 212,
+                                lineNumber: 214,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/documentDetail.jsx",
-                        lineNumber: 187,
+                        lineNumber: 189,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1764,10 +1810,12 @@ const DocumentDetail = ({ documentinfo })=>{
                         children: [
                             !documentinfo.BOUGHT && documentinfo.LINK_FULL ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 type: "button",
-                                className: "btn btn-dark rounded-0 me-2 mb-2 mt-2 js-preView",
+                                className: "btn btn-dark rounded-0 me-2 mb-2 mt-2",
                                 onClick: ()=>{
-                                    if (documentinfo.LINK_FULL) {
-                                        window.open(`${documentinfo.LINK_FULL}`);
+                                    if (documentinfo.LINK_PREVIEW) {
+                                        setShowPreview(true);
+                                    } else {
+                                        window.open(documentinfo.LINK_FULL);
                                     }
                                 },
                                 children: [
@@ -1777,15 +1825,15 @@ const DocumentDetail = ({ documentinfo })=>{
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                        lineNumber: 242,
-                                        columnNumber: 37
+                                        lineNumber: 246,
+                                        columnNumber: 31
                                     }, this),
                                     " XEM THỬ"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                lineNumber: 237,
-                                columnNumber: 29
+                                lineNumber: 239,
+                                columnNumber: 27
                             }, this) : null,
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 className: "btn btn-success rounded-0 mb-2 mt-2",
@@ -1801,7 +1849,7 @@ const DocumentDetail = ({ documentinfo })=>{
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/documentDetail.jsx",
-                                            lineNumber: 249,
+                                            lineNumber: 254,
                                             columnNumber: 50
                                         }, this),
                                         " TẢI LẠI"
@@ -1814,7 +1862,7 @@ const DocumentDetail = ({ documentinfo })=>{
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/documentDetail.jsx",
-                                            lineNumber: 249,
+                                            lineNumber: 254,
                                             columnNumber: 114
                                         }, this),
                                         " TẢI XUỐNG"
@@ -1822,18 +1870,18 @@ const DocumentDetail = ({ documentinfo })=>{
                                 }, void 0, true)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                lineNumber: 245,
+                                lineNumber: 250,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/documentDetail.jsx",
-                        lineNumber: 235,
+                        lineNumber: 237,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$divider$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Divider$3e$__["Divider"], {}, void 0, false, {
                         fileName: "[project]/src/components/documentDetail.jsx",
-                        lineNumber: 252,
+                        lineNumber: 257,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1842,7 +1890,7 @@ const DocumentDetail = ({ documentinfo })=>{
                         children: "MUA NGAY ĐỂ XEM TOÀN BỘ TÀI LIỆU"
                     }, void 0, false, {
                         fileName: "[project]/src/components/documentDetail.jsx",
-                        lineNumber: 255,
+                        lineNumber: 260,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1855,7 +1903,7 @@ const DocumentDetail = ({ documentinfo })=>{
                                 children: "CÁCH TẢI TÀI LIỆU:"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                lineNumber: 259,
+                                lineNumber: 264,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1868,7 +1916,7 @@ const DocumentDetail = ({ documentinfo })=>{
                                                 children: "Bước 1:"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                                lineNumber: 263,
+                                                lineNumber: 268,
                                                 columnNumber: 46
                                             }, this),
                                             " Nếu số dư tài khoản đủ, bạn chỉ cần ấn nút ",
@@ -1876,14 +1924,14 @@ const DocumentDetail = ({ documentinfo })=>{
                                                 children: "TẢI XUỐNG"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                                lineNumber: 263,
+                                                lineNumber: 268,
                                                 columnNumber: 114
                                             }, this),
                                             "."
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                        lineNumber: 263,
+                                        lineNumber: 268,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1893,7 +1941,7 @@ const DocumentDetail = ({ documentinfo })=>{
                                                 children: "Bước 2:"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                                lineNumber: 264,
+                                                lineNumber: 269,
                                                 columnNumber: 46
                                             }, this),
                                             " Nếu số dư không đủ, ấn TẢI XUỐNG để mở bảng chọn ",
@@ -1901,14 +1949,14 @@ const DocumentDetail = ({ documentinfo })=>{
                                                 children: "Nạp tiền"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                                lineNumber: 264,
+                                                lineNumber: 269,
                                                 columnNumber: 120
                                             }, this),
                                             ". Sau đó chọn số tiền muốn nạp và quét mã QR để thanh toán."
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                        lineNumber: 264,
+                                        lineNumber: 269,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1918,7 +1966,7 @@ const DocumentDetail = ({ documentinfo })=>{
                                                 children: "Bước 3:"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                                lineNumber: 265,
+                                                lineNumber: 270,
                                                 columnNumber: 46
                                             }, this),
                                             " Sau khi thanh toán thành công, vui lòng chụp lại giao dịch rồi gửi đến số Zalo ",
@@ -1931,7 +1979,7 @@ const DocumentDetail = ({ documentinfo })=>{
                                                         children: "0386.117.490"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                                        lineNumber: 265,
+                                                        lineNumber: 270,
                                                         columnNumber: 220
                                                     }, this),
                                                     " ",
@@ -1939,20 +1987,20 @@ const DocumentDetail = ({ documentinfo })=>{
                                                         children: "(nhấn vào đây)"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                                        lineNumber: 265,
+                                                        lineNumber: 270,
                                                         columnNumber: 250
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                                lineNumber: 265,
+                                                lineNumber: 270,
                                                 columnNumber: 150
                                             }, this),
                                             " để được xác nhận."
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                        lineNumber: 265,
+                                        lineNumber: 270,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1962,20 +2010,20 @@ const DocumentDetail = ({ documentinfo })=>{
                                                 children: "Bước 4:"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                                lineNumber: 266,
+                                                lineNumber: 271,
                                                 columnNumber: 46
                                             }, this),
                                             " Sau khi được xác nhận thành công, quay lại trang này và tải tài liệu."
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                        lineNumber: 266,
+                                        lineNumber: 271,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                lineNumber: 262,
+                                lineNumber: 267,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1997,7 +2045,7 @@ const DocumentDetail = ({ documentinfo })=>{
                                         children: "Tư vấn nhanh"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                        lineNumber: 272,
+                                        lineNumber: 277,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$PhoneOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__PhoneOutlined$3e$__["PhoneOutlined"], {
@@ -2006,7 +2054,7 @@ const DocumentDetail = ({ documentinfo })=>{
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                        lineNumber: 284,
+                                        lineNumber: 289,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2014,7 +2062,7 @@ const DocumentDetail = ({ documentinfo })=>{
                                         children: "Hotline hỗ trợ:"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                        lineNumber: 285,
+                                        lineNumber: 290,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2025,24 +2073,24 @@ const DocumentDetail = ({ documentinfo })=>{
                                         children: " 0386.117.490 "
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/documentDetail.jsx",
-                                        lineNumber: 286,
+                                        lineNumber: 291,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/documentDetail.jsx",
-                                lineNumber: 268,
+                                lineNumber: 273,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/documentDetail.jsx",
-                        lineNumber: 258,
+                        lineNumber: 263,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$divider$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Divider$3e$__["Divider"], {}, void 0, false, {
                         fileName: "[project]/src/components/documentDetail.jsx",
-                        lineNumber: 289,
+                        lineNumber: 294,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2052,18 +2100,18 @@ const DocumentDetail = ({ documentinfo })=>{
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/components/documentDetail.jsx",
-                            lineNumber: 293,
+                            lineNumber: 298,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/documentDetail.jsx",
-                        lineNumber: 292,
+                        lineNumber: 297,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/documentDetail.jsx",
-                lineNumber: 168,
+                lineNumber: 170,
                 columnNumber: 13
             }, this),
             showTopup && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$documenttopup$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -2073,13 +2121,108 @@ const DocumentDetail = ({ documentinfo })=>{
                 }
             }, void 0, false, {
                 fileName: "[project]/src/components/documentDetail.jsx",
-                lineNumber: 298,
+                lineNumber: 303,
                 columnNumber: 27
+            }, this),
+            showPreview && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                onClick: ()=>setShowPreview(false),
+                style: {
+                    position: 'fixed',
+                    inset: 0,
+                    background: 'rgba(0,0,0,0.75)',
+                    zIndex: 9999,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                },
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    onClick: (e)=>e.stopPropagation(),
+                    style: {
+                        background: '#fff',
+                        borderRadius: 8,
+                        width: '90vw',
+                        height: '90vh',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        overflow: 'hidden'
+                    },
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                padding: '10px 16px',
+                                borderBottom: '1px solid #eee',
+                                flexShrink: 0
+                            },
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    style: {
+                                        fontWeight: 600,
+                                        fontSize: 15
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$FilePdfOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FilePdfOutlined$3e$__["FilePdfOutlined"], {
+                                            style: {
+                                                color: '#f40f02',
+                                                marginRight: 8
+                                            }
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/documentDetail.jsx",
+                                            lineNumber: 329,
+                                            columnNumber: 33
+                                        }, this),
+                                        "Xem thử tài liệu"
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/documentDetail.jsx",
+                                    lineNumber: 328,
+                                    columnNumber: 29
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    type: "button",
+                                    className: "btn-close",
+                                    onClick: ()=>setShowPreview(false)
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/documentDetail.jsx",
+                                    lineNumber: 332,
+                                    columnNumber: 29
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/documentDetail.jsx",
+                            lineNumber: 324,
+                            columnNumber: 25
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("iframe", {
+                            src: documentinfo.LINK_PREVIEW,
+                            title: "Xem thử tài liệu",
+                            style: {
+                                flex: 1,
+                                border: 'none',
+                                width: '100%'
+                            }
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/documentDetail.jsx",
+                            lineNumber: 334,
+                            columnNumber: 25
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/components/documentDetail.jsx",
+                    lineNumber: 315,
+                    columnNumber: 21
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/src/components/documentDetail.jsx",
+                lineNumber: 306,
+                columnNumber: 17
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/documentDetail.jsx",
-        lineNumber: 100,
+        lineNumber: 102,
         columnNumber: 9
     }, this);
 };

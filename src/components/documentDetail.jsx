@@ -81,6 +81,8 @@ const { appcontext } = useAppContext();
         }
     };
 
+    const [showPreview, setShowPreview] = useState(false);
+
     const toggleTopup = () => {
         setShowTopup(!showTopup);
     };
@@ -234,13 +236,16 @@ const { appcontext } = useAppContext();
                 {/*  Action */}
                 <div className="form-action">
                     {!documentinfo.BOUGHT && documentinfo.LINK_FULL
-                        ?   <button  type="button" className="btn btn-dark rounded-0 me-2 mb-2 mt-2 js-preView" onClick={() => {
-                                    if (documentinfo.LINK_FULL) {
-                                        window.open(`${documentinfo.LINK_FULL}`)
-                                    }
-                                }}>
-                                    <FilePdfOutlined style={{marginRight:"10px"}}/> XEM THỬ
-                    </button> : null}
+                        ? <button type="button" className="btn btn-dark rounded-0 me-2 mb-2 mt-2" onClick={() => {
+                              if (documentinfo.LINK_PREVIEW) {
+                                  setShowPreview(true);
+                              } else {
+                                  window.open(documentinfo.LINK_FULL);
+                              }
+                          }}>
+                              <FilePdfOutlined style={{marginRight:"10px"}}/> XEM THỬ
+                          </button>
+                        : null}
                     
                     <button
                         className="btn btn-success rounded-0 mb-2 mt-2" type="button" data-bs-toggle="modal" data-bs-target="#buyDocumentModal"
@@ -296,6 +301,44 @@ const { appcontext } = useAppContext();
             </div>
             {/* MOdal */}
             {showTopup && <DocumentTopup props={{ onClose: toggleTopup, documentinfo }} />}
+
+            {showPreview && (
+                <div
+                    onClick={() => setShowPreview(false)}
+                    style={{
+                        position: 'fixed', inset: 0,
+                        background: 'rgba(0,0,0,0.75)',
+                        zIndex: 9999,
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    }}
+                >
+                    <div
+                        onClick={e => e.stopPropagation()}
+                        style={{
+                            background: '#fff', borderRadius: 8,
+                            width: '90vw', height: '90vh',
+                            display: 'flex', flexDirection: 'column',
+                            overflow: 'hidden',
+                        }}
+                    >
+                        <div style={{
+                            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                            padding: '10px 16px', borderBottom: '1px solid #eee', flexShrink: 0,
+                        }}>
+                            <span style={{ fontWeight: 600, fontSize: 15 }}>
+                                <FilePdfOutlined style={{ color: '#f40f02', marginRight: 8 }} />
+                                Xem thử tài liệu
+                            </span>
+                            <button type="button" className="btn-close" onClick={() => setShowPreview(false)} />
+                        </div>
+                        <iframe
+                            src={documentinfo.LINK_PREVIEW}
+                            title="Xem thử tài liệu"
+                            style={{ flex: 1, border: 'none', width: '100%' }}
+                        />
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

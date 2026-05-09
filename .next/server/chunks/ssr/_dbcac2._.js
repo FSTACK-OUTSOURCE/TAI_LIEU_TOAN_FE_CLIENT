@@ -332,7 +332,7 @@ async function Page({ params }) {
                 lineNumber: 94,
                 columnNumber: 13
             }, this),
-            !childDocuments?.length && documentinfo?.PRICE ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            documentinfo?.PRICE ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "section-heading mt-3 pt-3 pb-3 mb-3",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$documentDetail$2e$jsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
                     documentinfo: documentinfo
@@ -353,7 +353,8 @@ async function Page({ params }) {
                         ...documentinfo
                     },
                     topics,
-                    isShowDetail: childDocuments?.length === 0 && documentinfo?.PRICE,
+                    isShowDetail: !!documentinfo?.PRICE,
+                    isBundle: childDocuments?.length > 0,
                     parentDocument
                 }
             }, void 0, false, {
@@ -367,33 +368,12 @@ async function Page({ params }) {
         lineNumber: 93,
         columnNumber: 22
     }, this);
-    // return (
-    //     <section>
-    //         <div className="section-heading mt-3 pt-3 pb-3 mb-3 filterListFile">
-    //             {breadData ? <Breadcrumb
-    //                 items={breadData}
-    //             /> : <></>}
-    //         </div>
-    //         {!childDocuments?.length && documentinfo?.PRICE ?
-    //             <div className="section-heading mt-3 pt-3 pb-3 mb-3">
-    //                 <DocumentDetail documentinfo={documentinfo} />
-    //             </div> : <></>}
-    //         <DocumentItem 
-    //             props={{ 
-    //                 documentinfo: { childDocuments: childDocuments?.length > 0 ? childDocuments : similarDocuments.filter(x => x.DOCUMENT_ID != documentinfo.DOCUMENT_ID), ...documentinfo }, 
-    //                 topics, 
-    //                 isShowDetail: childDocuments?.length === 0 && documentinfo?.PRICE, 
-    //                 parentDocument
-    //             }} />
-    //     </section>
-    // );
-    // 
     if (childDocuments?.length) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$mainTempalte$2e$jsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
             children: content
         }, void 0, false, {
             fileName: "[project]/src/app/[...slug]/page.jsx",
-            lineNumber: 134,
+            lineNumber: 114,
             columnNumber: 16
         }, this);
     }
