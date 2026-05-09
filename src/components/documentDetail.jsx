@@ -173,12 +173,12 @@ const { appcontext } = useAppContext();
                 <div className='form-name' dangerouslySetInnerHTML={{ __html: documentinfo?.NAME || '' }} />
                 
                 {/* info download */}
-                <div className="form-info-download">
+                {/* <div className="form-info-download">
                     <div className='info-download-item'>
                         <DownloadOutlined style={{color:"#5c6c75"}}/>
                         <span>{888} Lượt tải</span>
                     </div>
-                </div>
+                </div> */}
                 
                 {/* price */}
                 {documentinfo?.PRICE ? <div className='form-price'>

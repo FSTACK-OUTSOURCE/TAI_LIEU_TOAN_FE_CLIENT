@@ -310,12 +310,12 @@ async function Page({ params }) {
     const topics = childDocuments.length > 0 ? await fetchTopics(documentinfo.DOCUMENT_ID) : [];
     const similarDocuments = await fetchSimilarDocuments(documentinfo.PARENT_DOCUMENT_ID);
     const parentDocument = await fetchParentDocument(documentinfo.PARENT_DOCUMENT_ID);
-    // console.log("documentinfo", documentinfo)
-    // console.log("breadData", breadData)
-    // console.log("childDocuments", childDocuments)
-    // console.log("topics", topics)
-    // console.log("similarDocuments", similarDocuments)
-    // console.log("parentDocument", parentDocument)
+    console.log("documentinfo", documentinfo);
+    console.log("breadData", breadData);
+    console.log("childDocuments", childDocuments);
+    console.log("topics", topics);
+    console.log("similarDocuments", similarDocuments);
+    console.log("parentDocument", parentDocument);
     const content = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -368,15 +368,9 @@ async function Page({ params }) {
         lineNumber: 93,
         columnNumber: 22
     }, this);
-    if (childDocuments?.length) {
-        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$mainTempalte$2e$jsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
-            children: content
-        }, void 0, false, {
-            fileName: "[project]/src/app/[...slug]/page.jsx",
-            lineNumber: 114,
-            columnNumber: 16
-        }, this);
-    }
+    // if(!childDocuments?.length && !similarDocuments?.length){
+    //     return <MainTempalte>{content}</MainTempalte> 
+    // }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Fragment"], {
         children: content
     }, void 0, false);

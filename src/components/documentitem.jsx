@@ -216,6 +216,7 @@ const DocumentItem = ({ props }) => {
       {displayDocuments?.length > 0 ? (
         <div className="form-group row">
           {(() => {
+            if(!documentinfo?.PRICE) return null
             let content = null;
             if (isBundle) {
               const count = documentinfo.childDocuments.filter(

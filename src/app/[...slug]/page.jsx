@@ -83,12 +83,12 @@ export default async function Page({
     const topics = childDocuments.length > 0 ? await fetchTopics(documentinfo.DOCUMENT_ID) : []
     const similarDocuments = await fetchSimilarDocuments(documentinfo.PARENT_DOCUMENT_ID)
     const parentDocument = await fetchParentDocument(documentinfo.PARENT_DOCUMENT_ID)
-    // console.log("documentinfo", documentinfo)
-    // console.log("breadData", breadData)
-    // console.log("childDocuments", childDocuments)
-    // console.log("topics", topics)
-    // console.log("similarDocuments", similarDocuments)
-    // console.log("parentDocument", parentDocument)
+    console.log("documentinfo", documentinfo)
+    console.log("breadData", breadData)
+    console.log("childDocuments", childDocuments)
+    console.log("topics", topics)
+    console.log("similarDocuments", similarDocuments)
+    console.log("parentDocument", parentDocument)
 
     const content =  <section>
             <div className="section-heading mt-3 pt-3 pb-3 mb-3 filterListFile">
@@ -110,8 +110,8 @@ export default async function Page({
                 }} />
         </section>
 
-    if(childDocuments?.length ){
-        return <MainTempalte>{content}</MainTempalte> 
-    }
+    // if(!childDocuments?.length && !similarDocuments?.length){
+    //     return <MainTempalte>{content}</MainTempalte> 
+    // }
     return <>{content}</>
 }
