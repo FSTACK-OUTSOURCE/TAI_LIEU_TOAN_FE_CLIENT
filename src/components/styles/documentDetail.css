@@ -26,6 +26,7 @@
         color:#db3030;
         font-size:24px;
         font-weight:700;
+        margin: 0;
     }
 }
 
@@ -41,8 +42,63 @@
     justify-content: start;
     align-items: center;
     gap: 8px;
+    flex-wrap: wrap;
 
     button {
         padding: 10px 28px;
+    }
+}
+
+/* ========== MOBILE ========== */
+@media (max-width: 768px) {
+    .form-name {
+        font-size: 18px;
+        margin-bottom: 6px;
+    }
+    .form-price {
+        margin: 12px 0;
+        padding: 10px 12px;
+        p { font-size: 18px; }
+    }
+    .detail-info td {
+        font-size: 13px;
+        padding: 6px 4px !important;
+    }
+    .detail-info table { margin-bottom: 0 !important; }
+    .form-action {
+        gap: 6px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .form-action button {
+        padding: 10px 16px;
+        margin: 0 !important;
+        width: 100%;
+        font-size: 14px;
+    }
+    .order-step ul { padding-left: 18px !important; font-size: 13px; }
+    .order-step h6 { font-size: 14px; }
+    .alert { font-size: 13px; padding: 10px 12px; }
+}
+
+@media (max-width: 480px) {
+    .form-name { font-size: 16px; }
+    .form-price p { font-size: 16px; }
+}
+
+@media (max-width: 768px) {
+    .document-detail-root {
+        padding: 14px !important;
+        margin: 0 !important;
+    }
+    .document-detail-root > .col-md-5,
+    .document-detail-root > .col-md-7 {
+        padding-left: 4px;
+        padding-right: 4px;
+        margin-bottom: 12px;
+    }
+    .document-detail-root > .col-md-5 > div > div[style*="aspect-ratio"] {
+        max-height: 60vh;
+        aspect-ratio: 4/3 !important;
     }
 }

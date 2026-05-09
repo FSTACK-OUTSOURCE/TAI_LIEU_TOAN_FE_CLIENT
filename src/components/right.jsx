@@ -14,7 +14,7 @@ const Right = () => {
     }
     const phoneNumber = getConfig({ configs: appcontext.configs, name: 'hotline' })
     return (
-        <div className="col-lg-3 col-xl-3">
+        <div>
             <Balance />
             <div className="card mt-3">
                 <p className="titleHuongDan">

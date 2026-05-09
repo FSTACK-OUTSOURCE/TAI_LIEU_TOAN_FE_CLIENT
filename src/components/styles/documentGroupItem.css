@@ -1,3 +1,20 @@
 .ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
   color: white;
 }
+
+/* ========== MOBILE responsive for DocumentGroupItem ========== */
+@media (max-width: 768px) {
+  .doc-group-section { margin-top: 24px !important; }
+  .doc-group-section .doc-group-item { margin-bottom: 36px !important; }
+  .doc-group-section .doc-group-header {
+    margin-left: 8px !important;
+    margin-right: 8px !important;
+    padding-bottom: 8px !important;
+    margin-bottom: 12px !important;
+  }
+  .doc-group-section .doc-group-slider-wrap { padding: 0 8px !important; }
+  .doc-group-section .doc-group-card-thumb,
+  .doc-group-section .doc-group-card-thumb img {
+    height: 140px !important;
+  }
+}

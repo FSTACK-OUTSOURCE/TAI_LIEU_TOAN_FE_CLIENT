@@ -29,21 +29,50 @@ const Sidebar = () => {
     ];
 
     return (
-        <div
-            style={{
-                width: "100%",
-                height: 44,
-                display: "flex",
-                alignItems: "stretch",
-                justifyContent: "flex-end",
-                paddingRight: 20,
-                background: "linear-gradient(90deg, #006590 0%, #0088c2 100%)",
-                boxShadow: "0 2px 6px rgba(0,0,0,0.08)",
-            }}
-        >
-            {items.map((it, i) => (
-                <NavItem key={i} {...it} />
-            ))}
+        <div className="sidebar-nav">
+            <div className="sidebar-nav__inner">
+                {items.map((it, i) => (
+                    <NavItem key={i} {...it} />
+                ))}
+            </div>
+            <style jsx global>{`
+                .sidebar-nav {
+                    width: 100%;
+                    height: 44px;
+                    display: flex;
+                    align-items: stretch;
+                    justify-content: flex-end;
+                    padding-right: 20px;
+                    background: linear-gradient(90deg, #006590 0%, #0088c2 100%);
+                    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+                    overflow: hidden;
+                }
+                .sidebar-nav__inner {
+                    display: flex;
+                    align-items: stretch;
+                }
+                @media (max-width: 768px) {
+                    .sidebar-nav {
+                        height: 40px;
+                        padding-right: 0;
+                        justify-content: flex-start;
+                        overflow-x: auto;
+                        overflow-y: hidden;
+                        -webkit-overflow-scrolling: touch;
+                        scrollbar-width: none;
+                    }
+                    .sidebar-nav::-webkit-scrollbar { display: none; }
+                    .sidebar-nav__inner {
+                        flex: 0 0 auto;
+                        margin: 0 auto;
+                        min-width: max-content;
+                    }
+                    .sidebar-nav__inner > div {
+                        padding: 0 12px !important;
+                        font-size: 13px !important;
+                    }
+                }
+            `}</style>
         </div>
     );
 }

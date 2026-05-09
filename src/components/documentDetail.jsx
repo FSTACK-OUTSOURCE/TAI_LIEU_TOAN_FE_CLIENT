@@ -1,5 +1,5 @@
 'use client'
-import { DownloadOutlined, FilePdfOutlined, FileWordOutlined, FileExcelOutlined, FilePptOutlined, FileZipOutlined, FileOutlined, PhoneOutlined } from '@ant-design/icons';
+import { DownloadOutlined, FilePdfOutlined, FileWordOutlined, FileExcelOutlined, FilePptOutlined, FileZipOutlined, FileOutlined, PhoneOutlined, ExportOutlined } from '@ant-design/icons';
 import './styles/documentDetail.css'
 import { useState, useMemo, useRef, useEffect } from 'react';
 import { useAppContext } from '@/appcontext';
@@ -7,6 +7,25 @@ import { checkSignIn, downloadDocument } from '@/constants/client';
 import DocumentTopup from './documenttopup';
 import { Divider, Image } from 'antd';
 
+const isUnembeddableUrl = (url) => {
+    if (!url) return true;
+    try {
+        const u = new URL(url);
+        const host = u.hostname;
+        const path = u.pathname;
+        if (host.includes('drive.google.com')) {
+            if (path.includes('/drive/folders/')) return true;
+            if (path.includes('/folderview')) return true;
+            if (path === '/open' && u.searchParams.get('id') && !path.includes('/preview')) return true;
+        }
+        if (host.includes('docs.google.com') && path.includes('/folders/')) return true;
+        if ((host.includes('onedrive.live.com') || host.includes('1drv.ms')) && /folder|cid=/i.test(u.search + path)) return true;
+        if (host.includes('mega.nz') && path.includes('/folder/')) return true;
+        return false;
+    } catch {
+        return false;
+    }
+};
 
 const DocumentDetail = ({documentinfo, childDocumentsCount = 0}) =>{
 const { appcontext } = useAppContext();
@@ -104,8 +123,8 @@ const { appcontext } = useAppContext();
     console.log(documentinfo)
 
     return (
-        <div 
-            className="row" 
+        <div
+            className="row document-detail-root"
             style={{backgroundColor:"#ffffff", padding:"30px", borderRadius:"2px", boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"}}
             >
             <div className="col-md-5 col-lg-5 col-xl-5">
@@ -254,10 +273,11 @@ const { appcontext } = useAppContext();
                 <div className="form-action">
                     {!documentinfo.BOUGHT && documentinfo.LINK_FULL
                         ? <button type="button" className="btn btn-dark rounded-0 me-2 mb-2 mt-2" onClick={() => {
-                              if (documentinfo.LINK_PREVIEW) {
+                              const previewUrl = documentinfo.LINK_PREVIEW;
+                              if (previewUrl && !isUnembeddableUrl(previewUrl)) {
                                   setShowPreview(true);
                               } else {
-                                  window.open(documentinfo.LINK_FULL);
+                                  window.open(previewUrl || documentinfo.LINK_FULL, '_blank', 'noopener,noreferrer');
                               }
                           }}>
                               <FilePdfOutlined style={{marginRight:"10px"}}/> XEM THỬ
@@ -341,12 +361,28 @@ const { appcontext } = useAppContext();
                         <div style={{
                             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                             padding: '10px 16px', borderBottom: '1px solid #eee', flexShrink: 0,
+                            gap: 12,
                         }}>
                             <span style={{ fontWeight: 600, fontSize: 15 }}>
                                 <FilePdfOutlined style={{ color: '#f40f02', marginRight: 8 }} />
                                 Xem thử tài liệu
                             </span>
-                            <button type="button" className="btn-close" onClick={() => setShowPreview(false)} />
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                                <a
+                                    href={documentinfo.LINK_PREVIEW}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{
+                                        display: 'inline-flex', alignItems: 'center', gap: 6,
+                                        padding: '4px 12px', fontSize: 13, fontWeight: 500,
+                                        color: '#1677ff', border: '1px solid #1677ff',
+                                        borderRadius: 4, textDecoration: 'none',
+                                    }}
+                                >
+                                    <ExportOutlined /> Mở tab mới
+                                </a>
+                                <button type="button" className="btn-close" onClick={() => setShowPreview(false)} />
+                            </div>
                         </div>
                         <iframe
                             src={documentinfo.LINK_PREVIEW}

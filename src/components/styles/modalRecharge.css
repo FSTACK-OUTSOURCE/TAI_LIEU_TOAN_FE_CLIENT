@@ -119,3 +119,44 @@
     align-items: center;
     background-color: white;
 }
+
+/* ========== MOBILE ========== */
+@media (max-width: 768px) {
+    .modal-recharge-container { padding: 4px 0; }
+    .budget-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .budget-item {
+        padding: 14px 8px;
+        border-radius: 8px;
+    }
+    .budget-value { font-size: 16px; }
+    .budget-bonus-badge { font-size: 10px; padding: 3px 8px; }
+    .payment-method-container { padding: 0; }
+    .payment-split-layout {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+    }
+    .payment-right-col { width: 100%; }
+    .payment-left-col { width: 100%; }
+    .payment-instruction-box { font-size: 13px; padding: 10px 12px; }
+    .payment-info-table td { padding: 8px 10px; font-size: 13px; }
+    .payment-info-table .info-label { width: 38%; }
+    .qr-code-wrapper { padding: 12px; }
+    .qr-code-wrapper img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .budget-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    .budget-item { padding: 12px 6px; }
+    .budget-value { font-size: 14px; }
+}

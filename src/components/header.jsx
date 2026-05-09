@@ -28,7 +28,7 @@ const Header = ({ props }) => {
 
     return (
         <nav
-            className="navbar navbar-expand-md navbar-main homeNav"
+            className="navbar navbar-expand-md navbar-main homeNav header-root"
             style={{
                 background: "#ffffff",
                 boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
@@ -37,31 +37,55 @@ const Header = ({ props }) => {
                 flexWrap: "wrap",
             }}
         >
-            <div
-                className="logoPage d-flex align-items-center"
-                style={{ gap: 20, flex: "1 1 auto", minWidth: 280 }}
-            >
-                <Image
-                    src="/logo.png"
-                    alt="Tài liệu toán.vn"
-                    className='img-fluid'
-                    onClick={() => router.push(`/`, { scroll: false })}
-                    style={{ cursor: 'pointer', width: 200, flexShrink: 0 }}
-                    preview={false}
-                />
-                <Search
-                    placeholder="Tìm kiếm tài liệu, đề thi, chuyên đề..."
-                    onSearch={handleSearch}
-                    enterButton
-                    allowClear
-                    size="large"
-                    style={{ maxWidth: 600, flex: "1 1 auto" }}
-                    defaultValue={keyword}
-                />
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <Image
+                src="/logo.png"
+                alt="Tài liệu toán.vn"
+                className='img-fluid header-logo'
+                onClick={() => router.push(`/`, { scroll: false })}
+                style={{ cursor: 'pointer', width: 200, flexShrink: 0 }}
+                preview={false}
+            />
+            <div className="header-login-mobile">
                 <Login />
             </div>
+            <Search
+                className="header-search"
+                placeholder="Tìm kiếm tài liệu, đề thi, chuyên đề..."
+                onSearch={handleSearch}
+                enterButton
+                allowClear
+                size="large"
+                style={{ maxWidth: 600, flex: "1 1 auto" }}
+                defaultValue={keyword}
+            />
+            <div className="header-login-desktop">
+                <Login />
+            </div>
+            <style jsx global>{`
+                .header-login-mobile { display: none; }
+                .header-login-desktop { display: flex; align-items: center; gap: 12px; }
+                @media (max-width: 768px) {
+                    .header-root {
+                        padding: 10px 12px !important;
+                        gap: 10px !important;
+                    }
+                    .header-logo { width: 140px !important; }
+                    .header-search {
+                        width: 100% !important;
+                        flex: 1 1 100% !important;
+                        max-width: 100% !important;
+                        order: 3;
+                    }
+                    .header-login-mobile {
+                        display: flex;
+                        margin-left: auto;
+                    }
+                    .header-login-desktop { display: none; }
+                }
+                @media (max-width: 480px) {
+                    .header-logo { width: 110px !important; }
+                }
+            `}</style>
         </nav>
     );
 }

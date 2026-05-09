@@ -1,0 +1,280 @@
+/* ============================================================
+   GLOBAL MOBILE RESPONSIVE
+   Breakpoints: <576 = mobile, 576-991 = tablet
+   ============================================================ */
+
+/* -------- Tablet (≤991) -------- */
+@media (max-width: 991px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    max-width: 100% !important;
+  }
+
+  /* Hide right sidebar in MainTempalte on tablet/mobile */
+  .hide-on-tablet {
+    display: none !important;
+  }
+  /* MainTempalte: full width when right column hidden */
+  .row > .col-lg-9.col-xl-9 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* -------- Mobile (≤768) -------- */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  /* Layout: stack category & sidebar nav on mobile */
+  .row > .col-md-3,
+  .row > .col-md-9 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Header tweaks */
+  .homeNav {
+    padding: 8px 12px !important;
+    gap: 8px !important;
+  }
+  .homeNav .logoPage {
+    min-width: 0 !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    width: 100%;
+  }
+  .homeNav .logoPage > .ant-image,
+  .homeNav .logoPage img {
+    width: 140px !important;
+    max-width: 50% !important;
+  }
+  .homeNav .ant-input-search {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 1 100% !important;
+  }
+  .homeNav .ant-input-affix-wrapper,
+  .homeNav .ant-input {
+    font-size: 14px !important;
+  }
+
+  /* Headings */
+  h1 { font-size: 1.5rem !important; }
+  h2 { font-size: 1.3rem !important; }
+  h3 { font-size: 1.15rem !important; }
+
+  /* Tables: horizontal scroll wrapper */
+  .table-responsive-mobile {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  table {
+    font-size: 13px;
+  }
+
+  /* Popups / modals: full width */
+  .popupDocument,
+  .popupTopup,
+  .popup {
+    width: 92vw !important;
+    max-width: 92vw !important;
+    height: auto !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    padding: 14px !important;
+  }
+  .popupDocument {
+    height: 90vh !important;
+  }
+
+  /* Bootstrap card body padding reduce */
+  .card-body {
+    padding: 12px !important;
+  }
+
+  /* Iframe should never overflow */
+  iframe {
+    max-width: 100% !important;
+  }
+
+  /* Banner / large images */
+  .img-fluid {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* AntD pagination size */
+  .ant-pagination-item,
+  .ant-pagination-prev,
+  .ant-pagination-next {
+    min-width: 28px !important;
+    height: 28px !important;
+    line-height: 28px !important;
+    font-size: 13px;
+  }
+
+  /* AntD list item padding + responsive actions */
+  .ant-list-item {
+    padding: 10px 12px !important;
+    flex-wrap: wrap !important;
+  }
+  .ant-list-item-meta {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+  .ant-list-item-meta-content {
+    min-width: 0 !important;
+  }
+  .ant-list-item-meta-title {
+    font-size: 13.5px !important;
+    word-break: break-word;
+  }
+  .ant-list-item-action {
+    flex-wrap: wrap;
+    margin-inline-start: 0 !important;
+    margin-top: 8px;
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .ant-list-item-action > li {
+    padding: 0 4px !important;
+  }
+  .ant-list-item-action-split {
+    display: none !important;
+  }
+  .ant-list-bordered .ant-list-item {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  /* AntD tabs - horizontal scroll on mobile */
+  .ant-tabs-nav {
+    margin-bottom: 8px !important;
+  }
+  .ant-tabs-tab {
+    padding: 6px 10px !important;
+    font-size: 13px !important;
+  }
+
+  /* DivLe - section spacing */
+  .divLe {
+    margin-bottom: 16px !important;
+  }
+  .boxSlick {
+    padding: 12px !important;
+    margin-top: 16px !important;
+    margin-bottom: 16px !important;
+  }
+  .titleHuongDan {
+    font-size: 13px !important;
+    padding: 10px 12px !important;
+  }
+  .centerContent {
+    padding: 6px !important;
+    font-size: 14px;
+  }
+
+  /* SweetAlert2 - shrink slightly */
+  .swal2-popup {
+    width: 90vw !important;
+    max-width: 90vw !important;
+    font-size: 14px !important;
+  }
+}
+
+/* -------- Mobile modals: payment / topup specifics -------- */
+@media (max-width: 768px) {
+  .popupTopup .flexAlignStart {
+    flex-direction: column !important;
+    gap: 16px !important;
+    align-items: stretch !important;
+  }
+  .popupTopup .paymentQR.w-50 {
+    width: 100% !important;
+  }
+  .popupTopup .paymentQR img {
+    max-width: 100%;
+    height: auto !important;
+  }
+  .popupTopup .ant-card-head {
+    padding: 0 14px !important;
+    min-height: 44px !important;
+  }
+  .popupTopup .ant-card-head-title {
+    font-size: 15px !important;
+    padding: 10px 0 !important;
+  }
+  .popupTopup .ant-card-body {
+    padding: 14px !important;
+  }
+  .popupTopup .col-md-1,
+  .popupTopup .col-md-11 {
+    flex: 0 0 auto;
+    width: auto;
+  }
+  .popupTopup .row.form-group {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .popupTopup .payment-method-desc {
+    font-size: 13px;
+  }
+  .popupTopup .payment-method-desc p {
+    margin-bottom: 4px;
+  }
+
+  /* Login form modal */
+  .overlay .popupTopup .ant-form .ant-form-item-label {
+    flex: 0 0 110px;
+    max-width: 110px;
+    text-align: left !important;
+  }
+  .overlay .popupTopup .ant-form .ant-row {
+    flex-wrap: wrap;
+  }
+}
+
+.login-complete-popup {
+  width: 40% !important;
+}
+@media (max-width: 991px) {
+  .login-complete-popup { width: 70% !important; }
+}
+@media (max-width: 768px) {
+  .login-complete-popup { width: 92vw !important; }
+}
+
+/* -------- Small mobile (≤480) -------- */
+@media (max-width: 480px) {
+  .homeNav .logoPage > .ant-image,
+  .homeNav .logoPage img {
+    width: 110px !important;
+  }
+  body {
+    font-size: 13px;
+  }
+  .ant-btn {
+    font-size: 13px !important;
+  }
+  .titleDocumentPage {
+    font-size: 13pt !important;
+  }
+  .labelDocumentDetail {
+    font-size: 16pt !important;
+  }
+  .font14pt {
+    font-size: 12pt !important;
+  }
+  .font12pt {
+    font-size: 11pt !important;
+  }
+}

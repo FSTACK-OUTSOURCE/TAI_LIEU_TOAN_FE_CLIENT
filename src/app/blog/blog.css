@@ -368,7 +368,30 @@
 .blogContent strong { font-weight: 700; color: #1a1a1a; }
 
 /* ── Mobile ─────────────────────────────────────── */
+@media (max-width: 768px) {
+    .blogPageHeader { margin-bottom: 16px; padding: 12px 0 8px; }
+    .blogPageHeader h1 { font-size: 16px; }
+    .blogCardThumb { height: 140px; }
+    .blogCardBody { padding: 12px 14px 10px; }
+    .blogCardTitle { font-size: 14px; }
+    .blogCardDesc { font-size: 12.5px; margin-bottom: 10px; }
+    .blogDocumentBanner { padding: 12px 14px; margin: 18px 0; }
+    .blogDocumentBannerText { font-size: 13px; }
+    .blogFilePreview { margin-top: 24px; padding-top: 16px; }
+    .blogFilePreviewFrame { height: 520px; }
+    .blogFilePreviewTitle { font-size: 16px; }
+    .blogDetailThumb { max-height: 240px; margin-bottom: 16px; }
+    .blogDetailTitle { font-size: 22px; }
+    .blogDetailMeta { font-size: 12px; gap: 8px; padding-bottom: 14px; margin-bottom: 18px; }
+    .blogDetailDesc { font-size: 13px; padding: 10px 14px; margin-bottom: 18px; }
+    .blogContent { font-size: 14px; line-height: 1.75; }
+    .blogContent h1 { font-size: 19px; }
+    .blogContent h2 { font-size: 17px; }
+    .blogContent h3 { font-size: 15px; }
+}
 @media (max-width: 576px) {
-    .blogDetailTitle { font-size: 20px; }
+    .blogDetailTitle { font-size: 18px; }
     .blogDetailContainer { max-width: 100%; }
+    .blogFilePreviewFrame { height: 420px; }
+    .blogCardThumb { height: 180px; }
 }
