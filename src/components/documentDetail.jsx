@@ -353,7 +353,7 @@ const { appcontext } = useAppContext();
                         onClick={e => e.stopPropagation()}
                         style={{
                             background: '#fff', borderRadius: 8,
-                            width: '90vw', height: '90vh',
+                            width: '70vw', height: '80vh',
                             display: 'flex', flexDirection: 'column',
                             overflow: 'hidden',
                         }}

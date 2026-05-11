@@ -35,6 +35,7 @@ const Header = ({ props }) => {
                 padding: "12px 32px",
                 gap: 16,
                 flexWrap: "wrap",
+                alignItems: "center",
             }}
         >
             <Image
@@ -45,9 +46,6 @@ const Header = ({ props }) => {
                 style={{ cursor: 'pointer', width: 200, flexShrink: 0 }}
                 preview={false}
             />
-            <div className="header-login-mobile">
-                <Login />
-            </div>
             <Search
                 className="header-search"
                 placeholder="Tìm kiếm tài liệu, đề thi, chuyên đề..."
@@ -58,12 +56,11 @@ const Header = ({ props }) => {
                 style={{ maxWidth: 600, flex: "1 1 auto" }}
                 defaultValue={keyword}
             />
-            <div className="header-login-desktop">
+            <div className="header-login">
                 <Login />
             </div>
             <style jsx global>{`
-                .header-login-mobile { display: none; }
-                .header-login-desktop { display: flex; align-items: center; gap: 12px; }
+                .header-login { display: flex; align-items: center; flex-shrink: 0; }
                 @media (max-width: 768px) {
                     .header-root {
                         padding: 10px 12px !important;
@@ -76,11 +73,10 @@ const Header = ({ props }) => {
                         max-width: 100% !important;
                         order: 3;
                     }
-                    .header-login-mobile {
-                        display: flex;
+                    .header-login {
+                        order: 2;
                         margin-left: auto;
                     }
-                    .header-login-desktop { display: none; }
                 }
                 @media (max-width: 480px) {
                     .header-logo { width: 110px !important; }
