@@ -1,6 +1,6 @@
-"use client"
-import { Image } from 'antd';
-import { useRouter } from 'next/navigation';
+"use client";
+import { Image } from "antd";
+import { useRouter } from "next/navigation";
 import Slider from "react-slick";
 
 const CustomArrow = ({ className, style, onClick, direction }) => (
@@ -37,95 +37,107 @@ const PinItem = ({ props }) => {
         autoplay: true,
         autoplaySpeed: 3000,
         speed: 500,
-        slidesToShow: 4,
+        slidesToShow: 3,
         slidesToScroll: 1, // scroll 1 image at a time
         nextArrow: <CustomArrow direction="right" />,
         prevArrow: <CustomArrow direction="left" />,
         responsive: [
             {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 992,
+                breakpoint: 600,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 1,
-                }
+                    slidesToScroll: 2,
+                    initialSlide: 2,
+                },
             },
             {
-                breakpoint: 768,
+                breakpoint: 480,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    dots: true
-                }
-            }
-        ]
+                },
+            },
+        ],
     };
 
     return (
-        <div style={{ padding: '0 25px 20px' }}>
+        <div style={{ padding: "0 25px 20px" }}>
             {pin.documents && pin.documents.length > 0 && (
                 <Slider {...settings}>
                     {pin.documents.map((item, index) => (
-                        <div key={index} style={{ padding: '10px' }}>
+                        <div key={index} style={{ padding: "10px" }}>
                             <div
                                 style={{
-                                    margin: '0 10px',
-                                    cursor: 'pointer',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    background: '#fff',
-                                    borderRadius: '8px',
-                                    border: '1px solid #f0f0f0',
-                                    boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
-                                    overflow: 'hidden',
-                                    height: '240px'
+                                    margin: "0 10px",
+                                    cursor: "pointer",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    background: "#fff",
+                                    borderRadius: "8px",
+                                    border: "1px solid #f0f0f0",
+                                    boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
+                                    overflow: "hidden",
+                                    height: "240px",
                                 }}
                                 onClick={() => {
-                                    router.push(`/${item.ROOT_PARENT_NAME_SLUG}/${item.NAME_SLUG}-${item.IDENTITY_KEY}`, { scroll: false })
+                                    router.push(
+                                        `/${item.ROOT_PARENT_NAME_SLUG}/${item.NAME_SLUG}-${item.IDENTITY_KEY}`,
+                                        { scroll: false },
+                                    );
                                 }}
                             >
-                                <div style={{
-                                    width: '100%',
-                                    height: '160px',
-                                    background: '#f8f9fa',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center'
-                                }}>
+                                <div
+                                    style={{
+                                        width: "100%",
+                                        height: "160px",
+                                        background: "#f8f9fa",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                    }}
+                                >
                                     <Image
                                         preview={false}
                                         fallback="/docTaiLieu.png"
-                                        src={item.IMAGE_LINK ? `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}` : (item.IS_FOLDER ? "/folder.png" : "/docTaiLieu.png")}
+                                        src={
+                                            item.IMAGE_LINK
+                                                ? `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}`
+                                                : item.IS_FOLDER
+                                                  ? "/folder.png"
+                                                  : "/docTaiLieu.png"
+                                        }
                                         alt={item.NAME}
-                                        style={{ width: '100%', height: '160px', objectFit: 'cover' }}
+                                        style={{
+                                            width: "100%",
+                                            height: "160px",
+                                            objectFit: "cover",
+                                        }}
                                     />
                                 </div>
-                                <div style={{
-                                    padding: '12px',
-                                    width: '100%',
-                                    flex: 1,
-                                    display: 'flex',
-                                    flexDirection: 'column'
-                                }}>
-                                    <div className="customLink font12pt boxDocument" title={item.NAME} style={{
-                                        display: '-webkit-box',
-                                        WebkitLineClamp: 2,
-                                        WebkitBoxOrient: 'vertical',
-                                        overflow: 'hidden',
-                                        textOverflow: 'ellipsis',
-                                        textAlign: 'left',
-                                        fontWeight: '600',
-                                        color: '#333',
-                                        lineHeight: '1.4'
-                                    }}>
+                                <div
+                                    style={{
+                                        padding: "12px",
+                                        width: "100%",
+                                        flex: 1,
+                                        display: "flex",
+                                        flexDirection: "column",
+                                    }}
+                                >
+                                    <div
+                                        className="customLink font12pt boxDocument"
+                                        title={item.NAME}
+                                        style={{
+                                            display: "-webkit-box",
+                                            WebkitLineClamp: 2,
+                                            WebkitBoxOrient: "vertical",
+                                            overflow: "hidden",
+                                            textOverflow: "ellipsis",
+                                            textAlign: "left",
+                                            fontWeight: "600",
+                                            color: "#333",
+                                            lineHeight: "1.4",
+                                        }}
+                                    >
                                         {item.NAME}
                                     </div>
                                 </div>
@@ -136,6 +148,6 @@ const PinItem = ({ props }) => {
             )}
         </div>
     );
-}
+};
 
 export default PinItem;

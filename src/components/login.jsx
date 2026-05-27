@@ -1,11 +1,11 @@
 "use client"
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button, Dropdown, Form, Input, Select, Card, Divider } from "antd";
 import { useRouter } from 'next/navigation'
 import Swal from 'sweetalert2'
 import { useAppContext } from "@/appcontext";
 import axios from "axios";
-import { signInGoogle } from "@/constants/client"
+import { checkSignIn, signInGoogle } from "@/constants/client"
 import { LogoutOutlined } from "@ant-design/icons";
 
 
@@ -13,6 +13,8 @@ const Login = () => {
 
     const { appcontext, setAppContext } = useAppContext();
     const router = useRouter();
+    const googleSignInRef = useRef(null);
+    const [isGoogleButtonRendered, setIsGoogleButtonRendered] = useState(false);
 
     const items = [
         {
@@ -107,6 +109,10 @@ const Login = () => {
     const phoneNumberRegex = /^0(3|5|7|8|9)\d{8}$/;
 
     useEffect(() => {
+        if (appcontext.username) {
+            return;
+        }
+
         if (!document.getElementById("google-script")) {
             const script = document.createElement("script");
             script.src = "https://accounts.google.com/gsi/client";
@@ -118,10 +124,10 @@ const Login = () => {
         } else {
             initializeGoogleLogin();
         }
-    }, []);
+    }, [appcontext.username]);
 
     const initializeGoogleLogin = () => {
-        if (window.google && window.google.accounts) {
+        if (window.google && window.google.accounts && googleSignInRef.current) {
 
             // Load Google Identity Services SDK
             window.google.accounts.id.initialize({
@@ -131,9 +137,12 @@ const Login = () => {
 
             // Render the Google Sign-In button
             window.google.accounts.id.renderButton(
-                document.getElementById("googleSignIn"),
+                googleSignInRef.current,
                 { theme: "filled_blue", size: "large", shape: "square", locale: "vi" }
             );
+            requestAnimationFrame(() => {
+                setIsGoogleButtonRendered(Boolean(googleSignInRef.current?.children?.length));
+            });
         }
     };
 
@@ -270,7 +279,17 @@ const Login = () => {
                             alignItems: "center",
                         }} size='large' onClick={(e) => e.preventDefault()}>{appcontext.username.charAt(0)}</Button>
                 </Dropdown> :
-                    <div id="googleSignIn"></div>
+                    <div className="login-google-container">
+                        <div ref={googleSignInRef}></div>
+                        {!isGoogleButtonRendered ? (
+                            <Button
+                                className="btn btn-login-v2 btn-danger btn-auth-home"
+                                onClick={() => checkSignIn()}
+                            >
+                                Đăng nhập
+                            </Button>
+                        ) : null}
+                    </div>
             }
         </section>
     )

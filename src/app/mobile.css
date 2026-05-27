@@ -3,6 +3,30 @@
    Breakpoints: <576 = mobile, 576-991 = tablet
    ============================================================ */
 
+/* -------- Home categories panel -------- */
+.home-categories {
+  background-color: #fdf9ed;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.home-categories__title {
+  color: #333;
+  padding: 10px 14px;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+}
+.home-categories__body {
+  padding: 8px 12px 12px;
+}
+.home-categories__body .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+@media (max-width: 768px) {
+  .home-categories__title { font-size: 14px; padding: 8px 10px; }
+  .home-categories__body { padding: 6px 8px 8px; }
+}
+
 /* -------- Tablet (≤991) -------- */
 @media (max-width: 991px) {
   .container,
@@ -126,17 +150,31 @@
   .ant-list-item {
     padding: 10px 12px !important;
     flex-wrap: wrap !important;
+    align-items: flex-start !important;
   }
   .ant-list-item-meta {
-    flex: 1 1 100%;
-    min-width: 0;
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100%;
+    display: flex !important;
+    align-items: center;
+  }
+  .ant-list-item-meta-avatar {
+    margin-right: 12px !important;
+    flex-shrink: 0 !important;
   }
   .ant-list-item-meta-content {
+    flex: 1 1 0% !important;
     min-width: 0 !important;
+    width: auto !important;
+    max-width: 100%;
   }
   .ant-list-item-meta-title {
     font-size: 13.5px !important;
-    word-break: break-word;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    white-space: normal;
   }
   .ant-list-item-action {
     flex-wrap: wrap;

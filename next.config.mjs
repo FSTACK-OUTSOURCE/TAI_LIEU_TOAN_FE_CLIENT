@@ -1,6 +1,18 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: false
-};
-
-export default nextConfig;
+    async rewrites() {
+        return [
+            {
+                source: '/uploads/:path*',
+                destination: 'https://api.tailieutoan.vn/uploads/:path*',
+            },
+        ]
+    },
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'api.tailieutoan.vn',
+            },
+        ],
+    },
+}

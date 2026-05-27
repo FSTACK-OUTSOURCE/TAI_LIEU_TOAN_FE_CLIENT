@@ -48,14 +48,12 @@ export default async function Page() {
   return (
     <MainTempalte>
     <section>
-      <div className="mt-3 divLe categoriesBox backgroundHome">
-        <div className="centerContent fontBold titleYellow" style={{
-            color: "#333",
-        }}>
+      <div className="mt-3 divLe categoriesBox backgroundHome home-categories">
+        <div className="home-categories__title centerContent fontBold titleYellow">
           DANH MỤC
         </div>
-        <div className={`card-body  col-lg-12 col-xs-12`} style={{ backgroundColor: '#fdf9ed' }}>
-          <div className="row">
+        <div className="home-categories__body">
+          <div className="row g-2">
             {folders.map((folder, key) =>
               <FolderItem props={{ folder }} key={key} />
             )}

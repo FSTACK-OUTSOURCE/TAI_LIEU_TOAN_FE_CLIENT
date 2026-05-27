@@ -494,10 +494,26 @@ const DocumentItem = ({ props }) => {
                     font-size: 0.9rem;
                     line-height: 1.35;
                     cursor: pointer;
-                    word-break: break-word;
+                    overflow-wrap: anywhere;
+                    word-break: normal;
+                    white-space: normal;
+                    width: 100%;
+                    display: block;
+                }
+                .docit .ant-list-item-meta {
+                    display: flex !important;
+                    align-items: center;
+                    min-width: 0 !important;
+                    flex: 1 1 0% !important;
                 }
                 .docit .ant-list-item-meta-content {
-                    min-width: 0;
+                    flex: 1 1 0% !important;
+                    min-width: 0 !important;
+                    width: auto !important;
+                }
+                .docit .ant-list-item-meta-avatar {
+                    margin-right: 12px !important;
+                    flex-shrink: 0 !important;
                 }
                 .docit-folder-grid {
                     display: grid;
@@ -594,6 +610,7 @@ const DocumentItem = ({ props }) => {
                     }
                     .docit .ant-list-item {
                         flex-wrap: wrap;
+                        flex-direction: column;
                     }
                     .docit .ant-list-item-action {
                         margin-inline-start: 0 !important;
