@@ -445,8 +445,7 @@ const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
 
                 {/*  Action */}
                 <div className="form-action">
-                    {console.log(documentinfo)}
-                    {!documentinfo.BOUGHT && documentinfo.LINK_FULL ? (
+                    {documentinfo.LINK_PREVIEW ? (
                         <button
                             type="button"
                             className="btn btn-dark rounded-0 me-2 mb-2 mt-2"
