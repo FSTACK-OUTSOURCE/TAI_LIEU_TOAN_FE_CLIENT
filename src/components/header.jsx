@@ -1,24 +1,26 @@
-"use client"
+"use client";
 import { useAppContext } from "@/appcontext";
-import Login from '@/components/login';
-import { Image, Input } from 'antd';
-import { useRouter, useSearchParams } from 'next/navigation';
+import Login from "@/components/login";
+import { Image, Input } from "antd";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo } from "react";
 
 const { Search } = Input;
 
 const Header = ({ props }) => {
-    const { configs, userInfo } = props
-    const searchParams = useSearchParams()
-    const keyword = useMemo(() => searchParams.get('keyword'), [searchParams])
+    const { configs, userInfo } = props;
+    const searchParams = useSearchParams();
+    const keyword = useMemo(() => searchParams.get("keyword"), [searchParams]);
     const router = useRouter();
     const { appcontext, setAppContext } = useAppContext();
 
     const handleSearch = (value) => {
-        const v = (value || '').trim();
+        const v = (value || "").trim();
         if (!v) return;
-        router.push(`/search?keyword=${encodeURIComponent(v)}`, { scroll: false })
-    }
+        router.push(`/search?keyword=${encodeURIComponent(v)}`, {
+            scroll: false,
+        });
+    };
 
     useEffect(() => {
         if (Object.keys(appcontext).length == 0) {
@@ -35,14 +37,15 @@ const Header = ({ props }) => {
                 padding: "12px 32px",
                 gap: 16,
                 flexWrap: "wrap",
+                alignItems: "center",
             }}
         >
             <Image
                 src="/logo.png"
                 alt="Tài liệu toán.vn"
-                className='img-fluid header-logo'
+                className="img-fluid header-logo"
                 onClick={() => router.push(`/`, { scroll: false })}
-                style={{ cursor: 'pointer', width: 200, flexShrink: 0 }}
+                style={{ cursor: "pointer", width: 200, flexShrink: 0 }}
                 preview={false}
             />
             <Search
@@ -78,7 +81,9 @@ const Header = ({ props }) => {
                         padding: 10px 12px !important;
                         gap: 10px !important;
                     }
-                    .header-logo { width: 140px !important; }
+                    .header-logo {
+                        width: 140px !important;
+                    }
                     .header-search {
                         width: 100% !important;
                         flex: 1 1 100% !important;
@@ -93,11 +98,13 @@ const Header = ({ props }) => {
                     }
                 }
                 @media (max-width: 480px) {
-                    .header-logo { width: 110px !important; }
+                    .header-logo {
+                        width: 110px !important;
+                    }
                 }
             `}</style>
         </nav>
     );
-}
+};
 
 export default Header;
