@@ -62,7 +62,7 @@ const Header = ({ props }) => {
                 style={{ maxWidth: 550, flex: "1 1 auto" }}
                 defaultValue={keyword}
             />
-            {!appcontext.username && (
+            {appcontext.username && (
                 <div className="header-balance">
                     <div className="balance-display">
                         <WalletOutlined style={{ marginRight: 4 }} />
