@@ -1,10 +1,16 @@
 "use client";
 import { useAppContext } from "@/appcontext";
+import DocumentEditModal from "@/components/documentEditModal";
 import DocumentTopup from "@/components/documenttopup";
 import { checkSignIn, downloadDocument } from "@/constants/client";
+import { buildDocumentEditUrl, canEditDocument } from "@/constants/documentEdit";
+import { normalizePreviewUrl } from "@/constants/preview";
 import {
     DownloadOutlined,
+    EditOutlined,
     EyeOutlined,
+    ExportOutlined,
+    FilePdfOutlined,
     SortAscendingOutlined,
 } from "@ant-design/icons";
 import { Button, Checkbox, Col, Image, List, Row, Select } from "antd";
@@ -17,6 +23,61 @@ const SORT_OPTIONS = [
     { label: "Cũ nhất", value: "date_asc" },
 ];
 
+const isUnembeddableUrl = (url) => {
+    if (!url) return true;
+    try {
+        const u = new URL(url);
+        const host = u.hostname;
+        const path = u.pathname;
+        if (host.includes("drive.google.com")) {
+            if (path.includes("/drive/folders/")) return true;
+            if (path.includes("/folderview")) return true;
+            if (path === "/open" && u.searchParams.get("id")) return true;
+        }
+        if (host.includes("docs.google.com") && path.includes("/folders/")) {
+            return true;
+        }
+        if (
+            (host.includes("onedrive.live.com") || host.includes("1drv.ms")) &&
+            /folder|cid=/i.test(u.search + path)
+        ) {
+            return true;
+        }
+        if (host.includes("mega.nz") && path.includes("/folder/")) return true;
+        return false;
+    } catch {
+        return false;
+    }
+};
+
+const getPreviewMode = (url) => {
+    if (!url) return "newtab";
+    if (isUnembeddableUrl(url)) return "newtab";
+    try {
+        const u = new URL(url, window.location.origin);
+        const path = u.pathname.toLowerCase();
+        const host = u.hostname.toLowerCase();
+        const apiHost = (() => {
+            try {
+                return new URL(process.env.NEXT_PUBLIC_API_URL || "").hostname;
+            } catch {
+                return "";
+            }
+        })();
+        const isDirectPdf =
+            path.endsWith(".pdf") ||
+            (apiHost && host === apiHost) ||
+            host === window.location.hostname;
+        if (isDirectPdf) return "pdfjs";
+        return "iframe";
+    } catch {
+        return "iframe";
+    }
+};
+
+const buildPdfjsUrl = (fileUrl) =>
+    `/pdfjs/web/viewer.html?file=${encodeURIComponent(fileUrl)}`;
+
 const DocumentItem = ({ props }) => {
     const { documentinfo, topics, isShowDetail, isBundle, parentDocument } =
         props;
@@ -25,11 +86,24 @@ const DocumentItem = ({ props }) => {
     const [selectedTopicIds, setSelectedTopicIds] = useState([]);
     const [sortBy, setSortBy] = useState("default");
     const [showTopup, setShowTopup] = useState(false);
+    const [previewUrl, setPreviewUrl] = useState("");
+    const [editUrl, setEditUrl] = useState("");
     const { appcontext, setAppContext } = useAppContext();
     const router = useRouter();
+    const showEditButton = canEditDocument(appcontext);
 
     const toggleTopup = () => {
         setShowTopup(!showTopup);
+    };
+
+    const openPreview = (url) => {
+        const normalizedUrl = normalizePreviewUrl(url);
+        const mode = getPreviewMode(normalizedUrl);
+        if (mode === "newtab") {
+            window.open(normalizedUrl, "_blank", "noopener,noreferrer");
+            return;
+        }
+        setPreviewUrl(normalizedUrl);
     };
 
     const buyDocument = async (item) => {
@@ -89,17 +163,37 @@ const DocumentItem = ({ props }) => {
                         Tải về
                     </Button>,
                 );
-                if (item.LINK_FULL) {
+                if (item.LINK_PREVIEW) {
                     result.push(
                         <Button
                             key="preview"
-                            className="docit-btn"
+                            className="docit-btn docit-btn--preview"
                             type="text"
                             icon={<EyeOutlined />}
                             size="small"
-                            onClick={() => window.open(`${item.LINK_FULL}`)}
+                            onClick={() => openPreview(item.LINK_PREVIEW)}
                         >
                             Xem thử
+                        </Button>,
+                    );
+                }
+                if (item.LINK_FULL) {
+                    result.push(
+                        <Button
+                            key="full-preview"
+                            className="docit-btn docit-btn--full"
+                            type="text"
+                            icon={<ExportOutlined />}
+                            size="small"
+                            onClick={() =>
+                                window.open(
+                                    item.LINK_FULL,
+                                    "_blank",
+                                    "noopener,noreferrer",
+                                )
+                            }
+                        >
+                            Xem trọn bộ
                         </Button>,
                     );
                 }
@@ -117,6 +211,23 @@ const DocumentItem = ({ props }) => {
                     </Button>,
                 );
             }
+        }
+
+        if (showEditButton) {
+            result.push(
+                <Button
+                    key="edit"
+                    className="docit-btn docit-btn--edit"
+                    type="text"
+                    icon={<EditOutlined />}
+                    size="small"
+                    onClick={() =>
+                        setEditUrl(buildDocumentEditUrl(item))
+                    }
+                >
+                    Chỉnh sửa
+                </Button>,
+            );
         }
 
         return result;
@@ -446,7 +557,7 @@ const DocumentItem = ({ props }) => {
             ) : (
                 <div style={{ textAlign: "center" }}>
                     <iframe
-                        src={documentinfo.LINK_PREVIEW}
+                        src={normalizePreviewUrl(documentinfo.LINK_PREVIEW)}
                         width="800"
                         height="750"
                     />
@@ -459,6 +570,101 @@ const DocumentItem = ({ props }) => {
                         documentinfo: childDocumentInfo,
                     }}
                 />
+            )}
+
+            <DocumentEditModal
+                url={editUrl}
+                onClose={() => setEditUrl("")}
+                title="Chỉnh sửa tài liệu"
+            />
+
+            {previewUrl && (
+                <div
+                    onClick={() => setPreviewUrl("")}
+                    style={{
+                        position: "fixed",
+                        inset: 0,
+                        background: "rgba(0,0,0,0.75)",
+                        zIndex: 9999,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }}
+                >
+                    <div
+                        onClick={(e) => e.stopPropagation()}
+                        style={{
+                            background: "#fff",
+                            borderRadius: 8,
+                            width: "60vw",
+                            height: "90vh",
+                            display: "flex",
+                            flexDirection: "column",
+                            overflow: "hidden",
+                            padding: "0 10px 10px 10px",
+                        }}
+                    >
+                        <div
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "space-between",
+                                padding: "10px 16px",
+                                borderBottom: "1px solid #eee",
+                                flexShrink: 0,
+                                gap: 12,
+                            }}
+                        >
+                            <span style={{ fontWeight: 600, fontSize: 15 }}>
+                                <FilePdfOutlined
+                                    style={{ color: "#f40f02", marginRight: 8 }}
+                                />
+                                Xem thử tài liệu
+                            </span>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: 8,
+                                }}
+                            >
+                                <a
+                                    href={previewUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{
+                                        display: "inline-flex",
+                                        alignItems: "center",
+                                        gap: 6,
+                                        padding: "4px 12px",
+                                        fontSize: 13,
+                                        fontWeight: 500,
+                                        color: "#1677ff",
+                                        border: "1px solid #1677ff",
+                                        borderRadius: 4,
+                                        textDecoration: "none",
+                                    }}
+                                >
+                                    <ExportOutlined /> Mở tab mới
+                                </a>
+                                <button
+                                    type="button"
+                                    className="btn-close"
+                                    onClick={() => setPreviewUrl("")}
+                                />
+                            </div>
+                        </div>
+                        <iframe
+                            src={
+                                getPreviewMode(previewUrl) === "pdfjs"
+                                    ? buildPdfjsUrl(previewUrl)
+                                    : previewUrl
+                            }
+                            title="Xem thử tài liệu"
+                            style={{ flex: 1, border: "none", width: "100%" }}
+                        />
+                    </div>
+                </div>
             )}
 
             <style jsx global>{`
@@ -594,6 +800,36 @@ const DocumentItem = ({ props }) => {
                 .docit .docit-btn--blue {
                     background-color: #1677ff !important;
                     border-color: #1677ff !important;
+                }
+                .docit .docit-btn--preview {
+                    background: #f5f5f5 !important;
+                    color: #262626 !important;
+                    border: 1px solid #eeeeee !important;
+                }
+                .docit .docit-btn--preview:hover {
+                    background: #e6f4ff !important;
+                    color: #0958d9 !important;
+                    border-color: #91caff !important;
+                }
+                .docit .docit-btn--full {
+                    background: #fff !important;
+                    color: #0f766e !important;
+                    border: 1px solid #99f6e4 !important;
+                }
+                .docit .docit-btn--full:hover {
+                    background: #ccfbf1 !important;
+                    color: #115e59 !important;
+                    border-color: #5eead4 !important;
+                }
+                .docit .docit-btn--edit {
+                    background: #fff !important;
+                    color: #1677ff !important;
+                    border: 1px solid #91caff !important;
+                }
+                .docit .docit-btn--edit:hover {
+                    background: #e6f4ff !important;
+                    color: #0958d9 !important;
+                    border-color: #69b1ff !important;
                 }
                 .docit .ant-list-item-action {
                     margin-inline-start: 12px !important;

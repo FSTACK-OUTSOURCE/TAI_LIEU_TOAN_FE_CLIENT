@@ -2,7 +2,13 @@
 import { useAppContext } from "@/appcontext";
 import { checkSignIn, downloadDocument } from "@/constants/client";
 import {
+    buildDocumentEditUrl,
+    canEditDocument,
+} from "@/constants/documentEdit";
+import { normalizePreviewUrl } from "@/constants/preview";
+import {
     DownloadOutlined,
+    EditOutlined,
     ExportOutlined,
     FileExcelOutlined,
     FileOutlined,
@@ -14,6 +20,7 @@ import {
 } from "@ant-design/icons";
 import { Divider, Image } from "antd";
 import { useEffect, useMemo, useRef, useState } from "react";
+import DocumentEditModal from "./documentEditModal";
 import DocumentTopup from "./documenttopup";
 import "./styles/documentDetail.css";
 
@@ -84,6 +91,9 @@ const buildPdfjsUrl = (fileUrl) =>
 const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
     const { appcontext } = useAppContext();
     const [showTopup, setShowTopup] = useState(false);
+    const [editUrl, setEditUrl] = useState("");
+    const previewUrl = normalizePreviewUrl(documentinfo.LINK_PREVIEW);
+    const showEditButton = canEditDocument(appcontext);
 
     const detailImages = useMemo(() => {
         const result = [];
@@ -373,16 +383,6 @@ const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
                                         </strong>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>Số trang:</td>
-                                    <td>
-                                        <strong>
-                                            {documentinfo?.PAGE_COUNT
-                                                ? `${documentinfo.PAGE_COUNT} trang`
-                                                : "đang cập nhật"}
-                                        </strong>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -445,16 +445,18 @@ const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
 
                 {/*  Action */}
                 <div className="form-action">
-                    {documentinfo.LINK_PREVIEW ? (
+                    {previewUrl ? (
                         <button
                             type="button"
                             className="btn btn-dark rounded-0 me-2 mb-2 mt-2"
                             onClick={() => {
-                                const previewUrl = documentinfo.LINK_PREVIEW;
                                 const mode = getPreviewMode(previewUrl);
                                 if (mode === "newtab") {
                                     window.open(
-                                        previewUrl || documentinfo.LINK_FULL,
+                                        previewUrl ||
+                                            normalizePreviewUrl(
+                                                documentinfo.LINK_FULL,
+                                            ),
                                         "_blank",
                                         "noopener,noreferrer",
                                     );
@@ -495,6 +497,36 @@ const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
                             </>
                         )}
                     </button>
+
+                    {documentinfo.LINK_FULL ? (
+                        <button
+                            className="btn btn-outline-danger rounded-0 mb-2 mt-2"
+                            type="button"
+                            onClick={() =>
+                                window.open(
+                                    documentinfo.LINK_FULL,
+                                    "_blank",
+                                    "noopener,noreferrer",
+                                )
+                            }
+                        >
+                            <ExportOutlined style={{ marginRight: "10px" }} />{" "}
+                            XEM TOÀN BỘ
+                        </button>
+                    ) : null}
+
+                    {true ? (
+                        <button
+                            className="btn btn-outline-primary rounded-0 mb-2 mt-2 ms-2"
+                            type="button"
+                            onClick={() =>
+                                setEditUrl(buildDocumentEditUrl(documentinfo))
+                            }
+                        >
+                            <EditOutlined style={{ marginRight: "10px" }} />{" "}
+                            CHỈNH SỬA
+                        </button>
+                    ) : null}
                 </div>
                 <Divider />
 
@@ -585,6 +617,12 @@ const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
                 <DocumentTopup props={{ onClose: toggleTopup, documentinfo }} />
             )}
 
+            <DocumentEditModal
+                url={editUrl}
+                onClose={() => setEditUrl("")}
+                title="Chỉnh sửa tài liệu"
+            />
+
             {showPreview && (
                 <div
                     onClick={() => setShowPreview(false)}
@@ -636,7 +674,7 @@ const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
                                 }}
                             >
                                 <a
-                                    href={documentinfo.LINK_PREVIEW}
+                                    href={previewUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     style={{
@@ -663,10 +701,9 @@ const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
                         </div>
                         <iframe
                             src={
-                                getPreviewMode(documentinfo.LINK_PREVIEW) ===
-                                "pdfjs"
-                                    ? buildPdfjsUrl(documentinfo.LINK_PREVIEW)
-                                    : documentinfo.LINK_PREVIEW
+                                getPreviewMode(previewUrl) === "pdfjs"
+                                    ? buildPdfjsUrl(previewUrl)
+                                    : previewUrl
                             }
                             title="Xem thử tài liệu"
                             style={{ flex: 1, border: "none", width: "100%" }}

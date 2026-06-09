@@ -204,6 +204,14 @@ export default async function RootLayout({ children }) {
     return (
         <html lang="vi" style={{ minHeight: "100vh" }}>
             <head>
+                <link
+                    rel="stylesheet"
+                    href="https://fstack-support.vercel.app/cdn/f542cac3-44cf-4b8d-8e23-94a92208c885/fstack-support.css"
+                />
+                <script
+                    defer
+                    src="https://fstack-support.vercel.app/cdn/f542cac3-44cf-4b8d-8e23-94a92208c885/fstack-support.js"
+                />
                 <script
                     defer
                     dangerouslySetInnerHTML={{
