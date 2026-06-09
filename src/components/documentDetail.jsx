@@ -22,6 +22,7 @@ import { Divider, Image } from "antd";
 import { useEffect, useMemo, useRef, useState } from "react";
 import DocumentEditModal from "./documentEditModal";
 import DocumentTopup from "./documenttopup";
+import ModalRecharge from "./modalRecharge";
 import "./styles/documentDetail.css";
 
 const isUnembeddableUrl = (url) => {
@@ -91,6 +92,7 @@ const buildPdfjsUrl = (fileUrl) =>
 const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
     const { appcontext } = useAppContext();
     const [showTopup, setShowTopup] = useState(false);
+    const [showRecharge, setShowRecharge] = useState(false);
     const [editUrl, setEditUrl] = useState("");
     const previewUrl = normalizePreviewUrl(documentinfo.LINK_PREVIEW);
     const showEditButton = canEditDocument(appcontext);
@@ -473,8 +475,6 @@ const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
                     <button
                         className="btn btn-success rounded-0 mb-2 mt-2"
                         type="button"
-                        data-bs-toggle="modal"
-                        data-bs-target="#buyDocumentModal"
                         onClick={() =>
                             documentinfo?.BOUGHT
                                 ? downloadDocument(documentinfo)
@@ -493,7 +493,7 @@ const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
                                 <DownloadOutlined
                                     style={{ marginRight: "10px" }}
                                 />{" "}
-                                TẢI XUỐNG
+                                ĐẶT MUA
                             </>
                         )}
                     </button>
@@ -535,69 +535,22 @@ const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
                     MUA NGAY ĐỂ XEM TOÀN BỘ TÀI LIỆU
                 </div>
                 <div className="order-step">
-                    <h6
-                        style={{
-                            color: "#008000",
-                        }}
-                    >
-                        CÁCH TẢI TÀI LIỆU:
-                    </h6>
+                    <h6 style={{ color: "#008000" }}>CÁCH MUA:</h6>
                     <ul className="ps-4">
                         <li className="mb-1">
-                            <strong>Bước 1:</strong> Nếu số dư tài khoản đủ, bạn
-                            chỉ cần ấn nút <strong>TẢI XUỐNG</strong>.
+                            <strong>B1:</strong> Gửi phí vào TK: <strong>109004822580</strong> - Nguyễn Thị Long - Ngân hàng VietinBank (QR)
                         </li>
                         <li className="mb-1">
-                            <strong>Bước 2:</strong> Nếu số dư không đủ, ấn TẢI
-                            XUỐNG để mở bảng chọn <strong>Nạp tiền</strong>. Sau
-                            đó chọn số tiền muốn nạp và quét mã QR để thanh
-                            toán.
-                        </li>
-                        <li className="mb-1">
-                            <strong>Bước 3:</strong> Sau khi thanh toán thành
-                            công, vui lòng chụp lại giao dịch rồi gửi đến số
-                            Zalo{" "}
-                            <a
-                                href="https://zalo.me/0386117490"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                <strong>0386.117.490</strong>{" "}
-                                <span>(nhấn vào đây)</span>
-                            </a>{" "}
-                            để được xác nhận.
-                        </li>
-                        <li className="mb-1">
-                            <strong>Bước 4:</strong> Sau khi được xác nhận thành
-                            công, quay lại trang này và tải tài liệu.
+                            <strong>B2:</strong> Nhắn tin tới Zalo <a href="https://zalo.me/0386117490" target="_blank" rel="noreferrer"><strong>NGUYỄN THỊ LONG</strong> (nhấn vào đây)</a> để xác nhận thanh toán và tải tài liệu - giáo án
                         </li>
                     </ul>
-                    <p
-                        className="mt-2 ms-3"
-                        style={{
-                            fontSize: "16px",
-                        }}
-                    >
-                        <a
-                            className="btn btn-info btn-sm rounded-0"
-                            style={{
-                                color: "#fff",
-                                fontSize: "16px",
-                                padding: "3px 7px",
-                            }}
-                            href="https://zalo.me/0386117490"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
+                    <p className="mt-2 ms-3" style={{ fontSize: "16px" }}>
+                        <a className="btn btn-info btn-sm rounded-0" style={{ color: "#fff", fontSize: "16px", padding: "3px 7px" }} href="https://zalo.me/0386117490" target="_blank" rel="noreferrer">
                             Tư vấn nhanh
                         </a>
                         <PhoneOutlined style={{ margin: "0 8px" }} />
-                        <span className="d-none d-md-inline">
-                            Hotline hỗ trợ:
-                        </span>
-                        <span className="fs-5" style={{ color: "#FF5722" }}>
-                            {" "}
-                            0386.117.490{" "}
+                        <span className="fs-5" style={{ color: "#FF5722", marginLeft: 6 }}>
+                            Hotline hỗ trợ: 0386.117.490
                         </span>
                     </p>
                 </div>
@@ -614,8 +567,22 @@ const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
             </div>
             {/* MOdal */}
             {showTopup && (
-                <DocumentTopup props={{ onClose: toggleTopup, documentinfo }} />
+                <DocumentTopup
+                    props={{
+                        onClose: toggleTopup,
+                        documentinfo,
+                        onOpenRecharge: () => {
+                            setShowTopup(false);
+                            setShowRecharge(true);
+                        },
+                    }}
+                />
             )}
+            <ModalRecharge
+                showTopup={showRecharge}
+                handleOk={() => setShowRecharge(false)}
+                handleCancel={() => setShowRecharge(false)}
+            />
 
             <DocumentEditModal
                 url={editUrl}

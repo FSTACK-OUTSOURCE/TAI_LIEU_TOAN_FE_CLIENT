@@ -140,77 +140,12 @@ const DocumentItem = ({ props }) => {
                         key="downloaded"
                         className="docit-badge docit-badge--success"
                     >
-                        ✓ Đã tải
+                        ✓ Đã mua
                     </span>,
                 );
             }
 
-            if (!item.BOUGHT) {
-                result.push(
-                    <span key="price" className="docit-price">
-                        {new Intl.NumberFormat("vi-VN").format(item.PRICE)}đ
-                    </span>,
-                );
-                result.push(
-                    <Button
-                        key="buy"
-                        className="docit-btn docit-btn--primary"
-                        type="primary"
-                        icon={<DownloadOutlined />}
-                        size="small"
-                        onClick={() => buyDocument(item)}
-                    >
-                        Tải về
-                    </Button>,
-                );
-                if (item.LINK_PREVIEW) {
-                    result.push(
-                        <Button
-                            key="preview"
-                            className="docit-btn docit-btn--preview"
-                            type="text"
-                            icon={<EyeOutlined />}
-                            size="small"
-                            onClick={() => openPreview(item.LINK_PREVIEW)}
-                        >
-                            Xem thử
-                        </Button>,
-                    );
-                }
-                if (item.LINK_FULL) {
-                    result.push(
-                        <Button
-                            key="full-preview"
-                            className="docit-btn docit-btn--full"
-                            type="text"
-                            icon={<ExportOutlined />}
-                            size="small"
-                            onClick={() =>
-                                window.open(
-                                    item.LINK_FULL,
-                                    "_blank",
-                                    "noopener,noreferrer",
-                                )
-                            }
-                        >
-                            Xem trọn bộ
-                        </Button>,
-                    );
-                }
-            } else {
-                result.push(
-                    <Button
-                        key="redownload"
-                        className="docit-btn docit-btn--blue"
-                        type="primary"
-                        icon={<DownloadOutlined />}
-                        size="small"
-                        onClick={() => downloadDocument(item)}
-                    >
-                        Tải lại
-                    </Button>,
-                );
-            }
+
         }
 
         if (showEditButton) {
@@ -518,8 +453,8 @@ const DocumentItem = ({ props }) => {
                                                               : "/docTaiLieu.png"
                                                     }
                                                     alt="Tài liệu"
-                                                    width={40}
-                                                    height={40}
+                                                    width={60}
+                                                    height={60}
                                                 />
                                             </div>
                                         }
@@ -669,42 +604,48 @@ const DocumentItem = ({ props }) => {
 
             <style jsx global>{`
                 .docit .docit-item {
-                    padding: 8px 12px !important;
-                    margin-bottom: 4px;
+                    padding: 16px 16px !important;
+                    margin-bottom: 8px;
                     background: #fff;
-                    border: 1px solid #f0f0f0 !important;
-                    border-radius: 6px;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 8px;
                     transition:
                         border-color 0.15s,
-                        background 0.15s;
+                        background 0.15s,
+                        box-shadow 0.15s;
+                    min-height: 90px;
                 }
                 .docit .docit-item:hover {
-                    border-color: #d9d9d9 !important;
-                    background: #fafafa;
+                    border-color: #1677ff !important;
+                    background: #f5f9ff;
+                    box-shadow: 0 2px 8px rgba(22, 119, 255, 0.08);
                 }
                 .docit .docit-item__avatar {
-                    width: 40px;
-                    height: 40px;
+                    width: 60px;
+                    height: 60px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    border-radius: 6px;
-                    background: #fafafa;
+                    border-radius: 8px;
+                    background: #f5f5f5;
                     overflow: hidden;
+                    flex-shrink: 0;
                 }
                 .docit .docit-item__title {
                     border: none;
                     background: none;
                     text-align: left;
                     padding: 0;
-                    font-size: 0.9rem;
-                    line-height: 1.35;
+                    font-size: 0.95rem;
+                    line-height: 1.45;
                     cursor: pointer;
                     overflow-wrap: anywhere;
                     word-break: normal;
                     white-space: normal;
                     width: 100%;
                     display: block;
+                    font-weight: 500;
+                    color: #262626;
                 }
                 .docit .ant-list-item-meta {
                     display: flex !important;
@@ -718,7 +659,7 @@ const DocumentItem = ({ props }) => {
                     width: auto !important;
                 }
                 .docit .ant-list-item-meta-avatar {
-                    margin-right: 12px !important;
+                    margin-right: 16px !important;
                     flex-shrink: 0 !important;
                 }
                 .docit-folder-grid {
@@ -766,10 +707,10 @@ const DocumentItem = ({ props }) => {
                 .docit .docit-badge {
                     display: inline-flex;
                     align-items: center;
-                    gap: 3px;
-                    border-radius: 10px;
-                    padding: 1px 8px;
-                    font-size: 0.72rem;
+                    gap: 4px;
+                    border-radius: 12px;
+                    padding: 4px 12px;
+                    font-size: 0.78rem;
                     font-weight: 600;
                     line-height: 1.4;
                 }

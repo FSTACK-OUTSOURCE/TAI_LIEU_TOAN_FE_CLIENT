@@ -1,9 +1,11 @@
 "use client";
 import { useAppContext } from "@/appcontext";
 import Login from "@/components/login";
-import { Image, Input } from "antd";
+import ModalRecharge from "@/components/modalRecharge";
+import { Image, Input, Button } from "antd";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { WalletOutlined, PlusOutlined } from "@ant-design/icons";
 
 const { Search } = Input;
 
@@ -13,6 +15,8 @@ const Header = ({ props }) => {
     const keyword = useMemo(() => searchParams.get("keyword"), [searchParams]);
     const router = useRouter();
     const { appcontext, setAppContext } = useAppContext();
+    const [showTopup, setShowTopup] = useState(false);
+    const balance = appcontext.balance ? new Intl.NumberFormat("vi-VN").format(appcontext.balance) : "0";
 
     const handleSearch = (value) => {
         const v = (value || "").trim();
@@ -55,13 +59,62 @@ const Header = ({ props }) => {
                 enterButton
                 allowClear
                 size="large"
-                style={{ maxWidth: 600, flex: "1 1 auto" }}
+                style={{ maxWidth: 550, flex: "1 1 auto" }}
                 defaultValue={keyword}
             />
+            {!appcontext.username && (
+                <div className="header-balance">
+                    <div className="balance-display">
+                        <WalletOutlined style={{ marginRight: 4 }} />
+                        <span>{balance}đ</span>
+                    </div>
+                    <Button
+                        type="primary"
+                        size="small"
+                        icon={<PlusOutlined />}
+                        onClick={() => setShowTopup(true)}
+                        className="btn-topup"
+                    >
+                        Nạp tiền
+                    </Button>
+                </div>
+            )}
             <div className="header-login">
                 <Login />
             </div>
+            <ModalRecharge
+                showTopup={showTopup}
+                handleOk={() => setShowTopup(false)}
+                handleCancel={() => setShowTopup(false)}
+            />
             <style jsx global>{`
+                .header-balance {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 6px 12px;
+                    background: transparent;
+                    border-radius: 6px;
+                    flex: 0 0 auto;
+                }
+                .balance-display {
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                    color: #1677ff;
+                }
+                .btn-topup {
+                    border-radius: 20px !important;
+                    font-weight: 700 !important;
+                    color: #ff6a00 !important;
+                    background: #ffffff !important;
+                    border: 1.5px solid #ff6a00 !important;
+                    padding: 6px 16px !important;
+                    box-shadow: none !important;
+                    height: auto !important;
+                }
                 .header-login {
                     display: flex;
                     align-items: center;
@@ -76,30 +129,66 @@ const Header = ({ props }) => {
                     align-items: center;
                     justify-content: center;
                 }
+                @media (max-width: 992px) {
+                    .header-balance {
+                        padding: 4px 10px;
+                        gap: 6px;
+                    }
+                    .balance-display {
+                        font-size: 0.85rem;
+                    }
+                    .btn-topup {
+                        padding: 5px 12px !important;
+                        font-size: 0.9rem !important;
+                        height: 32px !important;
+                    }
+                }
                 @media (max-width: 768px) {
                     .header-root {
                         padding: 10px 12px !important;
                         gap: 10px !important;
+                        flex-wrap: wrap;
+                        position: relative;
                     }
                     .header-logo {
                         width: 140px !important;
+                        order: 1;
                     }
                     .header-search {
-                        width: 100% !important;
-                        flex: 1 1 100% !important;
+                        width: calc(100% - 50px) !important;
+                        flex: 0 1 auto !important;
                         max-width: 100% !important;
-                        order: 3;
+                        order: 2;
                     }
                     .header-login {
                         display: flex;
-                        margin-left: auto;
+                        position: absolute;
+                        right: 12px;
+                        top: 10px;
                         min-width: auto;
-                        order: 2;
+                        order: 0;
+                    }
+                    .header-balance {
+                        width: 100%;
+                        order: 3;
+                        margin-top: 8px;
+                        justify-content: space-between;
+                        background: linear-gradient(135deg, #fef3e2 0%, #fff7e6 100%);
+                        border: 1px solid #ffe7ba;
+                        padding: 8px 12px;
                     }
                 }
                 @media (max-width: 480px) {
                     .header-logo {
                         width: 110px !important;
+                    }
+                    .balance-display {
+                        font-size: 0.8rem;
+                    }
+                    .btn-topup {
+                        padding: 4px 10px !important;
+                        font-size: 0.8rem !important;
+                        height: 30px !important;
                     }
                 }
             `}</style>
