@@ -89,6 +89,17 @@ const getPreviewMode = (url) => {
 const buildPdfjsUrl = (fileUrl) =>
     `/pdfjs/web/viewer.html?file=${encodeURIComponent(fileUrl)}`;
 
+// Dựng URL tải trực tiếp từ FILE_KEY.
+// - Nếu là URL https/http đầy đủ → dùng nguyên.
+// - Nếu là khóa local (vd "local:xxx.docx") → bỏ tiền tố, nối vào /uploads.
+const buildFileDownloadUrl = (fileKey) => {
+    if (!fileKey) return "";
+    if (/^https?:\/\//i.test(fileKey)) return fileKey;
+    const key = fileKey.replace(/^local:/i, "");
+    const base = (process.env.NEXT_PUBLIC_API_URL || "").trim().replace(/\/$/, "");
+    return `${base}/uploads/${key}`;
+};
+
 const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
     const { appcontext } = useAppContext();
     const [showTopup, setShowTopup] = useState(false);
@@ -217,7 +228,37 @@ const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
         }
     };
 
-    console.log(documentinfo);
+    const isFree =
+        documentinfo?.PRICE != null && Number(documentinfo.PRICE) === 0;
+
+    // Tài liệu miễn phí: yêu cầu đăng nhập, sau đó tải thẳng từ FILE_KEY
+    // (không qua modal mua như tài liệu có phí).
+    const downloadFreeDocument = async () => {
+        if (!appcontext.username) {
+            await checkSignIn();
+            return;
+        }
+        const url = buildFileDownloadUrl(documentinfo?.FILE_KEY);
+        if (!url) return;
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `${documentinfo?.NAME || "tai-lieu"}${documentinfo?.FILE_EXTENSION || ""}`;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
+    const handleMainAction = () => {
+        if (isFree) {
+            downloadFreeDocument();
+        } else if (documentinfo?.BOUGHT) {
+            downloadDocument(documentinfo);
+        } else {
+            buyDocument();
+        }
+    };
 
     return (
         <div
@@ -481,13 +522,16 @@ const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
                     <button
                         className="btn btn-success rounded-0 mb-2 mt-2"
                         type="button"
-                        onClick={() =>
-                            documentinfo?.BOUGHT
-                                ? downloadDocument(documentinfo)
-                                : buyDocument()
-                        }
+                        onClick={handleMainAction}
                     >
-                        {documentinfo?.BOUGHT ? (
+                        {isFree ? (
+                            <>
+                                <DownloadOutlined
+                                    style={{ marginRight: "10px" }}
+                                />{" "}
+                                TẢI XUỐNG
+                            </>
+                        ) : documentinfo?.BOUGHT ? (
                             <>
                                 <DownloadOutlined
                                     style={{ marginRight: "10px" }}
