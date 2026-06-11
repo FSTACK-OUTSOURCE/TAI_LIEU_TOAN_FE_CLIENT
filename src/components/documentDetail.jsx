@@ -351,13 +351,19 @@ const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
                 </div> */}
 
                 {/* price */}
-                {documentinfo?.PRICE ? (
+                {documentinfo?.PRICE != null ? (
                     <div className="form-price">
                         <p>
-                            {new Intl.NumberFormat("vi-VN").format(
-                                documentinfo.PRICE,
-                            )}{" "}
-                            đ
+                            {documentinfo.PRICE === 0 ? (
+                                "MIỄN PHÍ"
+                            ) : (
+                                <>
+                                    {new Intl.NumberFormat("vi-VN").format(
+                                        documentinfo.PRICE,
+                                    )}{" "}
+                                    đ
+                                </>
+                            )}
                         </p>
                     </div>
                 ) : null}
@@ -515,7 +521,7 @@ const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
                         </button>
                     ) : null}
 
-                    {true ? (
+                    {showEditButton ? (
                         <button
                             className="btn btn-outline-primary rounded-0 mb-2 mt-2 ms-2"
                             type="button"
@@ -538,18 +544,41 @@ const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
                     <h6 style={{ color: "#008000" }}>CÁCH MUA:</h6>
                     <ul className="ps-4">
                         <li className="mb-1">
-                            <strong>B1:</strong> Gửi phí vào TK: <strong>109004822580</strong> - Nguyễn Thị Long - Ngân hàng VietinBank (QR)
+                            <strong>B1:</strong> Gửi phí vào TK:{" "}
+                            <strong>109004822580</strong> - Nguyễn Thị Long -
+                            Ngân hàng VietinBank (QR)
                         </li>
                         <li className="mb-1">
-                            <strong>B2:</strong> Nhắn tin tới Zalo <a href="https://zalo.me/0386117490" target="_blank" rel="noreferrer"><strong>NGUYỄN THỊ LONG</strong> (nhấn vào đây)</a> để xác nhận thanh toán và tải tài liệu - giáo án
+                            <strong>B2:</strong> Nhắn tin tới Zalo{" "}
+                            <a
+                                href="https://zalo.me/0386117490"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                <strong>NGUYỄN THỊ LONG</strong> (nhấn vào đây)
+                            </a>{" "}
+                            để xác nhận thanh toán và tải tài liệu - giáo án
                         </li>
                     </ul>
                     <p className="mt-2 ms-3" style={{ fontSize: "16px" }}>
-                        <a className="btn btn-info btn-sm rounded-0" style={{ color: "#fff", fontSize: "16px", padding: "3px 7px" }} href="https://zalo.me/0386117490" target="_blank" rel="noreferrer">
+                        <a
+                            className="btn btn-info btn-sm rounded-0"
+                            style={{
+                                color: "#fff",
+                                fontSize: "16px",
+                                padding: "3px 7px",
+                            }}
+                            href="https://zalo.me/0386117490"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
                             Tư vấn nhanh
                         </a>
                         <PhoneOutlined style={{ margin: "0 8px" }} />
-                        <span className="fs-5" style={{ color: "#FF5722", marginLeft: 6 }}>
+                        <span
+                            className="fs-5"
+                            style={{ color: "#FF5722", marginLeft: 6 }}
+                        >
                             Hotline hỗ trợ: 0386.117.490
                         </span>
                     </p>

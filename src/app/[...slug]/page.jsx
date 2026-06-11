@@ -94,6 +94,7 @@ export default async function Page({ params }) {
         return <h1>404 - Page Not Found</h1>;
     }
     const documentinfo = await fetchDocument(identityKey);
+    console.log("documentinfo: ", documentinfo, slug);
     const breadData = await fetchBreadCrumb(documentinfo.DOCUMENT_ID);
     const childDocuments = await fetchChildDocuments(documentinfo.DOCUMENT_ID);
     const topics =
@@ -112,7 +113,7 @@ export default async function Page({ params }) {
             <div className="section-heading mt-3 pt-3 pb-3 mb-3 filterListFile">
                 {breadData ? <Breadcrumb items={breadData} /> : <></>}
             </div>
-            {documentinfo?.PRICE ? (
+            {documentinfo?.PRICE != null ? (
                 <div className="section-heading mt-3 pt-3 pb-3 mb-3">
                     <DocumentDetail
                         documentinfo={documentinfo}
@@ -136,7 +137,7 @@ export default async function Page({ params }) {
                         ...documentinfo,
                     },
                     topics,
-                    isShowDetail: !!documentinfo?.PRICE,
+                    isShowDetail: documentinfo?.PRICE != null,
                     isBundle: childDocuments?.length > 0,
                     parentDocument,
                 }}
