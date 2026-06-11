@@ -37,9 +37,10 @@ const Header = ({ props }) => {
             className="navbar navbar-expand-md navbar-main homeNav header-root"
             style={{
                 background: "#ffffff",
-                boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
+                boxShadow: "none",
+                borderBottom: "1px solid #f0f0f0",
                 padding: "12px 32px",
-                gap: 10,
+                gap: 16,
                 flexWrap: "wrap",
                 alignItems: "center",
             }}
@@ -90,19 +91,27 @@ const Header = ({ props }) => {
                 handleCancel={() => setShowTopup(false)}
             />
             <style jsx global>{`
+                .header-root {
+                    box-shadow: none !important;
+                }
+                .header-search .ant-input-search-button,
+                .header-search .ant-input-affix-wrapper,
+                .header-search .ant-input-group-addon {
+                    box-shadow: none !important;
+                }
                 .header-actions {
                     display: flex;
                     align-items: center;
-                    gap: 8px;
+                    gap: 12px;
                     flex: 0 0 auto;
                 }
                 .header-balance {
                     display: flex;
                     align-items: center;
-                    gap: 8px;
-                    padding: 6px 4px;
+                    gap: 10px;
+                    padding: 4px 6px;
                     background: transparent;
-                    border-radius: 6px;
+                    border-radius: 8px;
                     flex: 0 0 auto;
                 }
                 .balance-display {
@@ -112,16 +121,23 @@ const Header = ({ props }) => {
                     font-size: 0.9rem;
                     font-weight: 600;
                     color: #1677ff;
+                    white-space: nowrap;
                 }
                 .btn-topup {
                     border-radius: 20px !important;
-                    font-weight: 700 !important;
+                    font-weight: 600 !important;
                     color: #ff6a00 !important;
                     background: #ffffff !important;
                     border: 1.5px solid #ff6a00 !important;
-                    padding: 6px 16px !important;
+                    padding: 4px 16px !important;
                     box-shadow: none !important;
-                    height: auto !important;
+                    height: 34px !important;
+                    transition: all 0.2s ease !important;
+                }
+                .btn-topup:hover {
+                    color: #ffffff !important;
+                    background: #ff6a00 !important;
+                    border-color: #ff6a00 !important;
                 }
                 .header-login {
                     display: flex;

@@ -11,6 +11,13 @@ import {
     EyeOutlined,
     ExportOutlined,
     FilePdfOutlined,
+    FileWordOutlined,
+    FileExcelOutlined,
+    FilePptOutlined,
+    FileZipOutlined,
+    FileTextOutlined,
+    ReadOutlined,
+    RightOutlined,
     SortAscendingOutlined,
 } from "@ant-design/icons";
 import { Button, Checkbox, Col, Image, List, Row, Select } from "antd";
@@ -77,6 +84,25 @@ const getPreviewMode = (url) => {
 
 const buildPdfjsUrl = (fileUrl) =>
     `/pdfjs/web/viewer.html?file=${encodeURIComponent(fileUrl)}`;
+
+const FILE_TYPE_META = {
+    doc: { label: "WORD", color: "#2b579a", Icon: FileWordOutlined },
+    docx: { label: "WORD", color: "#2b579a", Icon: FileWordOutlined },
+    pdf: { label: "PDF", color: "#f40f02", Icon: FilePdfOutlined },
+    xls: { label: "EXCEL", color: "#217346", Icon: FileExcelOutlined },
+    xlsx: { label: "EXCEL", color: "#217346", Icon: FileExcelOutlined },
+    ppt: { label: "PPT", color: "#d24726", Icon: FilePptOutlined },
+    pptx: { label: "PPT", color: "#d24726", Icon: FilePptOutlined },
+    zip: { label: "ZIP", color: "#f5a623", Icon: FileZipOutlined },
+    rar: { label: "RAR", color: "#f5a623", Icon: FileZipOutlined },
+};
+
+const getFileTypeMeta = (type) =>
+    FILE_TYPE_META[(type || "").toLowerCase()] || {
+        label: (type || "FILE").toUpperCase(),
+        color: "#8c8c8c",
+        Icon: FileTextOutlined,
+    };
 
 const DocumentItem = ({ props }) => {
     const { documentinfo, topics, isShowDetail, isBundle, parentDocument } =
@@ -156,9 +182,10 @@ const DocumentItem = ({ props }) => {
                     type="text"
                     icon={<EditOutlined />}
                     size="small"
-                    onClick={() =>
-                        setEditUrl(buildDocumentEditUrl(item))
-                    }
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setEditUrl(buildDocumentEditUrl(item));
+                    }}
                 >
                     Chỉnh sửa
                 </Button>,
@@ -435,57 +462,109 @@ const DocumentItem = ({ props }) => {
                                 locale: { items_per_page: "/ trang" },
                             }}
                             dataSource={displayDocuments}
-                            renderItem={(item) => (
-                                <List.Item
-                                    className="docit-item"
-                                    actions={getActions(item)}
-                                >
-                                    <List.Item.Meta
-                                        avatar={
-                                            <div className="docit-item__avatar">
-                                                <Image
-                                                    preview={false}
-                                                    src={
-                                                        item.IMAGE_LINK
-                                                            ? `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}`
-                                                            : item.IS_FOLDER
-                                                              ? "/folder.png"
-                                                              : "/docTaiLieu.png"
-                                                    }
-                                                    alt="Tài liệu"
-                                                    width={60}
-                                                    height={60}
-                                                />
-                                            </div>
-                                        }
-                                        title={
-                                            <button
-                                                className="docit-item__title customLink"
-                                                title={item.NAME}
-                                                onClick={() => {
-                                                    const url = `/${item.ROOT_PARENT_NAME_SLUG}/${item.NAME_SLUG}-${item.IDENTITY_KEY}`;
-                                                    if (item.PRICE) {
-                                                        window.open(
-                                                            url,
-                                                            "_blank",
-                                                        );
-                                                    } else {
-                                                        router.push(url, {
-                                                            scroll: false,
-                                                        });
-                                                    }
-                                                }}
-                                            >
+                            renderItem={(item) => {
+                                const ft = getFileTypeMeta(item.FILE_TYPE);
+                                const openItem = () => {
+                                    const url = `/${item.ROOT_PARENT_NAME_SLUG}/${item.NAME_SLUG}-${item.IDENTITY_KEY}`;
+                                    if (item.PRICE) {
+                                        window.open(url, "_blank");
+                                    } else {
+                                        router.push(url, { scroll: false });
+                                    }
+                                };
+                                return (
+                                    <List.Item
+                                        className="docit-item"
+                                        onClick={openItem}
+                                        actions={getActions(item)}
+                                    >
+                                        <List.Item.Meta
+                                            avatar={
+                                                <div className="docit-item__avatar">
+                                                    <Image
+                                                        preview={false}
+                                                        src={
+                                                            item.IMAGE_LINK
+                                                                ? `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}`
+                                                                : item.IS_FOLDER
+                                                                  ? "/folder.png"
+                                                                  : "/docTaiLieu.png"
+                                                        }
+                                                        alt="Tài liệu"
+                                                        width={64}
+                                                        height={64}
+                                                    />
+                                                    {!item.IS_FOLDER && (
+                                                        <span
+                                                            className="docit-item__filetag"
+                                                            style={{
+                                                                background:
+                                                                    ft.color,
+                                                            }}
+                                                        >
+                                                            <ft.Icon />
+                                                        </span>
+                                                    )}
+                                                </div>
+                                            }
+                                            title={
                                                 <span
+                                                    className="docit-item__title customLink"
+                                                    title={item.NAME}
                                                     dangerouslySetInnerHTML={{
                                                         __html: item.NAME,
                                                     }}
                                                 />
-                                            </button>
-                                        }
-                                    />
-                                </List.Item>
-                            )}
+                                            }
+                                            description={
+                                                <div className="docit-item__meta">
+                                                    {!item.IS_FOLDER && (
+                                                        <span
+                                                            className="docit-chip"
+                                                            style={{
+                                                                color: ft.color,
+                                                                borderColor: `${ft.color}40`,
+                                                            }}
+                                                        >
+                                                            <ft.Icon />
+                                                            {ft.label}
+                                                        </span>
+                                                    )}
+                                                    {item.GRADE && (
+                                                        <span className="docit-chip">
+                                                            <ReadOutlined />
+                                                            Lớp {item.GRADE}
+                                                        </span>
+                                                    )}
+                                                    {item.SUBJECT && (
+                                                        <span className="docit-chip">
+                                                            {item.SUBJECT}
+                                                        </span>
+                                                    )}
+                                                    {item.PRICE != null && (
+                                                        <span
+                                                            className={
+                                                                item.PRICE === 0
+                                                                    ? "docit-chip docit-chip--free"
+                                                                    : "docit-chip docit-chip--price"
+                                                            }
+                                                        >
+                                                            {item.PRICE === 0
+                                                                ? "FREE"
+                                                                : `${new Intl.NumberFormat(
+                                                                      "vi-VN",
+                                                                  ).format(
+                                                                      item.PRICE,
+                                                                  )}đ`}
+                                                        </span>
+                                                    )}
+                                                </div>
+                                            }
+                                        />
+                                        <RightOutlined className="docit-item__arrow" />
+                                    </List.Item>
+                                );
+                            }}
                         />
                     )}
                 </>
@@ -604,54 +683,130 @@ const DocumentItem = ({ props }) => {
 
             <style jsx global>{`
                 .docit .docit-item {
-                    padding: 16px 16px !important;
-                    margin-bottom: 8px;
+                    padding: 14px 18px !important;
+                    margin-bottom: 10px;
                     background: #fff;
-                    border: 1px solid #e8e8e8 !important;
-                    border-radius: 8px;
+                    border: 1px solid #ececec !important;
+                    border-radius: 12px;
+                    cursor: pointer;
                     transition:
-                        border-color 0.15s,
-                        background 0.15s,
-                        box-shadow 0.15s;
-                    min-height: 90px;
+                        border-color 0.18s ease,
+                        background 0.18s ease,
+                        box-shadow 0.18s ease,
+                        transform 0.18s ease;
+                    min-height: 92px;
                 }
                 .docit .docit-item:hover {
-                    border-color: #1677ff !important;
-                    background: #f5f9ff;
-                    box-shadow: 0 2px 8px rgba(22, 119, 255, 0.08);
+                    border-color: #91caff !important;
+                    background: #fafcff;
+                    box-shadow: 0 6px 18px rgba(22, 119, 255, 0.1);
+                    transform: translateY(-2px);
+                }
+                .docit .docit-item:hover .docit-item__title {
+                    color: #1677ff;
+                }
+                .docit .docit-item:hover .docit-item__arrow {
+                    color: #1677ff;
+                    transform: translateX(3px);
                 }
                 .docit .docit-item__avatar {
-                    width: 60px;
-                    height: 60px;
+                    position: relative;
+                    width: 64px;
+                    height: 64px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    border-radius: 8px;
+                    border-radius: 10px;
                     background: #f5f5f5;
+                    border: 1px solid #f0f0f0;
                     overflow: hidden;
                     flex-shrink: 0;
+                }
+                .docit .docit-item__avatar .ant-image-img {
+                    object-fit: cover;
+                    border-radius: 10px;
+                }
+                .docit .docit-item__filetag {
+                    position: absolute;
+                    right: -1px;
+                    bottom: -1px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 22px;
+                    height: 22px;
+                    border-radius: 7px 0 9px 0;
+                    color: #fff;
+                    font-size: 12px;
                 }
                 .docit .docit-item__title {
                     border: none;
                     background: none;
                     text-align: left;
                     padding: 0;
-                    font-size: 0.95rem;
+                    font-size: 0.97rem;
                     line-height: 1.45;
                     cursor: pointer;
                     overflow-wrap: anywhere;
                     word-break: normal;
                     white-space: normal;
                     width: 100%;
-                    display: block;
-                    font-weight: 500;
-                    color: #262626;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    font-weight: 600;
+                    color: #1f1f1f;
+                    transition: color 0.18s ease;
+                }
+                .docit .docit-item__meta {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    gap: 6px;
+                    margin-top: 8px;
+                }
+                .docit .docit-chip {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 4px;
+                    padding: 2px 9px;
+                    font-size: 0.74rem;
+                    font-weight: 600;
+                    line-height: 1.6;
+                    color: #595959;
+                    background: #f5f5f5;
+                    border: 1px solid #ededed;
+                    border-radius: 6px;
+                    white-space: nowrap;
+                }
+                .docit .docit-chip--free {
+                    color: #389e0d;
+                    background: #f6ffed;
+                    border-color: #b7eb8f;
+                }
+                .docit .docit-chip--price {
+                    color: #d46b08;
+                    background: #fff7e6;
+                    border-color: #ffd591;
+                }
+                .docit .docit-item__arrow {
+                    color: #bfbfbf;
+                    font-size: 14px;
+                    margin-left: 8px;
+                    flex-shrink: 0;
+                    transition:
+                        color 0.18s ease,
+                        transform 0.18s ease;
                 }
                 .docit .ant-list-item-meta {
                     display: flex !important;
-                    align-items: center;
+                    align-items: flex-start;
                     min-width: 0 !important;
                     flex: 1 1 0% !important;
+                }
+                .docit .ant-list-item {
+                    align-items: center;
                 }
                 .docit .ant-list-item-meta-content {
                     flex: 1 1 0% !important;
