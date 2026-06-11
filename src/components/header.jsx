@@ -39,7 +39,7 @@ const Header = ({ props }) => {
                 background: "#ffffff",
                 boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
                 padding: "12px 32px",
-                gap: 16,
+                gap: 10,
                 flexWrap: "wrap",
                 alignItems: "center",
             }}
@@ -62,25 +62,27 @@ const Header = ({ props }) => {
                 style={{ maxWidth: 550, flex: "1 1 auto" }}
                 defaultValue={keyword}
             />
-            {appcontext.username && (
-                <div className="header-balance">
-                    <div className="balance-display">
-                        <WalletOutlined style={{ marginRight: 4 }} />
-                        <span>{balance}đ</span>
+            <div className="header-actions">
+                {appcontext.username && (
+                    <div className="header-balance">
+                        <div className="balance-display">
+                            <WalletOutlined style={{ marginRight: 4 }} />
+                            <span>{balance}đ</span>
+                        </div>
+                        <Button
+                            type="primary"
+                            size="small"
+                            icon={<PlusOutlined />}
+                            onClick={() => setShowTopup(true)}
+                            className="btn-topup"
+                        >
+                            Nạp tiền
+                        </Button>
                     </div>
-                    <Button
-                        type="primary"
-                        size="small"
-                        icon={<PlusOutlined />}
-                        onClick={() => setShowTopup(true)}
-                        className="btn-topup"
-                    >
-                        Nạp tiền
-                    </Button>
+                )}
+                <div className="header-login">
+                    <Login />
                 </div>
-            )}
-            <div className="header-login">
-                <Login />
             </div>
             <ModalRecharge
                 showTopup={showTopup}
@@ -88,11 +90,17 @@ const Header = ({ props }) => {
                 handleCancel={() => setShowTopup(false)}
             />
             <style jsx global>{`
+                .header-actions {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    flex: 0 0 auto;
+                }
                 .header-balance {
                     display: flex;
                     align-items: center;
                     gap: 8px;
-                    padding: 6px 12px;
+                    padding: 6px 4px;
                     background: transparent;
                     border-radius: 6px;
                     flex: 0 0 auto;
@@ -119,7 +127,7 @@ const Header = ({ props }) => {
                     display: flex;
                     align-items: center;
                     justify-content: flex-end;
-                    min-width: 128px;
+                    min-width: auto;
                     flex: 0 0 auto;
                 }
                 .login-google-container {
@@ -159,6 +167,10 @@ const Header = ({ props }) => {
                         flex: 0 1 auto !important;
                         max-width: 100% !important;
                         order: 2;
+                    }
+                    .header-actions {
+                        width: 100%;
+                        order: 3;
                     }
                     .header-login {
                         display: flex;

@@ -492,7 +492,7 @@ const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
                                 <DownloadOutlined
                                     style={{ marginRight: "10px" }}
                                 />{" "}
-                                TẢI LẠI
+                                ĐÃ MUA
                             </>
                         ) : (
                             <>
