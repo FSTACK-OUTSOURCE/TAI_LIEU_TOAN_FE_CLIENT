@@ -250,7 +250,7 @@ export default async function RootLayout({ children }) {
                     <meta name="robots" content="noindex,nofollow" />
                 )}
             </head>
-            <AppContextProvider>
+            <AppContextProvider initialValue={{ configs, ...userInfo }}>
                 <body
                     style={{
                         display: "flex",

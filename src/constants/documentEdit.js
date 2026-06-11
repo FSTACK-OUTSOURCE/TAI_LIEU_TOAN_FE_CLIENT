@@ -1,5 +1,6 @@
-export const canEditDocument = (user) =>
-    Boolean(user?.IS_ROOT || user?.IS_EDITER || user?.IS_EDITOR);
+export const canEditDocument = (user) => {
+    return Boolean(user?.IS_ROOT || user?.IS_EDITER || user?.IS_EDITOR);
+}
 
 export const buildDocumentEditUrl = (documentinfo) => {
     const params = new URLSearchParams();
