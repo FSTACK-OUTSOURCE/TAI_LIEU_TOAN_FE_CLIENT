@@ -170,8 +170,24 @@ const DocumentItem = ({ props }) => {
                     </span>,
                 );
             }
+        }
 
-
+        if (isShowDetail && item.LINK_PREVIEW) {
+            result.push(
+                <Button
+                    key="preview"
+                    className="docit-btn docit-btn--preview"
+                    type="text"
+                    icon={<EyeOutlined />}
+                    size="small"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        openPreview(item.LINK_PREVIEW);
+                    }}
+                >
+                    Xem thử
+                </Button>,
+            );
         }
 
         if (showEditButton) {
