@@ -280,7 +280,9 @@ const DocumentGroupItem = ({ props }) => {
                                                         fallback="/docTaiLieu.png"
                                                         src={
                                                             item.IMAGE_LINK
-                                                                ? `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}`
+                                                                ? item.IMAGE_LINK.startsWith('https://')
+                                                                    ? item.IMAGE_LINK
+                                                                    : `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}`
                                                                 : item.IS_FOLDER
                                                                   ? "/folder.png"
                                                                   : "/docTaiLieu.png"

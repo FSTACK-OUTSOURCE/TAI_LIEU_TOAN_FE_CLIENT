@@ -111,14 +111,20 @@ const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
     const detailImages = useMemo(() => {
         const result = [];
         if (documentinfo.IMAGE_LINK)
-            result.push(
-                `${process.env.NEXT_PUBLIC_API_URL}${documentinfo.IMAGE_LINK}`,
-            );
+          result.push(
+    documentinfo.IMAGE_LINK?.startsWith('https://')
+        ? documentinfo.IMAGE_LINK
+        : `${process.env.NEXT_PUBLIC_API_URL}${documentinfo.IMAGE_LINK}`
+);
         try {
             const arr = JSON.parse(documentinfo.IMAGES || "[]");
             if (Array.isArray(arr))
                 arr.forEach((p) =>
-                    result.push(`${process.env.NEXT_PUBLIC_API_URL}${p}`),
+                    result.push(
+                        p?.startsWith('https://')
+                            ? p
+                            : `${process.env.NEXT_PUBLIC_API_URL}${p}`,
+                    ),
                 );
         } catch {}
         return result;

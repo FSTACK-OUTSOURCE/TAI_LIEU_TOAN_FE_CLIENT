@@ -1,12 +1,12 @@
 'use client'
 
-import MainTempalte from './mainTempalte';
-import { List, Image, Button } from 'antd';
-import { DownloadOutlined, EyeOutlined } from '@ant-design/icons';
-import { checkSignIn, downloadDocument } from '@/constants/client';
 import { useAppContext } from '@/appcontext';
+import { checkSignIn, downloadDocument } from '@/constants/client';
+import { DownloadOutlined, EyeOutlined } from '@ant-design/icons';
+import { Button, Image, List } from 'antd';
 import { useState } from 'react';
 import DocumentTopup from './documenttopup';
+import MainTempalte from './mainTempalte';
 
 const DocumentSearch = ({ documents }) => {
     const { appcontext, setAppContext } = useAppContext();
@@ -97,14 +97,22 @@ const DocumentSearch = ({ documents }) => {
                                                 <List.Item.Meta
                                                     avatar={item.IS_FOLDER ? <Image
                                                         preview={false}
-                                                        src={item.IMAGE_LINK ? `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}` : "/folder.png"}
+                                                      src={item.IMAGE_LINK
+    ? item.IMAGE_LINK.startsWith('https://')
+        ? item.IMAGE_LINK
+        : `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}`
+    : "/folder.png"}
                                                         alt="Tài liệu toán.vn"
                                                         className='img-fluid'
                                                         width={50}
                                                         height={50}
                                                     /> : <Image
                                                         preview={false}
-                                                        src={item.IMAGE_LINK ? `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}` : "/docTaiLieu.png"}
+                                                        src={item.IMAGE_LINK
+    ? item.IMAGE_LINK.startsWith('https://')
+        ? item.IMAGE_LINK
+        : `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}`
+    : "/docTaiLieu.png"}
                                                         alt="Tài liệu toán.vn"
                                                         className='img-fluid'
                                                         width={50}

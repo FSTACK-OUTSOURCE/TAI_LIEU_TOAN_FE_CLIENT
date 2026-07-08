@@ -1,14 +1,14 @@
 'use client'
 import { useAppContext } from "@/appcontext";
-import { Button, Image } from 'antd';
-import { DownloadOutlined, EditOutlined, EyeOutlined, InfoCircleOutlined } from '@ant-design/icons';
-import { checkSignIn, handleBadRequest, downloadFile, downloadDocument } from '@/constants/client';
-import { buildDocumentEditUrl, canEditDocument } from "@/constants/documentEdit";
-import { useState } from "react";
-import Swal from 'sweetalert2';
-import DocumentTopup from "@/components/documenttopup";
 import DocumentAdvise from "@/components/documentadvise";
 import DocumentEditModal from "@/components/documentEditModal";
+import DocumentTopup from "@/components/documenttopup";
+import { checkSignIn, downloadDocument, downloadFile, handleBadRequest } from '@/constants/client';
+import { buildDocumentEditUrl, canEditDocument } from "@/constants/documentEdit";
+import { DownloadOutlined, EditOutlined, EyeOutlined, InfoCircleOutlined } from '@ant-design/icons';
+import { Button, Image } from 'antd';
+import { useState } from "react";
+import Swal from 'sweetalert2';
 
 
 const DocumentAction = ({ props }) => {
@@ -66,7 +66,11 @@ const DocumentAction = ({ props }) => {
                 documentinfo.IS_FOLDER && documentinfo.PRICE ? <div className="col-md-2">
                     <Image
                         preview={false}
-                        src={documentinfo.IMAGE_LINK ? `${process.env.NEXT_PUBLIC_API_URL}${documentinfo.IMAGE_LINK}` : "/folder.png"}
+                        src={documentinfo.IMAGE_LINK
+    ? documentinfo.IMAGE_LINK.startsWith('https://')
+        ? documentinfo.IMAGE_LINK
+        : `${process.env.NEXT_PUBLIC_API_URL}${documentinfo.IMAGE_LINK}`
+    : "/folder.png"}
                         alt="Tài liệu toán.vn"
                         className='img-fluid'
                         width={122}
