@@ -435,45 +435,7 @@ const DocumentItem = ({ props }) => {
                     {renderTopicFilter()}
                     {renderToolbar()}
 
-                    {displayDocuments.every((x) => x.IS_FOLDER) ? (
-                        <div className="docit-folder-grid">
-                            {displayDocuments.map((item) => {
-                                const url = `/${item.ROOT_PARENT_NAME_SLUG}/${item.NAME_SLUG}-${item.IDENTITY_KEY}`;
-                                return (
-                                    <button
-                                        key={item.IDENTITY_KEY}
-                                        type="button"
-                                        className="docit-folder-card"
-                                        title={item.NAME}
-                                        onClick={() =>
-                                            router.push(url, { scroll: false })
-                                        }
-                                    >
-                                        <Image
-                                            preview={false}
-                                            src={
-                                                item.IMAGE_LINK
-                                                    ? item.IMAGE_LINK.startsWith('https://')
-                                                        ? item.IMAGE_LINK
-                                                        : `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}`
-                                                    : "/folder.png"
-                                            }
-                                            alt="Thư mục"
-                                            width={56}
-                                            height={56}
-                                        />
-                                        <span
-                                            className="docit-folder-card__name"
-                                            dangerouslySetInnerHTML={{
-                                                __html: item.NAME,
-                                            }}
-                                        />
-                                    </button>
-                                );
-                            })}
-                        </div>
-                    ) : (
-                        <List
+                    <List
                             pagination={{
                                 pageSize: 10,
                                 size: "small",
@@ -586,7 +548,6 @@ const DocumentItem = ({ props }) => {
                                 );
                             }}
                         />
-                    )}
                 </>
             ) : (
                 <div style={{ textAlign: "center" }}>
@@ -836,48 +797,6 @@ const DocumentItem = ({ props }) => {
                 .docit .ant-list-item-meta-avatar {
                     margin-right: 16px !important;
                     flex-shrink: 0 !important;
-                }
-                .docit-folder-grid {
-                    display: grid;
-                    grid-template-columns: repeat(
-                        auto-fill,
-                        minmax(160px, 1fr)
-                    );
-                    gap: 10px;
-                    margin-top: 4px;
-                }
-                .docit-folder-card {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    gap: 8px;
-                    padding: 14px 10px;
-                    background: #fff;
-                    border: 1px solid #f0f0f0;
-                    border-radius: 8px;
-                    cursor: pointer;
-                    transition:
-                        border-color 0.15s,
-                        box-shadow 0.15s,
-                        transform 0.15s;
-                    text-align: center;
-                    min-height: 120px;
-                }
-                .docit-folder-card:hover {
-                    border-color: #1677ff;
-                    box-shadow: 0 2px 8px rgba(22, 119, 255, 0.12);
-                    transform: translateY(-1px);
-                }
-                .docit-folder-card__name {
-                    font-size: 0.82rem;
-                    font-weight: 500;
-                    color: #262626;
-                    line-height: 1.35;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 3;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                    word-break: break-word;
                 }
                 .docit .docit-badge {
                     display: inline-flex;
