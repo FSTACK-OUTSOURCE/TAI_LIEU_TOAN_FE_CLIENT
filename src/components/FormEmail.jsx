@@ -3,11 +3,10 @@ import { useState, useEffect } from "react";
 
 const STORAGE_KEY = "subscription_modal_last_shown";
 const COOLDOWN_DAYS = 5;
-const FORM_ENDPOINT = "https://email-marking.tailieutoan.vn/subscription/form";
 
 const LIST_UUIDS = [
-  "db72f967-0f46-4a16-b9ea-d9ab85e493ac", // Toán
-  "268ac909-60ac-4c56-84d8-fb5f3ab0cd4c", // Toàn bộ
+  "db72f967-0f46-4a16-b9ea-d9ab85e493ac",
+  "268ac909-60ac-4c56-84d8-fb5f3ab0cd4c",
 ];
 
 export default function SubscriptionModal() {
@@ -41,7 +40,7 @@ export default function SubscriptionModal() {
     LIST_UUIDS.forEach((uuid) => body.append("l", uuid));
 
     try {
-      const res = await fetch(FORM_ENDPOINT, {
+      const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: body.toString(),
@@ -51,9 +50,8 @@ export default function SubscriptionModal() {
         setStatus("success");
         localStorage.setItem(STORAGE_KEY, Date.now().toString());
       } else {
-        const text = await res.text();
         setStatus("error");
-        setErrorMsg(text || `Lỗi ${res.status}`);
+        setErrorMsg(`Lỗi ${res.status}. Vui lòng thử lại.`);
       }
     } catch {
       setStatus("error");
