@@ -8,6 +8,7 @@ import { getGroups } from '@/endpoints/group';
 import { Tabs } from 'antd';
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
+import SubscriptionModal from "@/components/FormEmail";
 
 const fetchDocuments = async ({ query }) => {
   var response = await getDocuments({ query });
@@ -47,6 +48,7 @@ export default async function Page() {
   }
   return (
     <MainTempalte>
+      <SubscriptionModal />
     <section>
       <div className="mt-3 divLe categoriesBox backgroundHome home-categories">
         <div className="home-categories__title centerContent fontBold titleYellow">
