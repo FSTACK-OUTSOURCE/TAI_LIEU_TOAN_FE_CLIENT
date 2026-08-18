@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect } from "react";
 
 const STORAGE_KEY = "subscription_modal_last_shown";
