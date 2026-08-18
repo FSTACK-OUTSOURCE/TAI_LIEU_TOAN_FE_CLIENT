@@ -1,18 +1,19 @@
-"use client";
 import { useState, useEffect } from "react";
 
 const STORAGE_KEY = "subscription_modal_last_shown";
 const COOLDOWN_DAYS = 5;
 const FORM_ENDPOINT = "https://email-marking.tailieutoan.vn/subscription/form";
 
-// Subscribe vào cả 2 list
-const LIST_IDS = [3, 4];
+const LIST_UUIDS = [
+  "db72f967-0f46-4a16-b9ea-d9ab85e493ac", // Toán
+  "268ac909-60ac-4c56-84d8-fb5f3ab0cd4c", // Toàn bộ
+];
 
 export default function SubscriptionModal() {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [status, setStatus] = useState("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
@@ -34,8 +35,9 @@ export default function SubscriptionModal() {
 
     const body = new URLSearchParams();
     body.append("email", email);
-    if (name) body.append("name", name);
-    LIST_IDS.forEach((id) => body.append("l[]", id));
+    body.append("name", name);
+    body.append("nonce", "");
+    LIST_UUIDS.forEach((uuid) => body.append("l", uuid));
 
     try {
       const res = await fetch(FORM_ENDPOINT, {
@@ -97,7 +99,9 @@ export default function SubscriptionModal() {
             <div style={{ fontSize: 40, marginBottom: 12 }}>🎉</div>
             <p style={{ fontSize: 17, fontWeight: 600, marginBottom: 6 }}>Đăng ký thành công!</p>
             <p style={{ fontSize: 14, color: "#666" }}>Kiểm tra email để xác nhận đăng ký.</p>
-            <button onClick={handleClose} style={btnStyle("#1a73e8")}>Đóng</button>
+            <button onClick={handleClose} style={{ ...btnStyle, marginTop: 20, padding: "10px 28px", width: "auto" }}>
+              Đóng
+            </button>
           </div>
         ) : (
           <>
@@ -130,7 +134,11 @@ export default function SubscriptionModal() {
             <button
               onClick={handleSubmit}
               disabled={status === "loading" || !email}
-              style={btnStyle(status === "loading" || !email ? "#aaa" : "#1a73e8", true)}
+              style={{
+                ...btnStyle,
+                background: status === "loading" || !email ? "#aaa" : "#1a73e8",
+                cursor: status === "loading" || !email ? "not-allowed" : "pointer",
+              }}
             >
               {status === "loading" ? "Đang gửi..." : "Đăng ký"}
             </button>
@@ -151,12 +159,9 @@ const inputStyle = {
   fontSize: 14, border: "1px solid #ddd", borderRadius: 6,
   marginBottom: 14, boxSizing: "border-box",
 };
-const btnStyle = (bg, fullWidth = false) => ({
-  marginTop: 8,
-  ...(fullWidth ? { width: "100%" } : { padding: "10px 28px" }),
-  padding: "12px",
-  background: bg, color: "#fff",
+const btnStyle = {
+  marginTop: 8, width: "100%", padding: "12px",
+  background: "#1a73e8", color: "#fff",
   border: "none", borderRadius: 7,
-  cursor: bg === "#aaa" ? "not-allowed" : "pointer",
   fontSize: 15, fontWeight: 600,
-});
+};
