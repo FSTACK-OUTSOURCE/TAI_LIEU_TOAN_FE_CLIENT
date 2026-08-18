@@ -601,7 +601,7 @@ const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
                         <li className="mb-1">
                             <strong>B2:</strong> Nhắn tin tới Zalo{" "}
                             <a
-                                href="https://zalo.me/0386117490"
+                                href="https://zalo.me/0588001888"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -618,7 +618,7 @@ const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
                                 fontSize: "16px",
                                 padding: "3px 7px",
                             }}
-                            href="https://zalo.me/0386117490"
+                            href="https://zalo.me/0588001888"
                             target="_blank"
                             rel="noreferrer"
                         >
@@ -629,7 +629,7 @@ const DocumentDetail = ({ documentinfo, childDocumentsCount = 0 }) => {
                             className="fs-5"
                             style={{ color: "#FF5722", marginLeft: 6 }}
                         >
-                            Hotline hỗ trợ: 0386.117.490
+                            Hotline hỗ trợ: 0588.001.888
                         </span>
                     </p>
                 </div>
