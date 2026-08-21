@@ -14,7 +14,6 @@
 /coverage
 
 # next.js
-/.next/
 /out/
 
 # production
@@ -41,3 +40,6 @@ yarn-error.log*
 next-env.d.ts
 
 certificates
+
+.next
+.next/

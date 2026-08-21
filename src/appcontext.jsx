@@ -3,8 +3,8 @@ import { createContext, useState, useContext } from 'react';
 
 const AppContext = createContext();
 
-export const AppContextProvider = ({ children }) => {
-  const [appcontext, setAppContext] = useState({});
+export const AppContextProvider = ({ children, initialValue = {} }) => {
+  const [appcontext, setAppContext] = useState(initialValue);
 
   return (
     <AppContext.Provider value={{ appcontext, setAppContext }}>

@@ -1,9 +1,14 @@
-import { getDocuments } from '@/endpoints/document';
-import FolderItem from '@/components/folderitem';
-import { Tabs } from 'antd';
-import PinItem from '@/components/pinitem';
-import { getGroups } from '@/endpoints/group';
+import Banner from '@/components/banner';
 import DocumentGroupItem from '@/components/documentgroupitem';
+import FolderItem from '@/components/folderitem';
+import MainTempalte from '@/components/mainTempalte';
+import PinItem from '@/components/pinitem';
+import { getDocuments } from '@/endpoints/document';
+import { getGroups } from '@/endpoints/group';
+import { Tabs } from 'antd';
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import SubscriptionModal from "@/components/FormEmail";
 
 const fetchDocuments = async ({ query }) => {
   var response = await getDocuments({ query });
@@ -42,18 +47,26 @@ export default async function Page() {
     }
   }
   return (
+    <MainTempalte>
+      <SubscriptionModal />
     <section>
-      <div className="mt-3 divLe categoriesBox backgroundHome">
-        <div className="centerContent fontBold titleYellow">
+      <div className="mt-3 divLe categoriesBox backgroundHome home-categories">
+        <div className="home-categories__title centerContent fontBold titleYellow">
           DANH MỤC
         </div>
-        <div className={`card-body  col-lg-12 col-xs-12`} style={{ backgroundColor: '#fdf9ed' }}>
-          <div className="row">
+        <div className="home-categories__body">
+          <div className="row g-2">
             {folders.map((folder, key) =>
               <FolderItem props={{ folder }} key={key} />
             )}
           </div>
         </div>
+      </div>
+      {/* banner */}
+      <div style={{
+        margin:"20px 0"
+      }}>
+        <Banner/>
       </div>
       <div className="divLe">
         <Tabs
@@ -70,9 +83,9 @@ export default async function Page() {
         />
       </div>
       <div className="divLe">
-
         <DocumentGroupItem props={{ groups }} />
       </div>
     </section>
+    </MainTempalte>
   )
 }

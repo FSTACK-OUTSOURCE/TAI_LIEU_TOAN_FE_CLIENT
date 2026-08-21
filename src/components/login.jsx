@@ -1,19 +1,30 @@
 "use client"
-import React, { useEffect } from "react";
-import { Button, Dropdown, Form, Input, Select, Card } from "antd";
+import React, { useEffect, useRef, useState } from "react";
+import { Button, Dropdown, Form, Input, Select, Card, Divider } from "antd";
 import { useRouter } from 'next/navigation'
 import Swal from 'sweetalert2'
 import { useAppContext } from "@/appcontext";
 import axios from "axios";
-import { signInGoogle } from "@/constants/client"
+import { checkSignIn, signInGoogle } from "@/constants/client"
+import { LogoutOutlined } from "@ant-design/icons";
 
 
 const Login = () => {
 
     const { appcontext, setAppContext } = useAppContext();
     const router = useRouter();
+    const googleSignInRef = useRef(null);
+    const [isGoogleButtonRendered, setIsGoogleButtonRendered] = useState(false);
 
     const items = [
+        {
+            key:"5",
+            label:<button style={{ border: 'none', background: 'none', color: 'black' }}>{appcontext?.username || ""}</button>
+        },
+        {
+            key:"6",
+            label:<Divider style={{margin:"0px"}}/>
+        },
         {
             key: '2',
             label: (
@@ -38,7 +49,7 @@ const Login = () => {
             label: (<button style={{ border: 'none', background: 'none', color: 'black' }} onClick={async () => {
 
                 try {
-                    const response = await axios.get('/api/logout');
+                    await axios.get('/api/logout');
                     setAppContext({ configs: appcontext.configs })
                     await Swal.fire({
                         title: 'Thông báo',
@@ -59,7 +70,7 @@ const Login = () => {
                         allowOutsideClick: false
                     })
                 }
-            }} className="customLink">Đăng xuất</button>),
+            }} className="customLink"><LogoutOutlined style={{marginRight:"8px"}}/> Đăng xuất</button>),
             key: '4',
         },
     ];
@@ -74,20 +85,18 @@ const Login = () => {
             }
         });
         try {
-            var response = await axios.get('/api/userinfo', {
-                params: {
-                    body: JSON.stringify(values)
-                }
+            await axios.post('/api/identity', {
+                PHONE_NUMBER: values.phonenumber,
+                JOB: values.job,
+                LEVEL: values.level,
             })
-            if (response.status == 200) {
-                setAppContext({ ...appcontext, phonenumber: values.phonenumber })
-            }
+            setAppContext({ ...appcontext, phonenumber: values.phonenumber })
         }
         catch {
             await Swal.fire({
                 title: 'Thông báo',
                 text: 'Cập nhật thất bại! Thử lại sau',
-                icon: 'success',
+                icon: 'error',
                 allowOutsideClick: false,
                 showConfirmButton: false,
                 timer: 1500
@@ -100,6 +109,10 @@ const Login = () => {
     const phoneNumberRegex = /^0(3|5|7|8|9)\d{8}$/;
 
     useEffect(() => {
+        if (appcontext.username) {
+            return;
+        }
+
         if (!document.getElementById("google-script")) {
             const script = document.createElement("script");
             script.src = "https://accounts.google.com/gsi/client";
@@ -111,10 +124,10 @@ const Login = () => {
         } else {
             initializeGoogleLogin();
         }
-    }, []);
+    }, [appcontext.username]);
 
     const initializeGoogleLogin = () => {
-        if (window.google && window.google.accounts) {
+        if (window.google && window.google.accounts && googleSignInRef.current) {
 
             // Load Google Identity Services SDK
             window.google.accounts.id.initialize({
@@ -124,9 +137,12 @@ const Login = () => {
 
             // Render the Google Sign-In button
             window.google.accounts.id.renderButton(
-                document.getElementById("googleSignIn"),
+                googleSignInRef.current,
                 { theme: "filled_blue", size: "large", shape: "square", locale: "vi" }
             );
+            requestAnimationFrame(() => {
+                setIsGoogleButtonRendered(Boolean(googleSignInRef.current?.children?.length));
+            });
         }
     };
 
@@ -143,12 +159,10 @@ const Login = () => {
     };
     return (
         <section>
-
-
             {
-                appcontext.username && !appcontext.phonenumber ?
+                false ?
                     <div className="overlay">
-                        <div className="popupTopup" style={{ width: '40%' }}>
+                        <div className="popupTopup login-complete-popup">
                             <Card title="Hoàn tất thông tin" style={{ textAlign: 'center', fontSize: '20px' }} >
                                 <Form
                                     name="basic"
@@ -167,6 +181,14 @@ const Login = () => {
                                     onFinish={onFinish}
                                     autoComplete="off"
                                 >
+                                    <Form.Item
+                                        label="Họ và tên:"
+                                        name="name"
+                                        rules={[{ required: true, message: 'Vui lòng nhập họ và tên!' }]}
+                                    >
+                                        <Input />
+                                    </Form.Item>
+
                                     <Form.Item
                                         label="Số điện thoại:"
                                         name="phonenumber"
@@ -214,6 +236,21 @@ const Login = () => {
                                         </Select>
                                     </Form.Item>
 
+                                    <Form.Item name="subject" label="Môn học:">
+                                        <Select placeholder="-- Lựa chọn --" allowClear>
+                                            <Select.Option value="toan">Toán</Select.Option>
+                                            <Select.Option value="van">Ngữ văn</Select.Option>
+                                            <Select.Option value="anh">Tiếng Anh</Select.Option>
+                                            <Select.Option value="ly">Vật lý</Select.Option>
+                                            <Select.Option value="hoa">Hóa học</Select.Option>
+                                            <Select.Option value="sinh">Sinh học</Select.Option>
+                                            <Select.Option value="su">Lịch sử</Select.Option>
+                                            <Select.Option value="dia">Địa lý</Select.Option>
+                                            <Select.Option value="tin">Tin học</Select.Option>
+                                            <Select.Option value="khac">Khác</Select.Option>
+                                        </Select>
+                                    </Form.Item>
+
                                     <Form.Item label={null}>
                                         <Button type="primary" htmlType="submit" style={{ width: '100%' }}>
                                             Hoàn tất
@@ -227,13 +264,32 @@ const Login = () => {
             }
             {
                 appcontext.username ? <Dropdown
+                placement="bottomCenter"
                     menu={{
                         items
                     }}
                 >
-                    <Button className="btn btn-login-v2 btn-danger btn-auth-home" size='large' onClick={(e) => e.preventDefault()}>{appcontext.username}</Button>
+                    <Button className="btn btn-login-v2 btn-danger btn-auth-home"
+                        style={{
+                            borderRadius: "100%",
+                            width: "32px",
+                            height: "32px",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }} size='large' onClick={(e) => e.preventDefault()}>{appcontext.username.charAt(0)}</Button>
                 </Dropdown> :
-                    <div id="googleSignIn"></div>
+                    <div className="login-google-container">
+                        <div ref={googleSignInRef}></div>
+                        {!isGoogleButtonRendered ? (
+                            <Button
+                                className="btn btn-login-v2 btn-danger btn-auth-home"
+                                onClick={() => checkSignIn()}
+                            >
+                                Đăng nhập
+                            </Button>
+                        ) : null}
+                    </div>
             }
         </section>
     )

@@ -114,7 +114,9 @@ export const downloadDocument = async (item, onClose) => {
         var apiUrl = `/api/buy?documentid=${item.DOCUMENT_ID}`;
         await downloadFile(apiUrl, `${item.NAME}${item.FILE_EXTENSION}`)
         Swal.close();
-        onClose();
+        if (typeof onClose === 'function') {
+            onClose();
+        }
         var downloaded = localStorage.getItem('downloaded');
 
 

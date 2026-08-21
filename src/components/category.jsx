@@ -9,27 +9,27 @@ export default function Category({ props }) {
     const { categories } = props
     const router = useRouter();
     const [visible, setVisible] = useState(false);
+    const folderCategories = categories.filter(x => x.IS_FOLDER);
     const gridContent = (
-        <div style={{ padding: 20, width: 1000, background: '#fff', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)' }}>
-            <Row gutter={[16, 16]}>
-                {categories.filter(x => x.IS_FOLDER).map((category, index) => (
-                    <Col span={6} key={index}>
-                        <div style={{ display: 'flex' }}>
-                            <span>
-                                <Image
-                                    preview={false}
-                                    src={"/folder.png"}
-                                    alt="Ảnh bị ẩn do mạng"
-                                    className='img-fluid'
-                                    width={20}
-                                    height={20}
-                                />
-                            </span>
-                            <span style={{ paddingTop: 2, paddingLeft: 10, cursor: 'pointer' }} className="gridItem" onClick={() => {
+        <div className="category-dropdown" style={{ background: '#fff', boxShadow: '0 4px 16px rgba(0, 0, 0, 0.15)', borderRadius: 6 }}>
+            <Row gutter={[12, 12]}>
+                {folderCategories.map((category, index) => (
+                    <Col xs={12} sm={12} md={8} lg={6} key={index}>
+                        <div
+                            className="gridItem category-item"
+                            onClick={() => {
+                                setVisible(false);
                                 router.push(`/${category.NAME_SLUG}-${category.IDENTITY_KEY}`, { scroll: false })
-                            }}>
-                                {category.NAME}
-                            </span>
+                            }}
+                        >
+                            <Image
+                                preview={false}
+                                src={"/folder.png"}
+                                alt="Danh mục"
+                                width={20}
+                                height={20}
+                            />
+                            <span className="category-item__name">{category.NAME}</span>
                         </div>
                     </Col>
                 ))}
@@ -37,27 +37,63 @@ export default function Category({ props }) {
         </div>
     );
 
+    const menuItems = [
+        {
+            key: 'danh-muc',
+            style: { height: '42px', fontWeight: 'bold', fontSize: 16, backgroundColor: '#fdcd02', borderRadius: '0px', margin: '0px' },
+            label: (
+                <Dropdown
+                    dropdownRender={() => gridContent}
+                    trigger={['click']}
+                    placement="bottomLeft"
+                    open={visible}
+                    onOpenChange={(flag) => setVisible(flag)}
+                    overlayClassName="category-dropdown-overlay"
+                >
+                    <Space style={{ color: '#000000' }}>
+                        <MenuOutlined /> DANH MỤC TÀI LIỆU
+                    </Space>
+                </Dropdown>
+            ),
+        },
+    ];
+
     return (
-        <div className="row">
-            <div className="col-md-12">
-                <div style={{ display: 'flex' }}>
-                    <Menu mode="inline" style={{ width: 256 }}>
-                        <Menu.Item key="danh-muc" style={{ fontWeight: 'bold', fontSize: 16, backgroundColor: '#fdcd02' }}>
-                            <Dropdown
-                                overlay={gridContent}
-                                trigger={['click']}
-                                placement="bottomLeft" // Adjusts the placement of the popup
-                                open={visible}
-                                onOpenChange={(flag) => setVisible(flag)}
-                            >
-                                <Space style={{ color: '#1677ff' }}>
-                                    <MenuOutlined /> DANH MỤC TÀI LIỆU
-                                </Space>
-                            </Dropdown>
-                        </Menu.Item>
-                    </Menu>
-                </div>
-            </div>
-        </div>
+        <>
+            <Menu mode="inline" items={menuItems} />
+            <style jsx global>{`
+                .category-dropdown {
+                    padding: 16px;
+                    width: 1000px;
+                    max-width: calc(100vw - 24px);
+                    max-height: 70vh;
+                    overflow-y: auto;
+                }
+                .category-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 6px 10px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    transition: background 0.15s;
+                }
+                .category-item__name {
+                    font-size: 14px;
+                    line-height: 1.35;
+                    flex: 1;
+                    min-width: 0;
+                    word-break: break-word;
+                }
+                @media (max-width: 992px) {
+                    .category-dropdown { width: calc(100vw - 24px); padding: 12px; }
+                }
+                @media (max-width: 768px) {
+                    .category-dropdown-overlay { left: 12px !important; right: 12px !important; }
+                    .category-item { padding: 8px 10px; }
+                    .category-item__name { font-size: 13px; }
+                }
+            `}</style>
+        </>
     );
 }

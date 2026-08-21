@@ -1,8 +1,8 @@
 'use client'
-import { List, Image, Button } from 'antd';
-import { DownloadOutlined } from '@ant-design/icons';
 import { downloadDocument, formatDateTime } from "@/constants/client";
-import { useRouter } from 'next/navigation'
+import { DownloadOutlined } from '@ant-design/icons';
+import { Button, Image, List } from 'antd';
+import { useRouter } from 'next/navigation';
 
 
 const DocumentHistoryItem = ({ props }) => {
@@ -29,15 +29,23 @@ const DocumentHistoryItem = ({ props }) => {
                 <List.Item.Meta
                     avatar={item.IS_FOLDER ? <Image
                         preview={false}
-                        src={item.IMAGE_LINK ? `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}` : "/folder.png"}
-                        alt="Ảnh bị ẩn do mạng"
+                        src={item.IMAGE_LINK
+    ? item.IMAGE_LINK.startsWith('https://')
+        ? item.IMAGE_LINK
+        : `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}`
+    : "/folder.png"}
+                        alt="Tài liệu toán.vn"
                         className='img-fluid'
                         width={50}
                         height={50}
                     /> : <Image
                         preview={false}
-                        src={item.IMAGE_LINK ? `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}` : "/docTaiLieu.png"}
-                        alt="Ảnh bị ẩn do mạng"
+                       src={item.IMAGE_LINK
+    ? item.IMAGE_LINK.startsWith('https://')
+        ? item.IMAGE_LINK
+        : `${process.env.NEXT_PUBLIC_API_URL}${item.IMAGE_LINK}`
+    : "/docTaiLieu.png"}
+                        alt="Tài liệu toán.vn"
                         className='img-fluid'
                         width={50}
                         height={50}
