@@ -1,4 +1,4 @@
-export const AdminPhoneNumber = "0386.117.490";
+export const AdminPhoneNumber = "0588.001.888";
 
 // VietQR payment constants - fill in before deploying
 export const VIETQR_BANK_ID = '970415';       // e.g. VCB, TCB, MB, ACB

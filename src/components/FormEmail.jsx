@@ -60,7 +60,7 @@ export default function SubscriptionModal() {
   };
 
   if (!open) return null;
-
+  return null;
   return (
     <div
       style={{
