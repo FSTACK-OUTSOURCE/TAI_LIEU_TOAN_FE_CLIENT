@@ -160,7 +160,7 @@ const Login = () => {
     return (
         <section>
             {
-                appcontext.username && !appcontext.phonenumber ?
+                false ?
                     <div className="overlay">
                         <div className="popupTopup login-complete-popup">
                             <Card title="Hoàn tất thông tin" style={{ textAlign: 'center', fontSize: '20px' }} >
