@@ -48,7 +48,6 @@ export default async function Page() {
   }
   return (
     <MainTempalte>
-      <SubscriptionModal />
     <section>
       <div className="mt-3 divLe categoriesBox backgroundHome home-categories">
         <div className="home-categories__title centerContent fontBold titleYellow">
