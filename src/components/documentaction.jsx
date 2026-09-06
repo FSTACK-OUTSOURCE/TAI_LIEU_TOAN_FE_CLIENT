@@ -1,12 +1,14 @@
 'use client'
 import { useAppContext } from "@/appcontext";
+import DocumentAdvise from "@/components/documentadvise";
+import DocumentEditModal from "@/components/documentEditModal";
+import DocumentTopup from "@/components/documenttopup";
+import { checkSignIn, downloadDocument, downloadFile, handleBadRequest } from '@/constants/client';
+import { buildDocumentEditUrl, canEditDocument } from "@/constants/documentEdit";
+import { DownloadOutlined, EditOutlined, EyeOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { Button, Image } from 'antd';
-import { DownloadOutlined, EyeOutlined, InfoCircleOutlined } from '@ant-design/icons';
-import { checkSignIn, handleBadRequest, downloadFile, downloadDocument } from '@/constants/client';
 import { useState } from "react";
 import Swal from 'sweetalert2';
-import DocumentTopup from "@/components/documenttopup";
-import DocumentAdvise from "@/components/documentadvise";
 
 
 const DocumentAction = ({ props }) => {
@@ -14,6 +16,8 @@ const DocumentAction = ({ props }) => {
     const { appcontext, setAppContext } = useAppContext();
     const [showTopup, setShowTopup] = useState(false);
     const [showAdvise, setShowAdvise] = useState(false);
+    const [editUrl, setEditUrl] = useState("");
+    const showEditButton = canEditDocument(appcontext);
 
 
     const downloadPdf = async () => {
@@ -62,8 +66,12 @@ const DocumentAction = ({ props }) => {
                 documentinfo.IS_FOLDER && documentinfo.PRICE ? <div className="col-md-2">
                     <Image
                         preview={false}
-                        src={documentinfo.IMAGE_LINK ? `${process.env.NEXT_PUBLIC_API_URL}${documentinfo.IMAGE_LINK}` : "/folder.png"}
-                        alt="Ảnh bị ẩn do mạng"
+                        src={documentinfo.IMAGE_LINK
+    ? documentinfo.IMAGE_LINK.startsWith('https://')
+        ? documentinfo.IMAGE_LINK
+        : `${process.env.NEXT_PUBLIC_API_URL}${documentinfo.IMAGE_LINK}`
+    : "/folder.png"}
+                        alt="Tài liệu toán.vn"
                         className='img-fluid'
                         width={122}
                         height={122}
@@ -80,8 +88,8 @@ const DocumentAction = ({ props }) => {
                         </div>
                     </div> : <></>
                 }
-                {appcontext.username == "thayluanvatly@gmail.com" ? <Button style={{ marginLeft: 3, backgroundColor: 'red' }} type="primary" size={'middle'} onClick={() => {
-                    window.open(`https://quantri.tailieutoan.vn/Admin/Document?parentDocumentId=${documentinfo.PARENT_DOCUMENT_ID}&IDENTITY_KEY=${documentinfo.IDENTITY_KEY}`)
+                {showEditButton ? <Button style={{ marginLeft: 3, backgroundColor: 'red' }} type="primary" icon={<EditOutlined />} size={'middle'} onClick={() => {
+                    setEditUrl(buildDocumentEditUrl(documentinfo))
                 }}>Sửa</Button> : <></>}
                 {documentinfo.PRICE ? <>
                     <div className={`col-md-12`}>
@@ -136,6 +144,7 @@ const DocumentAction = ({ props }) => {
             </div>
             {showAdvise && <DocumentAdvise props={{ onClose: toggleAdvise, documentinfo }} />}
             {showTopup && <DocumentTopup props={{ onClose: toggleTopup, documentinfo }} />}
+            <DocumentEditModal url={editUrl} onClose={() => setEditUrl("")} title="Chỉnh sửa tài liệu" />
         </div>
 
     );

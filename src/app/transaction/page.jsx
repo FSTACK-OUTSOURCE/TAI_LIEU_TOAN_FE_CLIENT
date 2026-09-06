@@ -1,5 +1,6 @@
 
 const { getTransactions } = require("@/endpoints/transaction")
+import MainTempalte from '@/components/mainTempalte';
 import TransactionItem from '@/components/transactionitem';
 
 const fetchTransactions = async () => {
@@ -15,6 +16,7 @@ export default async function Page({
 
 
     return (
+        <MainTempalte>
         <section>
             <div className="section-heading mt-3 pt-3 pb-3 mb-3 filterListFile">
                 <div className="titleDocumentPage row form-group">
@@ -25,5 +27,6 @@ export default async function Page({
             </div>
             <TransactionItem props={{ transactions }} />
         </section>
+        </MainTempalte>
     );
 }

@@ -29,13 +29,13 @@ const DocumentAdvise = ({ props }) => {
                         <div className="row form-group">
                             <div className="col-md-1">{documentinfo?.IS_FOLDER ? <Image
                                 src="/folder.png"
-                                alt="Ảnh bị ẩn do mạng"
+                                alt="Tài liệu toán.vn"
                                 className='img-fluid'
                                 width={50}
                                 height={50}
                             /> : <Image
                                 src="/docTaiLieu.png"
-                                alt="Ảnh bị ẩn do mạng"
+                                alt="Tài liệu toán.vn"
                                 className='img-fluid'
                                 width={50}
                                 height={50}
@@ -68,7 +68,7 @@ const DocumentAdvise = ({ props }) => {
                         <div className="col-md-12 mt-5">
                             Sao chép nội dung trên rồi gửi vào Zalo của website <button style={{ background: 'none', border: 'none' }} onClick={() => {
                                 redirectLink(getConfig({ configs: appcontext.configs, name: 'zalo' }))
-                            }} target="_blank"><Image preview={false} src="/zaloimg.png" alt="Ảnh bị ẩn do mạng" width={200} height={50} /></button>
+                            }} target="_blank"><Image preview={false} src="/zaloimg.png" alt="Tài liệu toán.vn" width={200} height={50} /></button>
                         </div>
 
 

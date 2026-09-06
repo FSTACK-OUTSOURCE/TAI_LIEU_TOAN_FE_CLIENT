@@ -1,78 +1,152 @@
-import { Breadcrumb } from 'antd';
-import { getDocuments, getParentDocuments } from '@/endpoints/document';
-import { getTopics } from '@/endpoints/topic';
-import BreadCrumbItem from '@/components/breadcrumbitem';
-import DocumentAction from '@/components/documentaction';
-import Description from '@/components/description';
-import DocumentItem from '@/components/documentitem';
+import BreadCrumbItem from "@/components/breadcrumbitem";
+import { getDocuments, getParentDocuments } from "@/endpoints/document";
+import { getTopics } from "@/endpoints/topic";
+import { Breadcrumb } from "antd";
+// import DocumentAction from '@/components/documentaction';
+// import Description from '@/components/description';
+import DocumentDetail from "@/components/documentDetail";
+import DocumentItem from "@/components/documentitem";
 
 const fetchDocuments = async ({ query }) => {
     var response = await getDocuments({ query });
-    return response.success ? response.Items : []
-}
+    return response.success ? response.Items : [];
+};
 
 const fetchBreadCrumb = async (documentId) => {
     if (documentId) {
-        var response = await getParentDocuments({ query: { DOCUMENT_IDS: documentId, Columns: '*' } })
+        var response = await getParentDocuments({
+            query: { DOCUMENT_IDS: documentId, Columns: "*" },
+        });
         if (response.success) {
-            var rootParent = response.Data[0]
+            var rootParent = response.Data[0];
             var result = response.Data.map((item) => {
                 return {
-                    title: <BreadCrumbItem props={{ item, rootParent }} />, documentId: item.DOCUMENT_ID
-                }
-            })
+                    title: <BreadCrumbItem props={{ item, rootParent }} />,
+                    documentId: item.DOCUMENT_ID,
+                };
+            });
             return result;
         }
     }
-    return []
-}
+    return [];
+};
 
 const fetchDocument = async (identityKey) => {
-    var documents = await fetchDocuments({ query: { IDENTITY_KEY: identityKey, Columns: 'BOUGHT' } })
-    return documents.length > 0 ? documents[0] : {}
-}
+    var documents = await fetchDocuments({
+        query: { IDENTITY_KEY: identityKey, Columns: "BOUGHT" },
+    });
+    return documents.length > 0 ? documents[0] : {};
+};
 
 const fetchChildDocuments = async (documentId) => {
-    var childDocuments = await fetchDocuments({ query: { PARENT_DOCUMENT_ID: documentId, Columns: 'BOUGHT,ROOT_PARENT' } })
+    var childDocuments = await fetchDocuments({
+        query: {
+            PARENT_DOCUMENT_ID: documentId,
+            Columns: "BOUGHT,ROOT_PARENT,CREATED_USER",
+        },
+    });
     return childDocuments;
-}
+};
 
 const fetchTopics = async (documentId) => {
     if (documentId) {
-        var response = await getTopics({ query: { DOCUMENT_ID: documentId, PageSize: 100 } })
+        var response = await getTopics({
+            query: { DOCUMENT_ID: documentId, PageSize: 100 },
+        });
         if (response.success) {
-            return response.Items
+            return response.Items;
         }
     }
-    return []
-}
+    return [];
+};
 
-export default async function Page({
-    params,
-}) {
-    const { slug } = await params;
-    const identityKey = slug[slug.length - 1].split('-').pop();
-    if (!identityKey) {
-        return <h1>404 - Page Not Found</h1>
+const fetchSimilarDocuments = async (documentId) => {
+    if (documentId) {
+        var response = await getDocuments({
+            query: {
+                PARENT_DOCUMENT_ID: documentId,
+                Columns: "BOUGHT,ROOT_PARENT",
+            },
+        });
+        if (response.success) {
+            return response.Items;
+        }
     }
-    const documentinfo = await fetchDocument(identityKey)
+    return [];
+};
+
+const fetchParentDocument = async (documentId) => {
+    if (documentId) {
+        var response = await getParentDocuments({
+            query: { DOCUMENT_IDS: documentId, Columns: "*" },
+        });
+        if (response.success) {
+            return response.Data.pop();
+        }
+    }
+    return {};
+};
+
+export default async function Page({ params }) {
+    const { slug } = await params;
+    const identityKey = slug[slug.length - 1].split("-").pop();
+    if (!identityKey) {
+        return <h1>404 - Page Not Found</h1>;
+    }
+    const documentinfo = await fetchDocument(identityKey);
+    console.log("documentinfo: ", documentinfo, slug);
     const breadData = await fetchBreadCrumb(documentinfo.DOCUMENT_ID);
-    var childDocuments = await fetchChildDocuments(documentinfo.DOCUMENT_ID)
-    const topics = childDocuments.length > 0 ? await fetchTopics(documentinfo.DOCUMENT_ID) : []
+    const childDocuments = await fetchChildDocuments(documentinfo.DOCUMENT_ID);
+    const topics =
+        childDocuments.length > 0
+            ? await fetchTopics(documentinfo.DOCUMENT_ID)
+            : [];
+    const similarDocuments = await fetchSimilarDocuments(
+        documentinfo.PARENT_DOCUMENT_ID,
+    );
+    const parentDocument = await fetchParentDocument(
+        documentinfo.PARENT_DOCUMENT_ID,
+    );
 
-
-    return (
+    const content = (
         <section>
             <div className="section-heading mt-3 pt-3 pb-3 mb-3 filterListFile">
-                {breadData ? <Breadcrumb
-                    items={breadData}
-                /> : <></>}
+                {breadData ? <Breadcrumb items={breadData} /> : <></>}
             </div>
-            <div className="section-heading mt-3 pt-3 pb-3 mb-3 filterListFile">
-                <DocumentAction props={{ documentinfo }} />
-            </div>
-            <Description props={{ documentinfo }} />
-            <DocumentItem props={{ documentinfo: { childDocuments, ...documentinfo }, topics }} />
+            {documentinfo?.PRICE != null ? (
+                <div className="section-heading mt-3 pt-3 pb-3 mb-3">
+                    <DocumentDetail
+                        documentinfo={documentinfo}
+                        childDocumentsCount={childDocuments.length}
+                    />
+                </div>
+            ) : (
+                <></>
+            )}
+            <DocumentItem
+                props={{
+                    documentinfo: {
+                        childDocuments:
+                            childDocuments?.length > 0
+                                ? childDocuments
+                                : similarDocuments.filter(
+                                      (x) =>
+                                          x.DOCUMENT_ID !=
+                                          documentinfo.DOCUMENT_ID,
+                                  ),
+                        ...documentinfo,
+                    },
+                    topics,
+                    isShowDetail: documentinfo?.PRICE != null,
+                    isBundle: childDocuments?.length > 0,
+                    parentDocument,
+                }}
+            />
         </section>
     );
+
+    // if(!childDocuments?.length && !similarDocuments?.length){
+    //     return <MainTempalte>{content}</MainTempalte>
+    // }
+    return <>{content}</>;
 }

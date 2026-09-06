@@ -1,11 +1,25 @@
-import { NextResponse } from 'next/server'
+import { NextResponse } from "next/server";
 
-// This function can be marked `async` if using `await` inside
 export function middleware(request) {
-  return NextResponse.next();
+    const pathname = request.nextUrl.pathname;
+
+    // Xử lý backslash uploads
+    if (pathname.includes("%5C") || pathname.includes("\\")) {
+        const normalized = pathname.replace(/%5C|\\+/g, "/");
+        if (normalized.includes("/uploads/")) {
+            const filename = normalized.split("/uploads/")[1];
+            return NextResponse.redirect(
+                `https://api.tailieutoan.vn/uploads/${filename}`,
+            );
+        }
+    }
+
+    // Logic cũ giữ nguyên
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set("x-pathname", pathname);
+    return NextResponse.next({ request: { headers: requestHeaders } });
 }
 
-// See "Matching Paths" below to learn more
 export const config = {
-  matcher: '/:path*',
-}
+    matcher: "/:path*",
+};

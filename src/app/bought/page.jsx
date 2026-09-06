@@ -1,4 +1,5 @@
 import DocumentHistoryItem from "@/components/documenthistoryitem";
+import MainTempalte from "@/components/mainTempalte";
 
 const { getHistoryDocuments } = require("@/endpoints/document")
 
@@ -14,6 +15,7 @@ export default async function Page({
     const documents = await fetchDocumentBought()
 
     return (
+        <MainTempalte>
         <section>
             <div className="section-heading mt-3 pt-3 pb-3 mb-3 filterListFile">
                 <div className="titleDocumentPage row form-group">
@@ -24,5 +26,6 @@ export default async function Page({
             </div>
             <DocumentHistoryItem props={{ documents }} />
         </section>
+        </MainTempalte>
     );
 }
